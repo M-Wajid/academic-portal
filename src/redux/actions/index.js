@@ -1,23 +1,17 @@
-export const studentAdded = () => {
+export const userAdded = () => {
   return {
-    type: "ADD_STUDENT",
+    type: "ADD_USER",
   }
 }
 
-export const studentRemoved = () => {
+export const userRemoved = () => {
   return {
-    type: "REMOVE_STUDENT",
+    type: "REMOVE_USER",
   }
 }
 
-export const teacherAdded = () => {
+export const attendanceAdded = () => {
   return {
-    type: "ADD_TEACHER",
-  }
-}
-
-export const teacherRemoved = () => {
-  return {
-    type: "REMOVE_TEACHER",
+    type: "ADD_ATTENDANCE"
   }
 }

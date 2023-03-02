@@ -1,10 +1,10 @@
 import { combineReducers } from "redux";
-import teacherReducer from './teacherReducer';
-import studentReducer from './studentReducer';
+import userReducer from './userReducer';
+import attendanceReducer from './attendanceReducer';
 
 const rootReducer = combineReducers({
-  teacherReducer,
-  studentReducer
+  userReducer,
+  attendanceReducer
 });
 
 export default rootReducer;
