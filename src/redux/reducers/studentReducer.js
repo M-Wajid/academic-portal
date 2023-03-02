@@ -12,8 +12,7 @@ const studentReducer = (state={initialState},action) => {
         ...state,
       }
     default: return state
-
   }
 }
 
-export default studentReducer
+export default studentReducer;
