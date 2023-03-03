@@ -1,5 +1,5 @@
 const initialState =  {
-  teachers: [
+  users: [
     {name: "Admin", email: "admin@admin.com", role: "admin", password: "admin123"},
     {name: "abc", email: "abc@gmail.com", role: "teacher", password: "abc123"},
     {name: "def", email: "def@gmail.com", role: "student", password: "def123"}
