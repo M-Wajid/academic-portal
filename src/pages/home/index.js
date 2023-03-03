@@ -16,28 +16,30 @@ const HOME = () => {
   };
 
   const check = (user) => {
-    switch(user.role){
-      case ("admin"):
+    switch (user.role) {
+      case "admin":
         navigate("/admin");
         break;
-      case ("teacher"):
+      case "teacher":
         navigate("/teacher");
         break;
-      case ("student"):
+      case "student":
         navigate("/student");
         break;
-      default: return console.log("User Role is not defined");
+      default:
+        return console.log("User Role is not defined");
     }
-  }
+  };
 
   const onClickHandler = () => {
     const user = userState.users.find(
       (users) => users.email === currentUser.email
     );
-    console.log(user);
-    user.password === currentUser.password
+    user === undefined
+      ? alert("User not found")
+      : user.password === currentUser.password
       ? check(user)
-      : console.log("password incorrect");
+      : alert("Password is incorrect");
   };
 
   return (
@@ -50,7 +52,12 @@ const HOME = () => {
         autoComplete="off"
         onChange={onChangeHandler}
       />
-      <input name="password" type="password" placeholder="PASSWORD" />
+      <input
+        name="password"
+        type="password"
+        placeholder="PASSWORD"
+        onChange={onChangeHandler}
+      />
       <button onClick={onClickHandler}>LOGIN</button>
     </div>
   );

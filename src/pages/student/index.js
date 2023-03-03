@@ -4,6 +4,16 @@ const Student = () => {
   return (
     <div>
       <h1>Student</h1>
+
+      {/* 
+              view attendence
+              ask for a leave
+              view marks
+      */}
+
+
+
+
     </div>
   );
 };

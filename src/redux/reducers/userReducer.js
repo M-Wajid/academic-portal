@@ -1,8 +1,8 @@
 const initialState =  {
   users: [
     {name: "Admin", email: "admin@admin.com", role: "admin", password: "admin123"},
-    {name: "abc", email: "abc@gmail.com", role: "teacher", password: "abc123"},
-    {name: "def", email: "def@gmail.com", role: "student", password: "def123"}
+    {name: "Ahmad", email: "ahmad@gmail.com", role: "teacher", password: "ahmad123"},
+    {name: "Wajid", email: "wajid@gmail.com", role: "student", password: "wajid123"}
   ]
 }
 
