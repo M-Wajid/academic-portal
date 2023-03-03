@@ -4,9 +4,9 @@ export const userAdded = () => {
   }
 }
 
-export const userRemoved = () => {
+export const userDeleted = () => {
   return {
-    type: "REMOVE_USER",
+    type: "DELETE_USER",
   }
 }
 

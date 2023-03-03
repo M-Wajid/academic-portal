@@ -1,17 +1,18 @@
 const initialState =  {
   teachers: [
+    {name: "Admin", email: "admin@admin.com", role: "admin", password: "admin123"},
     {name: "abc", email: "abc@gmail.com", role: "teacher", password: "abc123"},
     {name: "def", email: "def@gmail.com", role: "student", password: "def123"}
   ]
 }
 
-const userReducer = (state = initialState, actions) => {
-  switch(actions.type){
-    case "ADD_TEACHER":
+const userReducer = (state = initialState, action) => {
+  switch(action.type){
+    case "ADD_USER":
       return{
         ...state
       }
-    case "DELETE_TEACHER":
+    case "DELETE_USER":
       return{
         ...state
       }
