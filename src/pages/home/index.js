@@ -35,6 +35,7 @@ const HOME = () => {
     const user = userState.users.find(
       (users) => users.email === currentUser.email
     );
+    localStorage.setItem("data",JSON.stringify(user));
     user === undefined
       ? alert("User not found")
       : user.password === currentUser.password
