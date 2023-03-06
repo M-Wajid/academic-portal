@@ -11,7 +11,7 @@ const Protected = (props) => {
       console.log(currentUser);
       navigate('/');
     }
-  },[])
+  })
   return (
     <div>
       <Component />
