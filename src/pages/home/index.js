@@ -16,6 +16,7 @@ const HOME = () => {
   };
 
   const check = (user) => {
+    localStorage.setItem("data",JSON.stringify(user));
     switch (user.role) {
       case "admin":
         navigate("/admin");
@@ -35,7 +36,6 @@ const HOME = () => {
     const user = userState.users.find(
       (users) => users.email === currentUser.email
     );
-    localStorage.setItem("data",JSON.stringify(user));
     user === undefined
       ? alert("User not found")
       : user.password === currentUser.password
