@@ -46,7 +46,8 @@ const HOME = () => {
   return (
     <div className="main">
       <h1>LOGIN</h1>
-      <input
+        <input
+        className="inputFields"
         name="email"
         type="text"
         placeholder="EMAIL"
@@ -54,12 +55,13 @@ const HOME = () => {
         onChange={onChangeHandler}
       />
       <input
+        className="inputFields"
         name="password"
         type="password"
         placeholder="PASSWORD"
         onChange={onChangeHandler}
       />
-      <button onClick={onClickHandler}>LOGIN</button>
+      <button className="loginButton" onClick={onClickHandler}>LOGIN</button>   
     </div>
   );
 };
