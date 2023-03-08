@@ -29,3 +29,9 @@ export const courseAdded = () => {
     type: "ADD_COURSE"
   }
 }
+
+export const teacherAssigned = () => {
+  return {
+    type: "ASSIGN_TEACHER"
+  }
+}
