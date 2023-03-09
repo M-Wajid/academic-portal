@@ -1,4 +1,5 @@
 import React from "react";
+import Logout from "../../components/logout";
 import ViewAttendence from "../../components/viewAttendance";
 import ViewMarks from "../../components/ViewMarks";
 import ViewCourses from './../../components/ViewCourses/index';
@@ -27,6 +28,13 @@ const Student = () => {
       {/* 
               ask for a leave
       */}
+      <br></br>
+      <br></br>
+      <br></br>
+      <Logout />
+      <br></br>
+      <br></br>
+      <br></br>
     </div>
   );
 };

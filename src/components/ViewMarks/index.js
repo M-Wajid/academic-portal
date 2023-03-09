@@ -1,25 +1,58 @@
-import { useSelector } from 'react-redux';
+import { useSelector } from "react-redux";
+import { useState } from "react";
 
 const ViewMarks = () => {
-  const marksState = useSelector((state)=> state.marksReducer);
+  const user = JSON.parse(localStorage.getItem("data"));
+  const courseState = useSelector((state) => state.courseReducer);
+  const marksState = useSelector((state) => state.marksReducer);
+  const [course, setCourse] = useState();
+  const onChangeHandler = (event) => {
+    setCourse(event.target.value);
+  };
   return (
     <div>
-      <table border="1" width="100%">
-        <tbody>
-          <tr>
-            {Object.keys(marksState.marks[0]).map((key)=>(
-              <th>{key}</th>
-            ))}
-          </tr>
-          <tr>
-            {marksState.marks.map((item) => Object.keys(item).map((key) => (
-              <td>{item[key]}</td>
-            )))}
-          </tr>
-        </tbody>
-      </table>
+      <select name="course" onChange={onChangeHandler}>
+        <option value="default">default</option>
+        {Object.keys(courseState).map((key) =>
+          courseState[key].map((item) =>
+            item.Name === user.name ? <option value={key}>{key}</option> : null
+          )
+        )}
+      </select>
+      <br></br>
+      <br></br>
+      {course === null ||
+      course === undefined ||
+      course === "default" ? null : (
+        <table border="1" width="100%">
+          <tbody>
+            <tr>
+              <th>....</th>
+              <th>Obtained Marks</th>
+              <th>Total Marks</th>
+            </tr>
+            {Object.keys(marksState).map((key) =>
+              key === course
+                ? Object.keys(marksState[key]).map((item) => (
+                    <tr>
+                      <th>{item}</th>
+                      {marksState[key][item].map((el) =>
+                        el.Student_Name === user.name ? (
+                          <>
+                            <td>{el.Obtained_Marks}</td>
+                            <td>{el.Total_Marks}</td>
+                          </>
+                        ) : null
+                      )}
+                    </tr>
+                  ))
+                : null
+            )}
+          </tbody>
+        </table>
+      )}
     </div>
-  )
-}
+  );
+};
 
 export default ViewMarks;
