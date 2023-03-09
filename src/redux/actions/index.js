@@ -30,6 +30,13 @@ export const courseAdded = () => {
   }
 }
 
+export const courseRegistered = (course) => {
+  return {
+    type: "REGISTER_COURSE",
+    course
+  }
+}
+
 export const teacherAssigned = () => {
   return {
     type: "ASSIGN_TEACHER"

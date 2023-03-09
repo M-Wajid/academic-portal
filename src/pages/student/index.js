@@ -3,6 +3,7 @@ import Logout from "../../components/logout";
 import ViewAttendence from "../../components/viewAttendance";
 import ViewMarks from "../../components/ViewMarks";
 import ViewCourses from './../../components/ViewCourses/index';
+import RegisterCourse from './../../components/registerCourse/index';
 
 const Student = () => {
   return (
@@ -28,6 +29,12 @@ const Student = () => {
       {/* 
               ask for a leave
       */}
+      <br></br>
+      <br></br>
+      <br></br>
+      <h1>Register Courses</h1>
+      <br></br>
+      <RegisterCourse />
       <br></br>
       <br></br>
       <br></br>
