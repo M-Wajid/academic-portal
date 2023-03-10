@@ -1,15 +1,21 @@
 import ViewCourses from './../../components/ViewCourses/index';
 import Info from './../../components/info/index';
-import Header from "../../components/header";
 import RegisterCourse from '../../components/registerCourse';
 
 const Student = () => {
   return (
     <div>
-      <Header />
       <Info />
       <ViewCourses />
       <RegisterCourse />
+      {
+        /*
+         leave
+         exam date selection
+         attendence in percentage 
+         marks in percentage
+         */
+      }
     </div>
   );
 };

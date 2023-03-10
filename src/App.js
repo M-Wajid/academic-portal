@@ -10,11 +10,13 @@ import ViewAttendence from './components/viewAttendance/index';
 import ViewMarks from './components/ViewMarks/index';
 import RegisterCourse from './components/registerCourse/index';
 import ViewCourses from './components/ViewCourses/index';
+import Header from './components/header';
 
 const App = () => {
-
   return (
+    
     <div>
+      <Header />
       <Routes>
         <Route path="/" element={<HOME/>} />
         <Route path="/student" element={<Protected Component={Student} />}/>
