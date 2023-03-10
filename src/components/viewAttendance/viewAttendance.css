@@ -1,0 +1,19 @@
+.viewAttendanceMain{
+  margin-top: 10px;
+  border: 2px solid rgb(0, 35, 102);
+}
+
+.viewAttendanceHeading{
+  background-color: rgb(0, 35, 102);
+  color: white;
+  padding-left: 20px; 
+}
+
+.viewAttendanceData{
+  margin-top: 20px;
+  margin-bottom: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}

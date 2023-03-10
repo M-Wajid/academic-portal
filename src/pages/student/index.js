@@ -1,6 +1,7 @@
 import ViewCourses from './../../components/ViewCourses/index';
 import Info from './../../components/info/index';
 import Header from "../../components/header";
+import RegisterCourse from '../../components/registerCourse';
 
 const Student = () => {
   return (
@@ -8,6 +9,7 @@ const Student = () => {
       <Header />
       <Info />
       <ViewCourses />
+      <RegisterCourse />
     </div>
   );
 };
