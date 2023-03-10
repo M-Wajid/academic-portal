@@ -1,11 +1,14 @@
 import { useSelector } from "react-redux";
+import "./viewCourses.css"
 const ViewCourses = () => {
   const user = JSON.parse(localStorage.getItem("data"));
   const userState = useSelector((state) => state.courseReducer);
 
   return (
-    <div>
-      <table border="1" width="30%" align="center">
+    <div className="courseMainView">
+      <h1 className="viewCoursesHeading">Registered Courses</h1>
+      <div className="viewCoursesData">
+        <table border="1" width="50%">
         <tbody>
           <tr>
             <th>Courses</th>
@@ -21,6 +24,8 @@ const ViewCourses = () => {
           )}
         </tbody>
       </table>
+      </div>
+      
     </div>
   );
 };
