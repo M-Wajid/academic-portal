@@ -44,7 +44,6 @@ const HOME = () => {
   };
 
   return (
-    
     <div className="main">
       <h1>LOGIN</h1>
         <input
