@@ -17,26 +17,29 @@ const Header = () => {
         {user === null || user === undefined ? null : user.role ===
           "student" ? (
           <>
-            <button className="headerButton" onClick={() => navigate("/student")}>
+            <button
+              className="headerButton"
+              onClick={() => navigate("/student")}
+            >
               Home
             </button>
             <button
               className="headerButton"
               onClick={() => navigate("/viewAttendance")}
             >
-              View Attendance
+              Attendance
             </button>
             <button
               className="headerButton"
               onClick={() => navigate("/viewMarks")}
             >
-              View Marks
+              Marks
             </button>
             <button
               className="headerButton"
               onClick={() => navigate("/viewCourses")}
             >
-              View Courses
+              Courses
             </button>
             <button
               className="headerButton"
@@ -50,41 +53,59 @@ const Header = () => {
           </>
         ) : user.role === "teacher" ? (
           <>
-            <button className="headerButton" onClick={() => navigate("/")}>
+            <button
+              className="headerButton"
+              onClick={() => navigate("/teacher")}
+            >
               Home
             </button>
-            <button className="headerButton" onClick={() => navigate("/")}>
-              Add Attendance
+            <button
+              className="headerButton"
+              onClick={() => navigate("/attendance")}
+            >
+              Attendance
             </button>
-            <button className="headerButton" onClick={() => navigate("/")}>
-              Add Marks
+            <button className="headerButton" onClick={() => navigate("/marks")}>
+              Marks
             </button>
             <button className="headerButton" onClick={onClickHandler}>
               Log out
             </button>
           </>
-        ) : user.role === "admin" ? (
+        ) : user.role === "admin" && (
           <>
             <button className="headerButton" onClick={() => navigate("/admin")}>
               Home
             </button>
-            <button className="headerButton" onClick={() => navigate("/addUser")}>
+            <button
+              className="headerButton"
+              onClick={() => navigate("/addUser")}
+            >
               Add User
             </button>
-            <button className="headerButton" onClick={() => navigate("/deleteUser")}>
+            <button
+              className="headerButton"
+              onClick={() => navigate("/deleteUser")}
+            >
               Delete User
             </button>
-            <button className="headerButton" onClick={() => navigate("/addCourse")}>
+            <button
+              className="headerButton"
+              onClick={() => navigate("/addCourse")}
+            >
               Add Course
             </button>
-            <button className="headerButton" onClick={() => navigate("/assignTeacher")}>
+            <button
+              className="headerButton"
+              onClick={() => navigate("/assignTeacher")}
+            >
               Assign Teacher
             </button>
             <button className="headerButton" onClick={onClickHandler}>
               Log out
             </button>
           </>
-        ) : null}
+        )}
       </div>
     </div>
   );

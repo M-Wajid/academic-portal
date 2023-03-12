@@ -1,0 +1,30 @@
+.marksMain{
+  margin-top: 10px;
+  border: 2px solid rgb(0, 35, 102);
+}
+
+.marksHeading{
+  background-color: rgb(0, 35, 102);
+  color: white;
+  padding-left: 20px;
+}
+
+.marksData{
+  margin-top: 20px;
+  margin-bottom: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  font-size: 20px;
+}
+
+.marksButton{
+  padding: 7px;
+  cursor: pointer;
+  background-color: #006994;
+  color: white;
+  border-radius: 15px;
+  border: 2px solid white;
+  margin-left: 15px;
+}

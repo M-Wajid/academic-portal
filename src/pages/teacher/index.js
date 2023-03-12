@@ -1,19 +1,12 @@
 import React from "react";
+import Info from './../../components/info/index';
+import ViewCourses from './../../components/ViewCourses/index';
 
 const Teacher = () => {
   return (
     <div>
-      <h1>Teacher</h1>
-
-      {
-        /* 
-          add attendence
-          add marks
-          aprove leave
-        */
-      }
-
-
+      <Info />
+      <ViewCourses />
     </div>
   );
 };

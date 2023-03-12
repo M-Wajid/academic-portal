@@ -4,7 +4,7 @@ const Info = () => {
   const user = JSON.parse(localStorage.getItem("data"));
   return (
     <div className="infoMain">
-      <h1 className="infoHeading">USER DATA</h1>
+      <h1 className="infoHeading">DATA</h1>
       <div className="infoData">
         <div>
           <p1 className="heading">Name: </p1>

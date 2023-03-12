@@ -12,15 +12,21 @@ export const userDeleted = (name) => {
   }
 }
 
-export const attendanceAdded = () => {
+export const attendanceAdded = (course, keyValue,status) => {
   return {
-    type: "ADD_ATTENDANCE"
+    type: "ADD_ATTENDANCE",
+    course,
+    keyValue,
+    status
   }
 }
 
-export const marksAdded = () => {
+export const marksAdded = (course, taskType, data) => {
   return {
-    type: "ADD_MARKS"
+    type: "ADD_MARKS",
+    course, 
+    taskType, 
+    data
   }
 }
 

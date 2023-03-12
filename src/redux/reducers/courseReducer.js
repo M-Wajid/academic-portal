@@ -5,7 +5,7 @@ const initialState = {
   ],
 
   Algebra: [
-    { Name: "abc", role: "teacher" },
+    { Name: "Ahmad", role: "teacher" },
     { Name: "Hammad", role: "student" },
     { Name: "Wajid", role: "student" },
   ],

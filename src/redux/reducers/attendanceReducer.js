@@ -11,6 +11,7 @@ const initialState = {
 const attendanceReducer = (state = initialState, action) => {
   switch(action.type){
     case "ADD_ATTENDANCE":
+      Object.keys(state).map((key) => key === action.course && state[key].map((item,index) => item[action.keyValue] =  action.status[index]))
       return {
         ...state,
       }
