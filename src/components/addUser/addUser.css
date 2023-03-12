@@ -1,0 +1,29 @@
+.addUserMain{
+  margin-top: 10px;
+  border: 2px solid rgb(0, 35, 102);
+}
+
+.addUserHeading{
+  background-color: rgb(0, 35, 102);
+  color: white;
+  padding-left: 20px; 
+}
+
+.addUserData{
+  margin-top: 20px;
+  margin-bottom: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.addUserButton{
+  padding: 7px;
+  cursor: pointer;
+  background-color: #006994;
+  color: white;
+  border-radius: 15px;
+  border: 2px solid white;
+  margin-left: 15px;
+}

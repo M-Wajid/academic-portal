@@ -1,40 +1,49 @@
 const initialState = {
   Calculus: [
-    {Name: "Ahmad", role: 'teacher'},
-    {Name: "Wajid", role: 'student'}
+    { Name: "Ahmad", role: "teacher" },
+    { Name: "Wajid", role: "student" },
   ],
 
   Algebra: [
-    {Name: "abc", role: 'teacher'},
-    {Name: "Hammad", role: 'student'},
-    {Name: "Wajid", role: 'student'}
+    { Name: "abc", role: "teacher" },
+    { Name: "Hammad", role: "student" },
+    { Name: "Wajid", role: "student" },
   ],
 
   Python: [],
   "C++": [],
   Java: [],
-  JavaScript: [] 
-}
+  JavaScript: [],
+};
 
 const courseReducer = (state = initialState, action) => {
-  switch(action.type){
+  switch (action.type) {
     case "ADD_COURSE":
-      return{
-        ...state
-      }
+      return {
+        ...state,
+        [action.course]: [],
+      };
     case "ASSIGN_TEACHER":
-      return{
-        ...state
-      }
-    case "REGISTER_COURSE":
-      const user = JSON.parse(localStorage.getItem('data'));
-      const temp = {Name: user.name, role: user.role};
-      Object.keys(state).map((key) => key === action.course ? state[key].push(temp) :null);
+      Object.keys(state).map(
+        (key) =>
+          key === action.data.CourseName &&
+          state[key].push({ Name: action.data.TeacherName, role: "teacher" })
+      );
       return {
         ...state,
       };
-    default: return state;
+    case "REGISTER_COURSE":
+      const user = JSON.parse(localStorage.getItem("data"));
+      const temp = { Name: user.name, role: user.role };
+      Object.keys(state).map((key) =>
+        key === action.course ? state[key].push(temp) : null
+      );
+      return {
+        ...state,
+      };
+    default:
+      return state;
   }
-}
+};
 
-export default courseReducer
+export default courseReducer;

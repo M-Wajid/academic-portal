@@ -24,9 +24,10 @@ export const marksAdded = () => {
   }
 }
 
-export const courseAdded = () => {
+export const courseAdded = (course) => {
   return {
-    type: "ADD_COURSE"
+    type: "ADD_COURSE",
+    course
   }
 }
 
@@ -37,8 +38,9 @@ export const courseRegistered = (course) => {
   }
 }
 
-export const teacherAssigned = () => {
+export const teacherAssigned = (data) => {
   return {
-    type: "ASSIGN_TEACHER"
+    type: "ASSIGN_TEACHER",
+    data
   }
 }

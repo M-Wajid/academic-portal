@@ -65,14 +65,20 @@ const Header = () => {
           </>
         ) : user.role === "admin" ? (
           <>
-            <button className="headerButton" onClick={() => navigate("/")}>
+            <button className="headerButton" onClick={() => navigate("/admin")}>
               Home
             </button>
-            <button className="headerButton" onClick={() => navigate("/")}>
+            <button className="headerButton" onClick={() => navigate("/addUser")}>
               Add User
             </button>
-            <button className="headerButton" onClick={() => navigate("/")}>
+            <button className="headerButton" onClick={() => navigate("/deleteUser")}>
               Delete User
+            </button>
+            <button className="headerButton" onClick={() => navigate("/addCourse")}>
+              Add Course
+            </button>
+            <button className="headerButton" onClick={() => navigate("/assignTeacher")}>
+              Assign Teacher
             </button>
             <button className="headerButton" onClick={onClickHandler}>
               Log out
