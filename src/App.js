@@ -7,7 +7,6 @@ import Protected from './components/routeAuth/index';
 import ViewAttendence from './components/viewAttendance/index';
 import ViewMarks from './components/ViewMarks/index';
 import RegisterCourse from './components/registerCourse/index';
-import ViewCourses from './components/ViewCourses/index';
 import Header from './components/header';
 import AddCourse from './components/addCourse/index';
 import AddUser from './components/addUser/index';
@@ -29,7 +28,6 @@ const App = () => {
         <Route path="/viewAttendance" element={<ViewAttendence />}/>
         <Route path="/viewMarks" element={<ViewMarks/>}/>
         <Route path="/registerCourse" element={<RegisterCourse />}/>
-        <Route path="/viewCourses" element={<ViewCourses />}/>
         <Route path="/addUser" element={<AddUser />}/>
         <Route path="/deleteUser" element={<DeleteUser />}/>
         <Route path="/addCourse" element={<AddCourse />}/>
