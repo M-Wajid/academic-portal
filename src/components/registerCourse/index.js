@@ -3,6 +3,7 @@ import { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { courseRegistered } from "../../redux/actions";
 import "./registerCourse.css"
+import ViewCourses from './../ViewCourses/index';
 
 const RegisterCourse = () => {
   const courseState = useSelector((state) => state.courseReducer);
@@ -25,6 +26,7 @@ const RegisterCourse = () => {
     <div className="registerCourseMain">
       <h1 className="registerCourseHeading">Add new Course</h1>
       <div className="registerCourseData">
+        <ViewCourses />
         <select onChange={onChangeHandler}>
           <option value="default">default</option>
           {Object.keys(courseState).map((key) => {

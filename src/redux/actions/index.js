@@ -50,3 +50,21 @@ export const teacherAssigned = (data) => {
     data
   }
 }
+
+export const leaveAdded = () => {
+  return{
+    type: "ADD_LEAVE",
+  }
+}
+
+export const teacherApproved = () => {
+  return{
+    type: "TEACHER_APPROVAL",
+  }
+}
+
+export const adminApproved = () => {
+  return{
+    type: "ADMIN_APPROVAL",
+  }
+}

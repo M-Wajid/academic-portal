@@ -37,15 +37,9 @@ const Header = () => {
             </button>
             <button
               className="headerButton"
-              onClick={() => navigate("/viewCourses")}
-            >
-              Courses
-            </button>
-            <button
-              className="headerButton"
               onClick={() => navigate("/registerCourse")}
             >
-              Add Course
+              Course
             </button>
             <button className="headerButton" onClick={onClickHandler}>
               Log out
