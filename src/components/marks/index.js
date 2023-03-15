@@ -1,7 +1,7 @@
 import { useSelector, useDispatch } from "react-redux";
 import "./marks.css";
 import { useState } from "react";
-import { marksAdded } from "./../../redux/actions/index";
+import { marksAdded, taskAdded } from "./../../redux/actions/index";
 
 const Marks = () => {
   const user = JSON.parse(localStorage.getItem("data"));
@@ -11,6 +11,7 @@ const Marks = () => {
   const [taskType, setTaskType] = useState("");
   const [flag, setFlag] = useState(false);
   const [data, setData] = useState();
+  const [temp, setTemp] = useState();
   const dispatch = useDispatch();
 
   const onChangeHandler = (event) => {
@@ -19,6 +20,10 @@ const Marks = () => {
 
   const onChangeHandler2 = (event) => {
     setTaskType(event.target.value);
+  };
+
+  const onChangeHandler3 = (event) => {
+    setTemp(event.target.value);
   };
 
   const setNewData = (event) => {
@@ -31,7 +36,13 @@ const Marks = () => {
   const onClickHandler = () => {
     setFlag(false);
     dispatch(marksAdded(course, taskType, data));
+    setTaskType("");
   };
+
+  const onClickHandler2 = () => {
+    dispatch(taskAdded(course,temp));
+    setTaskType(temp);
+  } 
 
   return (
     <div className="marksMain">
@@ -59,11 +70,19 @@ const Marks = () => {
                   <option value={item}>{item}</option>
                 ))
             )}
+            <option value="new">new</option>
           </select>
+
         </div>
         {course !== undefined &&
-          course !== null &&
-          course !== "default" &&
+        course !== null &&
+        course !== "default" &&
+        taskType === "new" ? (
+          <>
+            <input type="text" placeholder="Task Name" onChange={onChangeHandler3}/>
+            <button onClick={onClickHandler2}>Add</button>
+          </>
+        ) : (
           Object.keys(marksState).map(
             (key) =>
               key === course &&
@@ -116,7 +135,8 @@ const Marks = () => {
                     </>
                   )
               )
-          )}
+          )
+        )}
       </div>
     </div>
   );

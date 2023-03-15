@@ -68,3 +68,19 @@ export const adminApproved = () => {
     type: "ADMIN_APPROVAL",
   }
 }
+
+export const studentAdded = (course,user) => {
+  return{
+    type: "ADD_STUDENT",
+    course,
+    user
+  }
+}
+
+export const taskAdded = (course,taskType) => {
+  return{
+    type: "ADD_TASK",
+    course,
+    taskType
+  }
+}

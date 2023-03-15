@@ -55,7 +55,8 @@ const Attendance = () => {
                 <th>...</th>
                 {Object.keys(attendanceState).map(
                   (key) =>
-                    key === course &&
+                    key === course && 
+                    // attendanceState[key].length === 0 ? <th>Name</th> :
                     Object.keys(attendanceState[key][0]).map((key) => (
                       <th>{key}</th>
                     ))

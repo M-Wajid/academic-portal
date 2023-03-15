@@ -34,6 +34,14 @@ const marksReducer = (state = initialState, action) => {
       return {
         ...state,
       };
+    case "ADD_TASK":
+      let temp = false;
+      temp = Object.keys(state).includes(action.course);
+      !temp && (state[action.course] = {});
+      state[action.course][action.taskType] = [];
+      return{
+        ...state,
+      }
     default:
       return state;
   }

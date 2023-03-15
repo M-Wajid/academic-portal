@@ -4,6 +4,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { courseRegistered } from "../../redux/actions";
 import "./registerCourse.css"
 import ViewCourses from './../ViewCourses/index';
+import { studentAdded } from './../../redux/actions/index';
 
 const RegisterCourse = () => {
   const courseState = useSelector((state) => state.courseReducer);
@@ -18,6 +19,7 @@ const RegisterCourse = () => {
   const onClickHandler = () => {
     if (course !== "default" && course !== null && course !== undefined) {
       dispatch(courseRegistered(course));
+      dispatch(studentAdded(course,user));
     }
     setCourse(null);
   };

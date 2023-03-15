@@ -15,6 +15,13 @@ const attendanceReducer = (state = initialState, action) => {
       return {
         ...state,
       }
+    case "ADD_STUDENT":
+      let key = action.course;
+      let temp = Object.keys(state).includes(action.course);
+      temp === true ? (state[key].push({Name: action.user.name})) : (state[action.course] = [{Name: action.user.name}])
+      return{
+        ...state
+      }
     default: return state;
   }
 }
