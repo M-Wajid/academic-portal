@@ -12,8 +12,7 @@ const AddCourse = () => {
   const onChangeHandler = (event) => {
     setCourse(event.target.value)
   }
-
-
+  
   return (
     <div className='addCourseMain'>
       <h1 className='addCourseHeading'>Add Course</h1>

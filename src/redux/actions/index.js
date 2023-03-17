@@ -60,6 +60,14 @@ export const leaveAdded = (newLeave,course,classArray) => {
   }
 }
 
+export const leaveDeleted = (course, id) => {
+  return{
+    type: "DELETE_LEAVE",
+    course,
+    id
+  }
+}
+
 export const teacherApproved = (status, key, id) => {
   return{
     type: "TEACHER_APPROVAL",

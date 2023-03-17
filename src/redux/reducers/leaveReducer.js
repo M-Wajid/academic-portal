@@ -71,13 +71,28 @@ const leaveReducer = (state = initialState, action) => {
       return {
         ...state,
       };
+    case "DELETE_LEAVE":
+      return {
+        ...state,
+        [action.course]: state[action.course].filter((item) => item.id !== action.id)
+      };
+    case "EDIT_LEAVE":
+      return {
+        ...state,
+      };
     case "TEACHER_APPROVAL":
-      state[action.key].map((item) => item.id === action.id && (item["TeacherApproval"]= action.status))
+      state[action.key].map(
+        (item) =>
+          item.id === action.id && (item["TeacherApproval"] = action.status)
+      );
       return {
         ...state,
       };
     case "ADMIN_APPROVAL":
-      state[action.key].map((item) => item.id === action.id && (item["AdminApproval"]= action.status))
+      state[action.key].map(
+        (item) =>
+          item.id === action.id && (item["AdminApproval"] = action.status)
+      );
       return {
         ...state,
       };
