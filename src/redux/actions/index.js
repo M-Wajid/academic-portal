@@ -51,21 +51,30 @@ export const teacherAssigned = (data) => {
   }
 }
 
-export const leaveAdded = () => {
+export const leaveAdded = (newLeave,course,classArray) => {
   return{
     type: "ADD_LEAVE",
+    newLeave,
+    course,
+    classArray
   }
 }
 
-export const teacherApproved = () => {
+export const teacherApproved = (status, key, id) => {
   return{
     type: "TEACHER_APPROVAL",
+    status,
+    key,
+    id
   }
 }
 
-export const adminApproved = () => {
+export const adminApproved = (status, key, id) => {
   return{
     type: "ADMIN_APPROVAL",
+    status,
+    key,
+    id
   }
 }
 

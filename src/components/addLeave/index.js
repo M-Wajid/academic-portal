@@ -1,12 +1,26 @@
 import "./addLeave.css";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import { useState } from "react";
+import { leaveAdded } from "../../redux/actions";
 
 const AddLeave = () => {
   const leaveState = useSelector((state) => state.leaveReducer);
   const courseState = useSelector((state) => state.courseReducer);
   const user = JSON.parse(localStorage.getItem("data"));
   const [course, setCourse] = useState("default");
+  const [newLeave, setNewLeave] = useState({});
+  const dispatch = useDispatch();
+
+  const onChangeHandler = (event) => {
+    setNewLeave({
+      ...newLeave,
+      [event.target.name]: event.target.value,
+    });
+  };
+
+  const onClickHandler = () => {
+    dispatch(leaveAdded(newLeave, course, courseState[course]));
+  };
 
   return (
     <div className="addLeaveMain">
@@ -40,7 +54,56 @@ const AddLeave = () => {
               )}
             </table>
           ) : (
-            <button>ADD</button>
+            <>
+              <h1>Add Leave</h1>
+              <table border="1" width="50%">
+                <tbody>
+                  <tr>
+                    <th>Course</th>
+                    <td>{course}</td>
+                  </tr>
+                  <tr>
+                    <th>Student Name</th>
+                    <td>{user.name}</td>
+                  </tr>
+                  <tr>
+                    <th>Teacher Name</th>
+                    {courseState[course].map(
+                      (el) => el.role === "teacher" && <td>{el.Name}</td>
+                    )}
+                  </tr>
+                  <tr>
+                    <th>Leave From</th>
+                    <td>
+                      <input
+                        name="LeaveFrom"
+                        type="text"
+                        placeholder="dd-mm-yyyy"
+                        onChange={onChangeHandler}
+                      />
+                    </td>
+                  </tr>
+                  <tr>
+                    <th>Leave To</th>
+                    <td>
+                      <input
+                        name="LeaveTo"
+                        type="text"
+                        placeholder="dd-mm-yyyy"
+                        onChange={onChangeHandler}
+                      />
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+              <button
+                onClick={onClickHandler}
+                type="submit"
+                className="addLeaveButton"
+              >
+                Add
+              </button>
+            </>
           ))}
       </div>
     </div>
