@@ -110,3 +110,21 @@ export const taskAdded = (course,taskType) => {
     taskType
   }
 }
+
+export const examDateAdded = () => {
+  return{
+    type: "ADD_EXAM_DATE"
+  }
+}
+
+export const examDateEdited = () => {
+  return{
+    type: "EDIT_EXAM_DATE"
+  }
+}
+
+export const examBooked = () => {
+  return{
+    type: "BOOK_EXAM"
+  }
+}

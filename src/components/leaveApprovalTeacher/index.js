@@ -14,7 +14,7 @@ const LeaveApprovalTeacher = () => {
       {Object.keys(leaveState).map((key) => 
       <>
       <h1>{key}</h1>
-      {leaveState[key].map((item) => item.TeacherName === user.name && 
+      {leaveState[key].map((item) => (item.TeacherName === user.name)&&
           <>
             <table border="1" width="50%">
               <tbody>
