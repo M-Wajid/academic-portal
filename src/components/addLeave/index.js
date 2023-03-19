@@ -1,7 +1,7 @@
 import "./addLeave.css";
 import { useSelector, useDispatch } from "react-redux";
 import { useState } from "react";
-import { leaveAdded, leaveDeleted } from "../../redux/actions";
+import { leaveAdded, leaveDeleted, leaveEdited } from "../../redux/actions";
 
 const AddLeave = () => {
   const leaveState = useSelector((state) => state.leaveReducer);
@@ -9,6 +9,8 @@ const AddLeave = () => {
   const user = JSON.parse(localStorage.getItem("data"));
   const [course, setCourse] = useState("default");
   const [newLeave, setNewLeave] = useState({});
+  const [editLeave, setEditLeave] = useState({});
+  const [flag, setFlag] = useState(false);
   const dispatch = useDispatch();
 
   const onChangeHandler = (event) => {
@@ -20,7 +22,25 @@ const AddLeave = () => {
 
   const onClickHandler = () => {
     dispatch(leaveAdded(newLeave, course, courseState[course]));
+    setNewLeave({});
   };
+
+  const onChangeHandler2 = (event) => {
+    setEditLeave({
+      ...editLeave,
+      [event.target.name]: event.target.value
+    });
+  }
+
+  const Save = (course, id) => {
+    setFlag(false)
+    dispatch(leaveEdited(course, id, editLeave));
+  };
+
+  const edit = (LeaveFrom, LeaveTo) => {
+    setFlag(true);
+    setEditLeave({"LeaveFrom": LeaveFrom, "LeaveTo": LeaveTo})
+  }
 
   return (
     <div className="addLeaveMain">
@@ -56,7 +76,7 @@ const AddLeave = () => {
                           )}
                           <button
                             className="addLeaveButton"
-                            onClick={() => dispatch()}
+                            onClick={() => edit(item.LeaveFrom,item.LeaveTo)}
                           >
                             Edit
                           </button>
@@ -68,6 +88,11 @@ const AddLeave = () => {
                           >
                             Delete
                           </button>
+                          {flag && <>
+                            <input name="LeaveFrom" type="text" placeholder={item.LeaveFrom} onChange={onChangeHandler2}/>
+                            <input name="LeaveTo" type="text" placeholder={item.LeaveTo} onChange={onChangeHandler2}/>
+                            <button onClick={() => Save(course, item.id)}>Save</button>
+                          </> }
                         </table>
                         <br></br>
                         <br></br>

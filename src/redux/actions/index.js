@@ -68,6 +68,15 @@ export const leaveDeleted = (course, id) => {
   }
 }
 
+export const leaveEdited = (course, id, editLeave) => {
+  return{
+    type: "EDIT_LEAVE",
+    course,
+    id,
+    editLeave
+  }
+}
+
 export const teacherApproved = (status, key, id) => {
   return{
     type: "TEACHER_APPROVAL",
