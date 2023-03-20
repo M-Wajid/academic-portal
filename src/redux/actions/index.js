@@ -21,6 +21,15 @@ export const attendanceAdded = (course, keyValue,status) => {
   }
 }
 
+export const attendanceEdited = (course, index, data) => {
+  return{
+    type: "EDIT_ATTENDANCE",
+    course,
+    index,
+    data
+  }
+}
+
 export const marksAdded = (course, taskType, data) => {
   return {
     type: "ADD_MARKS",

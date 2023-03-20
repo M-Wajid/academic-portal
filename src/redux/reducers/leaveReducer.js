@@ -47,7 +47,8 @@ const leaveReducer = (state = initialState, action) => {
       let arr = action.classArray;
       let teacher = arr.find((el) => el.role === "teacher");
       const user = JSON.parse(localStorage.getItem("data"));
-      state.course === undefined
+      console.log(state);
+      state[action.course] === undefined
         ? (state[action.course] = [
             {
               id: crypto.randomUUID(),
@@ -68,6 +69,7 @@ const leaveReducer = (state = initialState, action) => {
             TeacherApproval: " - ",
             AdminApproval: " - ",
           });
+          console.log(state);
       return {
         ...state,
       };

@@ -17,8 +17,20 @@ const attendanceReducer = (state = initialState, action) => {
       }
     case "ADD_STUDENT":
       let key = action.course;
-      let temp = Object.keys(state).includes(action.course);
-      temp === true ? (state[key].push({Name: action.user.name})) : (state[action.course] = [{Name: action.user.name}])
+      let flag = Object.keys(state).includes(action.course);
+      let temp = {};
+      flag === true ? (
+        <>
+          {Object.keys(state[key][0]).map((key2) => temp = {...temp, [key2]:"NR"})}
+          {temp.Name = action.user.name}
+          {state[key].push(temp)}
+        </>
+        ) : (state[action.course] = [{Name: action.user.name}])
+      return{
+        ...state
+      }
+    case "EDIT_ATTENDANCE":
+      state[action.course][action.index] = action.data;
       return{
         ...state
       }

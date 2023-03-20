@@ -1,7 +1,7 @@
 import { useSelector, useDispatch } from "react-redux";
 import "./attendance.css";
 import { useState } from "react";
-import { attendanceAdded } from "./../../redux/actions/index";
+import { attendanceAdded, attendanceEdited } from "./../../redux/actions/index";
 
 const Attendance = () => {
   const user = JSON.parse(localStorage.getItem("data"));
@@ -11,6 +11,9 @@ const Attendance = () => {
   const [keyValue, setKeyValue] = useState();
   const [status, setStatus] = useState([]);
   const [flag, setFlag] = useState(false);
+  const [flag2, setFlag2] = useState(false);
+  const [data, setData] = useState();
+  const [i, setI] = useState();
   const dispatch = useDispatch();
 
   const onChangeHandler = (event) => {
@@ -21,7 +24,7 @@ const Attendance = () => {
     setKeyValue(event.target.value);
   };
 
-  const addStatus = (index,event) => {
+  const addStatus = (index, event) => {
     let arr = [...status];
     arr[index] = event.target.value;
     setStatus(arr);
@@ -32,6 +35,24 @@ const Attendance = () => {
     dispatch(attendanceAdded(course, keyValue, status));
     setStatus([]);
   };
+
+  const edit = (item, index) => {
+    setFlag2(true);
+    setData(item);
+    setI(index);
+  };
+
+  const EditData = (event) => {
+    setData({
+      ...data,
+      [event.target.name]: event.target.value 
+    })
+  }
+
+  const onClickHandler2 = () => {
+    setFlag2(false);
+    dispatch(attendanceEdited(course, i, data))
+  }
 
   return (
     <div className="attendanceMain">
@@ -55,8 +76,7 @@ const Attendance = () => {
                 <th>...</th>
                 {Object.keys(attendanceState).map(
                   (key) =>
-                    key === course && 
-                    // attendanceState[key].length === 0 ? <th>Name</th> :
+                    key === course &&
                     Object.keys(attendanceState[key][0]).map((key) => (
                       <th>{key}</th>
                     ))
@@ -81,17 +101,22 @@ const Attendance = () => {
               {Object.keys(attendanceState).map(
                 (key) =>
                   key === course &&
-                  attendanceState[key].map((item,index) => (
+                  attendanceState[key].map((item, index) => (
                     <tr>
                       <td>
-                        <button className="attendanceButton">EDIT</button>
+                        <button
+                          className="attendanceButton"
+                          onClick={() => edit(item, index)}
+                        >
+                          EDIT
+                        </button>
                       </td>
                       {Object.keys(item).map((key2) => (
                         <td>{item[key2]}</td>
                       ))}
                       {flag && (
                         <th>
-                          <select onChange={(event) => addStatus(index,event)}>
+                          <select onChange={(event) => addStatus(index, event)}>
                             <option>default</option>
                             <option Value="P">P</option>
                             <option Value="A">A</option>
@@ -108,6 +133,26 @@ const Attendance = () => {
           <button className="attendanceButton" onClick={onClickHandler}>
             save
           </button>
+        )}
+        {flag2 && (
+          <>
+          <table border="1" width="50%">
+            {Object.keys(data).map((key) =>
+              key === "Name" ? (
+                <tr>
+                  <th>{key}</th>
+                  <td>{data[key]}</td>
+                </tr>
+              ) : (
+                <tr>
+                  <th>{key}</th>
+                  <td><input name={key} type="text" placeholder={data[key]} onChange={EditData}/></td>
+                </tr>
+              )
+            )}
+          </table>
+          <button className="attendanceButton" onClick={onClickHandler2}>Save</button>
+          </>
         )}
       </div>
     </div>
