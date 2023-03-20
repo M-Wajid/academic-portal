@@ -130,20 +130,25 @@ export const taskAdded = (course,taskType) => {
   }
 }
 
-export const examDateAdded = () => {
+export const examDateAdded = (data) => {
   return{
-    type: "ADD_EXAM_DATE"
+    type: "ADD_EXAM_DATE",
+    data
   }
 }
 
-export const examDateEdited = () => {
+export const examDateEdited = (data,index) => {
   return{
-    type: "EDIT_EXAM_DATE"
+    type: "EDIT_EXAM_DATE",
+    data,
+    index
   }
 }
 
-export const examBooked = () => {
+export const examBooked = (course,date) => {
   return{
-    type: "BOOK_EXAM"
+    type: "BOOK_EXAM",
+    course,
+    date
   }
 }

@@ -14,6 +14,7 @@ import DeleteUser from './components/deleteUser/index';
 import AssignTeacher from './components/assignTeacher/index';
 import Attendance from './components/attendence/index';
 import Marks from './components/marks/index';
+import BookExamAdmin from './components/bookExamAdmin/index';
 
 const App = () => {
   return (
@@ -32,6 +33,7 @@ const App = () => {
         <Route path="/deleteUser" element={<DeleteUser />}/>
         <Route path="/addCourse" element={<AddCourse />}/>
         <Route path="/assignTeacher" element={<AssignTeacher />}/>
+        <Route path="/bookExamAdmin" element={<BookExamAdmin />} />
         <Route path="/attendance" element={<Attendance />} />
         <Route path="/marks" element={<Marks />} />
       </Routes>

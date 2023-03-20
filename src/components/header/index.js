@@ -95,6 +95,12 @@ const Header = () => {
             >
               Assign Teacher
             </button>
+            <button
+              className="headerButton"
+              onClick={() => navigate("/bookExamAdmin")}
+            >
+              Book Exam
+            </button>
             <button className="headerButton" onClick={onClickHandler}>
               Log out
             </button>
