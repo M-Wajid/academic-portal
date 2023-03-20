@@ -1,7 +1,7 @@
 import { useSelector, useDispatch } from "react-redux";
 import "./marks.css";
 import { useState } from "react";
-import { marksAdded, taskAdded } from "./../../redux/actions/index";
+import { marksAdded, marksEdited, taskAdded } from "./../../redux/actions/index";
 
 const Marks = () => {
   const user = JSON.parse(localStorage.getItem("data"));
@@ -10,6 +10,7 @@ const Marks = () => {
   const [course, setCourse] = useState();
   const [taskType, setTaskType] = useState("");
   const [flag, setFlag] = useState(false);
+  const [flag2, setFlag2] = useState(false);
   const [data, setData] = useState();
   const [temp, setTemp] = useState();
   const dispatch = useDispatch();
@@ -36,13 +37,19 @@ const Marks = () => {
   const onClickHandler = () => {
     setFlag(false);
     dispatch(marksAdded(course, taskType, data));
-    setTaskType("");
+    // setTaskType("");
   };
 
   const onClickHandler2 = () => {
-    dispatch(taskAdded(course,temp));
+    dispatch(taskAdded(course, temp));
     setTaskType(temp);
-  } 
+  };
+
+  const edit = (item) => {
+    setFlag2(false);
+    dispatch(marksEdited(course, taskType, item, data));
+    setData({});
+  }
 
   return (
     <div className="marksMain">
@@ -72,15 +79,18 @@ const Marks = () => {
             )}
             <option value="new">new</option>
           </select>
-
         </div>
         {course !== undefined &&
         course !== null &&
         course !== "default" &&
         taskType === "new" ? (
           <>
-            <input type="text" placeholder="Task Name" onChange={onChangeHandler3}/>
-            <button onClick={onClickHandler2}>Add</button>
+            <input
+              type="text"
+              placeholder="Task Name"
+              onChange={onChangeHandler3}
+            />
+            <button className="marksButton" onClick={onClickHandler2}>Add</button>
           </>
         ) : (
           Object.keys(marksState).map(
@@ -97,12 +107,25 @@ const Marks = () => {
                             <th>Name</th>
                             <th>Obtainde Marks</th>
                             <th>Total Marks</th>
+                            <th>Action</th>
                           </tr>
                           {marksState[key][key2].map((item) => (
                             <tr>
                               <td>{item.Student_Name}</td>
                               <td>{item.Obtained_Marks}</td>
                               <td>{item.Total_Marks}</td>
+                              {flag2 ? (
+                                <>
+                                  <input name="Obtained_Marks" type="text" onChange={(event) => setData({[event.target.name]:event.target.value})}/>
+                                  <button className="marksButton" onClick={() => edit(item)}>save</button>
+                                </>
+                              ) : (
+                                <td>
+                                  <button className="marksButton" onClick={() => setFlag2(true)}>
+                                    Edit
+                                  </button>
+                                </td>
+                              )}
                             </tr>
                           ))}
                         </tbody>
@@ -127,10 +150,10 @@ const Marks = () => {
                             onChange={setNewData}
                             placeholder="Total_Marks"
                           />
-                          <button onClick={onClickHandler}>Save</button>
+                          <button className="marksButton" onClick={onClickHandler}>Save</button>
                         </>
                       ) : (
-                        <button onClick={() => setFlag(true)}>ADD</button>
+                        <button className="marksButton" onClick={() => setFlag(true)}>ADD</button>
                       )}
                     </>
                   )

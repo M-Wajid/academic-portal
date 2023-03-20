@@ -30,6 +30,16 @@ export const marksAdded = (course, taskType, data) => {
   }
 }
 
+export const marksEdited = (course, taskType, item, data) => {
+  return {
+    type: "EDIT_MARKS",
+    course, 
+    taskType,
+    item, 
+    data
+  }
+}
+
 export const courseAdded = (course) => {
   return {
     type: "ADD_COURSE",

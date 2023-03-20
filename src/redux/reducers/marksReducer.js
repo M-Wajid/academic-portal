@@ -42,6 +42,12 @@ const marksReducer = (state = initialState, action) => {
       return{
         ...state,
       }
+    case "EDIT_MARKS":
+      state[action.course][action.taskType].map((el) => el.Student_Name === action.item.Student_Name && (el.Obtained_Marks = action.data.Obtained_Marks))
+      console.log(state);
+      return{
+        ...state
+      }
     default:
       return state;
   }

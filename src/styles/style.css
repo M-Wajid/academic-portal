@@ -1,28 +1,33 @@
-.infoMain{
+.Main{
   margin-top: 10px;
   border: 2px solid rgb(0, 35, 102);
 }
 
-.infoHeading{
+.Heading{
   background-color: rgb(0, 35, 102);
   color: white;
   padding-left: 20px; 
 }
 
-.infoData{
+.Data{
   margin-top: 20px;
   margin-bottom: 20px;
   display: flex;
-  flex-direction: row;
   align-items: center;
   justify-content: space-evenly;
 }
 
-.heading{
-  font-weight: bold;
-  font-size: 20px;
+.Buttons{
+  padding: 7px;
+  cursor: pointer;
+  background-color: #006994;
+  color: white;
+  border-radius: 15px;
+  border: 2px solid white;
+  margin-left: 15px;
 }
 
-.value{
-  font-size: 20px;
+.Inputs{
+  display: flex;
+  flex-direction: row;
 }
