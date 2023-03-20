@@ -1,7 +1,7 @@
 import React from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { userDeleted } from "../../redux/actions";
-import "./deleteUser.css";
+import "../../styles/style.css";
 
 const DeleteUser = () => {
   const userState = useSelector((state) => state.userReducer);
@@ -18,9 +18,9 @@ const DeleteUser = () => {
   };
 
   return (
-    <div className="deleteUserMain">
-      <h1 className="deleteUserHeading">Delete User</h1>
-      <div className="deleteUserData">
+    <div className="Main">
+      <h1 className="Heading">Delete User</h1>
+      <div className="Data3">
         <table border="1" width="50%">
           <tbody>
             <tr>
@@ -45,7 +45,7 @@ const DeleteUser = () => {
                 )
             )}
           </select>
-          <button className="deleteUserButton" onClick={onClickHandler}>
+          <button className="Button" onClick={onClickHandler}>
             DELETE
           </button>
         </div>

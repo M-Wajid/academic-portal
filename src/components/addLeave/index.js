@@ -1,4 +1,4 @@
-import "./addLeave.css";
+import "../../styles/style.css";
 import { useSelector, useDispatch } from "react-redux";
 import { useState } from "react";
 import { leaveAdded, leaveDeleted, leaveEdited } from "../../redux/actions";
@@ -43,9 +43,9 @@ const AddLeave = () => {
   }
 
   return (
-    <div className="addLeaveMain">
-      <h1 className="addLeaveHeading">Leave</h1>
-      <div className="addLeaveData">
+    <div className="Main">
+      <h1 className="Heading">Leave</h1>
+      <div className="Data3">
         <select onChange={(event) => setCourse(event.target.value)}>
           <option value="default">default</option>
           {Object.keys(courseState).map((key) =>
@@ -75,13 +75,13 @@ const AddLeave = () => {
                               )
                           )}
                           <button
-                            className="addLeaveButton"
+                            className="Button"
                             onClick={() => edit(item.LeaveFrom,item.LeaveTo)}
                           >
                             Edit
                           </button>
                           <button
-                            className="addLeaveButton"
+                            className="Button"
                             onClick={() =>
                               dispatch(leaveDeleted(course, item.id))
                             }
@@ -91,7 +91,7 @@ const AddLeave = () => {
                           {flag && <>
                             <input name="LeaveFrom" type="text" placeholder={item.LeaveFrom} onChange={onChangeHandler2}/>
                             <input name="LeaveTo" type="text" placeholder={item.LeaveTo} onChange={onChangeHandler2}/>
-                            <button onClick={() => Save(course, item.id)}>Save</button>
+                            <button className="Button" onClick={() => Save(course, item.id)}>Save</button>
                           </> }
                         </table>
                         <br></br>
@@ -145,7 +145,7 @@ const AddLeave = () => {
                 </tr>
               </tbody>
             </table>
-            <button onClick={onClickHandler} className="addLeaveButton">
+            <button onClick={onClickHandler} className="Button">
               Add
             </button>
           </>

@@ -1,13 +1,13 @@
 import { useSelector } from "react-redux";
-import "./showUser.css";
+import "../../styles/style.css";
 
 const ShowUser = () => {
   const userState = useSelector((state) => state.userReducer);
 
   return (
-    <div className="showUserMain">
-      <h1 className="showUserHeading">All Users</h1>
-      <div className="showUserData">
+    <div className="Main">
+      <h1 className="Heading">All Users</h1>
+      <div className="Data">
         <table border="1" width="50%">
           <tbody>
             <tr>

@@ -1,6 +1,6 @@
 import { useSelector, useDispatch } from "react-redux";
 import { teacherApproved } from './../../redux/actions/index';
-import "./leaveApprovalTeacher.css"
+import "../../styles/style.css";
 
 const LeaveApprovalTeacher = () => {
   const leaveState = useSelector((state) => state.leaveReducer);
@@ -8,9 +8,9 @@ const LeaveApprovalTeacher = () => {
   const dispatch = useDispatch();
 
   return (
-    <div className="teacherApprovalMain">
-      <h1 className="teacherApprovalHeading">Leave</h1>
-      <div className="teacherApprovalData">
+    <div className="Main">
+      <h1 className="Heading">Leave</h1>
+      <div className="Data3">
       {Object.keys(leaveState).map((key) => 
       <>
       <h1>{key}</h1>
@@ -40,8 +40,8 @@ const LeaveApprovalTeacher = () => {
                 </tr>
               </tbody>
             </table>
-            <button className="teacherApprovalButton" onClick={() => dispatch(teacherApproved("Approved", key, item.id))}>Approve</button>
-            <button className="teacherApprovalButton" onClick={() => dispatch(teacherApproved("Disapproved", key, item.id))}>Disapprove</button>
+            <button className="Button" onClick={() => dispatch(teacherApproved("Approved", key, item.id))}>Approve</button>
+            <button className="Button" onClick={() => dispatch(teacherApproved("Disapproved", key, item.id))}>Disapprove</button>
           </>)}
       </>
         

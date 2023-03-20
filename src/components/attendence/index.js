@@ -1,5 +1,5 @@
 import { useSelector, useDispatch } from "react-redux";
-import "./attendance.css";
+import "../../styles/style.css";
 import { useState } from "react";
 import { attendanceAdded, attendanceEdited } from "./../../redux/actions/index";
 
@@ -55,9 +55,9 @@ const Attendance = () => {
   }
 
   return (
-    <div className="attendanceMain">
-      <h1 className="attendanceHeading">Attendance</h1>
-      <div className="attendanceData">
+    <div className="Main">
+      <h1 className="Heading">Attendance</h1>
+      <div className="Data3">
         <div style={{ marginBottom: "10px" }}>
           <select onChange={onChangeHandler}>
             <option value="default">default</option>
@@ -91,7 +91,7 @@ const Attendance = () => {
                   </th>
                 ) : (
                   <button
-                    className="attendanceButton"
+                    className="Button"
                     onClick={() => setFlag(true)}
                   >
                     ADD
@@ -105,7 +105,7 @@ const Attendance = () => {
                     <tr>
                       <td>
                         <button
-                          className="attendanceButton"
+                          className="Button"
                           onClick={() => edit(item, index)}
                         >
                           EDIT
@@ -130,7 +130,7 @@ const Attendance = () => {
           </table>
         )}
         {flag && (
-          <button className="attendanceButton" onClick={onClickHandler}>
+          <button className="Button" onClick={onClickHandler}>
             save
           </button>
         )}
@@ -151,7 +151,7 @@ const Attendance = () => {
               )
             )}
           </table>
-          <button className="attendanceButton" onClick={onClickHandler2}>Save</button>
+          <button className="Button" onClick={onClickHandler2}>Save</button>
           </>
         )}
       </div>

@@ -1,6 +1,6 @@
 import { useSelector } from "react-redux";
 import { useState } from "react";
-import './viewMarks.css'
+import "../../styles/style.css";
 
 const ViewMarks = () => {
   const user = JSON.parse(localStorage.getItem("data"));
@@ -11,9 +11,9 @@ const ViewMarks = () => {
     setCourse(event.target.value);
   };
   return (
-    <div className="viewMarksMain">
-      <h1 className="viewMarksHeading">Marks</h1>
-      <div className="viewMarksData">
+    <div className="Main">
+      <h1 className="Heading">Marks</h1>
+      <div className="Data3">
         <select name="course" onChange={onChangeHandler}>
           <option value="default">default</option>
           {Object.keys(courseState).map((key) =>

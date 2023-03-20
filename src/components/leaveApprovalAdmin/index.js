@@ -1,14 +1,14 @@
 import { useSelector, useDispatch } from "react-redux";
 import { adminApproved } from "../../redux/actions";
-import "./leaveApprovalAdmin.css";
+import "../../styles/style.css";
 
 const LeaveApprovalAdmin = () => {
   const leaveState = useSelector((state) => state.leaveReducer);
   const dispatch = useDispatch();
   return (
-    <div className="adminApprovalMain">
-      <h1 className="adminApprovalHeading">Leave</h1>
-      <div className="adminApprovalData">
+    <div className="Main">
+      <h1 className="Heading">Leave</h1>
+      <div className="Data3">
         {Object.keys(leaveState).map((key) => (
           <>
             {leaveState[key].map(
@@ -48,7 +48,7 @@ const LeaveApprovalAdmin = () => {
                       </tbody>
                     </table>
                     <button
-                      className="adminApprovalButton"
+                      className="Button"
                       onClick={() =>
                         dispatch(adminApproved("Approved", key, item.id))
                       }
@@ -56,7 +56,7 @@ const LeaveApprovalAdmin = () => {
                       Approve
                     </button>
                     <button
-                      className="adminApprovalButton"
+                      className="Button"
                       onClick={() =>
                         dispatch(adminApproved("Disapproved", key, item.id))
                       }

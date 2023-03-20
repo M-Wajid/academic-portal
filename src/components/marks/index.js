@@ -1,5 +1,5 @@
 import { useSelector, useDispatch } from "react-redux";
-import "./marks.css";
+import "../../styles/style.css";
 import { useState } from "react";
 import { marksAdded, marksEdited, taskAdded } from "./../../redux/actions/index";
 
@@ -52,9 +52,9 @@ const Marks = () => {
   }
 
   return (
-    <div className="marksMain">
-      <h1 className="marksHeading">Marks</h1>
-      <div className="marksData">
+    <div className="Main">
+      <h1 className="Heading">Marks</h1>
+      <div className="Data3">
         <div style={{ marginBottom: "10px" }}>
           <p>Select Course</p>
           <select onChange={onChangeHandler}>
@@ -90,7 +90,7 @@ const Marks = () => {
               placeholder="Task Name"
               onChange={onChangeHandler3}
             />
-            <button className="marksButton" onClick={onClickHandler2}>Add</button>
+            <button className="Button" onClick={onClickHandler2}>Add</button>
           </>
         ) : (
           Object.keys(marksState).map(
@@ -117,11 +117,11 @@ const Marks = () => {
                               {flag2 ? (
                                 <>
                                   <input name="Obtained_Marks" type="text" onChange={(event) => setData({[event.target.name]:event.target.value})}/>
-                                  <button className="marksButton" onClick={() => edit(item)}>save</button>
+                                  <button className="Button" onClick={() => edit(item)}>save</button>
                                 </>
                               ) : (
                                 <td>
-                                  <button className="marksButton" onClick={() => setFlag2(true)}>
+                                  <button className="Button" onClick={() => setFlag2(true)}>
                                     Edit
                                   </button>
                                 </td>
@@ -150,10 +150,10 @@ const Marks = () => {
                             onChange={setNewData}
                             placeholder="Total_Marks"
                           />
-                          <button className="marksButton" onClick={onClickHandler}>Save</button>
+                          <button className="Button" onClick={onClickHandler}>Save</button>
                         </>
                       ) : (
-                        <button className="marksButton" onClick={() => setFlag(true)}>ADD</button>
+                        <button className="Button" onClick={() => setFlag(true)}>ADD</button>
                       )}
                     </>
                   )

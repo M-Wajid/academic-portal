@@ -2,7 +2,7 @@ import React from 'react'
 import { useSelector, useDispatch } from 'react-redux';
 import { useState } from 'react';
 import { courseAdded } from './../../redux/actions/index';
-import "./addCourse.css";
+import "../../styles/style.css";
 
 const AddCourse = () => {
   const courseState = useSelector((state) => state.courseReducer);
@@ -14,9 +14,9 @@ const AddCourse = () => {
   }
   
   return (
-    <div className='addCourseMain'>
-      <h1 className='addCourseHeading'>Add Course</h1>
-      <div className='addCourseData'>
+    <div className='Main'>
+      <h1 className='Heading'>Add Course</h1>
+      <div className='Data'>
         <table border="1" width="50%">
           <tbody>
             <tr>
@@ -26,9 +26,9 @@ const AddCourse = () => {
           </tbody>
         </table>
       </div>
-      <div className='addCourseData'>
+      <div className='Data'>
         <input type='text' placeholder='Course Name' onChange={onChangeHandler}/>
-        <button className='addCourseButton' onClick={() => dispatch(courseAdded(course))}>Add</button>
+        <button className='Button' onClick={() => dispatch(courseAdded(course))}>Add</button>
       </div>
     </div>
   )

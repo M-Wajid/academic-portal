@@ -1,6 +1,6 @@
 import { useSelector } from "react-redux";
 import { useState } from "react";
-import "./viewAttendance.css";
+import "../../styles/style.css";
 
 const ViewAttendence = () => {
   const attendanceState = useSelector((state) => state.attendanceReducer);
@@ -11,9 +11,9 @@ const ViewAttendence = () => {
     setCourse(event.target.value);
   };
   return (
-    <div className="viewAttendanceMain">
-      <h1 className="viewAttendanceHeading">Attendance</h1>
-      <div className="viewAttendanceData">
+    <div className="Main">
+      <h1 className="Heading">Attendance</h1>
+      <div className="Data3">
         <select name="course" onChange={onChangeHandler}>
           <option value="default">default</option>
           {Object.keys(courseState).map((key) =>

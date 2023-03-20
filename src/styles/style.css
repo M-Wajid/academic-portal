@@ -14,10 +14,27 @@
   margin-bottom: 20px;
   display: flex;
   align-items: center;
+  justify-content: center;
+}
+
+.Data2{
+  margin-top: 20px;
+  margin-bottom: 20px;
+  display: flex;
+  align-items: center;
   justify-content: space-evenly;
 }
 
-.Buttons{
+.Data3{
+  margin-top: 20px;
+  margin-bottom: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.Button{
   padding: 7px;
   cursor: pointer;
   background-color: #006994;
@@ -30,4 +47,13 @@
 .Inputs{
   display: flex;
   flex-direction: row;
+}
+
+.heading{
+  font-weight: bold;
+  font-size: 20px;
+}
+
+.value{
+  font-size: 20px;
 }

@@ -1,4 +1,4 @@
-import "./bookExam.css";
+import "../../styles/style.css";
 import { useSelector, useDispatch } from "react-redux";
 import { useState } from "react";
 import { examBooked } from './../../redux/actions/index';
@@ -17,9 +17,9 @@ const BookExam = () => {
   };
 
   return (
-    <div className="bookExamMain">
-      <h1 className="bookExamHeading">Book Exam</h1>
-      <div className="bookExamData">
+    <div className="Main">
+      <h1 className="Heading">Book Exam</h1>
+      <div className="Data3">
         <h1>Booked Exams</h1>
         {bookExamState.bookedDate.length !== 0 &&
           bookExamState.bookedDate.map(
@@ -85,7 +85,7 @@ const BookExam = () => {
             </tr>
           </table>
         )}
-        <button className="bookExamButton" onClick={onClickHandler}>Save</button>
+        <button className="Button" onClick={onClickHandler}>Save</button>
       </div>
     </div>
   );

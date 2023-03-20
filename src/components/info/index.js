@@ -1,11 +1,11 @@
-import "./info.css";
+import "../../styles/style.css";
 
 const Info = () => {
   const user = JSON.parse(localStorage.getItem("data"));
   return (
-    <div className="infoMain">
-      <h1 className="infoHeading">DATA</h1>
-      <div className="infoData">
+    <div className="Main">
+      <h1 className="Heading">DATA</h1>
+      <div className="Data2">
         <div>
           <p1 className="heading">Name: </p1>
           <p1 className="value">{user.name}</p1>

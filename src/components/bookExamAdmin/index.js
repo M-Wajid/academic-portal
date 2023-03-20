@@ -1,4 +1,4 @@
-import "./bookExamAdmin.css";
+import "../../styles/style.css";
 import { useSelector, useDispatch} from "react-redux";
 import { useState } from "react";
 import { examDateAdded, examDateEdited } from './../../redux/actions/index';
@@ -36,9 +36,9 @@ const BookExamAdmin = () => {
   
   return (
     <>
-      <div className="bookExamAdminMain">
-        <h1 className="bookExamAdminHeading">Booked Exams</h1>
-        <div className="bookExamAdminData">
+      <div className="Main">
+        <h1 className="Heading">Booked Exams</h1>
+        <div className="Data3">
           {bookExamState.examDates.map((item) => (
             <>
               <h1>{item.courseName}</h1>
@@ -68,9 +68,9 @@ const BookExamAdmin = () => {
         </div>
       </div>
 
-      <div className="bookExamAdminMain">
-        <h1 className="bookExamAdminHeading">Exam Dates</h1>
-        <div className="bookExamAdminData">
+      <div className="Main">
+        <h1 className="Heading">Exam Dates</h1>
+        <div className="Data3">
           <h1>Exam Dates</h1>
           <table border="1" width="50%">
             <tr>
@@ -85,7 +85,7 @@ const BookExamAdmin = () => {
                 <td>{item.date1}</td>
                 <td>{item.date2}</td>
                 <td>
-                  <button onClick={() => edit(item,index)}>Edit</button>
+                  <button className="Button" onClick={() => edit(item,index)}>Edit</button>
                 </td>
               </tr>
             ))}
@@ -124,7 +124,7 @@ const BookExamAdmin = () => {
               </td>
             </tr>
           </table>
-          <button onClick={onClickHandler}>Save</button></>}
+          <button className="Button" onClick={onClickHandler}>Save</button></>}
           <br></br>
           <br></br>
           <h1>Add</h1>
@@ -160,7 +160,7 @@ const BookExamAdmin = () => {
               </td>
             </tr>
           </table>
-          <button onClick={() => dispatch(examDateAdded(data))}>Save</button>
+          <button className="Button" onClick={() => dispatch(examDateAdded(data))}>Save</button>
         </div>
       </div>
     </>

@@ -2,7 +2,7 @@ import React from "react";
 import { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { courseRegistered } from "../../redux/actions";
-import "./registerCourse.css"
+import "../../styles/style.css";
 import ViewCourses from './../ViewCourses/index';
 import { studentAdded } from './../../redux/actions/index';
 
@@ -25,9 +25,9 @@ const RegisterCourse = () => {
   };
 
   return (
-    <div className="registerCourseMain">
-      <h1 className="registerCourseHeading">Add new Course</h1>
-      <div className="registerCourseData">
+    <div className="Main">
+      <h1 className="Heading">Add new Course</h1>
+      <div className="Data3">
         <ViewCourses />
         <select onChange={onChangeHandler}>
           <option value="default">default</option>
@@ -45,7 +45,7 @@ const RegisterCourse = () => {
             }
           })}
         </select>
-        <button onClick={onClickHandler} className="registerButton">Register</button>
+        <button onClick={onClickHandler} className="Button">Register</button>
       </div>
     </div>
   );

@@ -2,7 +2,7 @@ import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { userAdded } from "../../redux/actions/index";
 import { useSelector } from "react-redux";
-import "./addUser.css";
+import "../../styles/style.css";
 
 const AddUser = () => {
   const [singleUser, setSingleUser] = useState({});
@@ -17,9 +17,9 @@ const AddUser = () => {
   };
 
   return (
-    <div className="addUserMain">
-      <h1 className="addUserHeading">Add User</h1>
-      <div className="addUserData">
+    <div className="Main">
+      <h1 className="Heading">Add User</h1>
+      <div className="Data3">
         <table border="1" width="50%">
           <tbody>
             <tr>
@@ -64,7 +64,7 @@ const AddUser = () => {
             onChange={onChangeHandler}
           />
           <button
-            className="addUserButton"
+            className="Button"
             onClick={() => dispatch(userAdded(singleUser))}
           >
             ADD
