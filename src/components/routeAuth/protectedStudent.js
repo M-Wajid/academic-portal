@@ -1,7 +1,7 @@
-import React, { useEffect } from 'react';
+import { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 
-const Protected = (props) => {
+const ProtectedStudent = (props) => {
   const {Component} = props;
   const navigate = useNavigate();
 
@@ -12,11 +12,8 @@ const Protected = (props) => {
       navigate('/');
     }
   })
-  return (
-    <div>
-      <Component />
-    </div>
-  )
+  const user = JSON.parse(localStorage.getItem("data"));
+  return user.role === "student" && <Component />
 }
 
-export default Protected;
+export default ProtectedStudent;
