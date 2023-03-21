@@ -152,3 +152,33 @@ export const examBooked = (course,date) => {
     date
   }
 }
+
+export const userUnregistered = (name) => {
+  return{
+    type: "UNREGISTER_USER",
+    name
+  }
+}
+
+export const userUnassigned = (course,user) => {
+  return{
+    type: "UNASSIGN_USER",
+    course,
+    user
+  }
+}
+
+export const attendanceDeleted = (name) => {
+  return{
+    type: "DELETE_ATTENDANCE",
+    name
+  }
+}
+
+export const attendanceDeletedSingle = (course,user) => {
+  return{
+    type: "DELETE_ATTENDANCE_SINGLE",
+    course,
+    user
+  }
+}

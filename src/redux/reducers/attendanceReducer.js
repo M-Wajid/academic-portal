@@ -34,6 +34,16 @@ const attendanceReducer = (state = initialState, action) => {
       return{
         ...state
       }
+    case "DELETE_ATTENDANCE":
+      Object.keys(state).map(key => state[key] = state[key].filter(el => el.Name !== action.name))
+      return{
+        ...state,
+      }
+    case "DELETE_ATTENDANCE_SINGLE":
+      state[action.course] = state[action.course].filter(item => item.Name !== action.user);
+      return{
+        ...state,
+      }
     default: return state;
   }
 }

@@ -1,6 +1,6 @@
 import React from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { userDeleted } from "../../redux/actions";
+import { attendanceDeleted, userDeleted, userUnregistered } from "../../redux/actions";
 import "../../styles/style.css";
 
 const DeleteUser = () => {
@@ -14,6 +14,8 @@ const DeleteUser = () => {
 
   const onClickHandler = () => {
     dispatch(userDeleted(temp));
+    dispatch(userUnregistered(temp));
+    dispatch(attendanceDeleted(temp));
     console.log(userState.users);
   };
 

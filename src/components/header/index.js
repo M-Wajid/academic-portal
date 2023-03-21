@@ -97,6 +97,12 @@ const Header = () => {
             </button>
             <button
               className="headerButton"
+              onClick={() => navigate("/unregister")}
+            >
+              Unregister User
+            </button>
+            <button
+              className="headerButton"
               onClick={() => navigate("/bookExamAdmin")}
             >
               Book Exam

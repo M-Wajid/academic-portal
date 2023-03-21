@@ -74,7 +74,8 @@ const Attendance = () => {
             <tbody>
               <tr>
                 <th>...</th>
-                {Object.keys(attendanceState).map(
+                {attendanceState[course].length !== 0 &&
+                Object.keys(attendanceState).map(
                   (key) =>
                     key === course &&
                     Object.keys(attendanceState[key][0]).map((key) => (

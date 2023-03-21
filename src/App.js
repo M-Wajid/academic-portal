@@ -17,6 +17,7 @@ import Marks from './components/marks/index';
 import BookExamAdmin from './components/bookExamAdmin/index';
 import ProtectedStudent from './components/routeAuth/protectedStudent';
 import ProtectedTeacher from './components/routeAuth/protectedTeacher';
+import UnregisterUser from './components/unregisterUser/index';
 
 const App = () => {
   return (
@@ -36,6 +37,7 @@ const App = () => {
         <Route path="/addCourse" element={<ProtectedAdmin Component={AddCourse} />}/>
         <Route path="/assignTeacher" element={<ProtectedAdmin Component={AssignTeacher} />}/>
         <Route path="/bookExamAdmin" element={<ProtectedAdmin Component={BookExamAdmin} />} />
+        <Route path="/unregister" element={<ProtectedAdmin Component={UnregisterUser} />} />
         <Route path="/attendance" element={<ProtectedTeacher Component={Attendance} />} />
         <Route path="/marks" element={<ProtectedTeacher Component={Marks} />} />
       </Routes>
