@@ -3,7 +3,6 @@ import HOME from './pages/home';
 import Student from './pages/student';
 import Teacher from './pages/teacher';
 import Admin from './pages/admin/index';
-import ProtectedAdmin from './components/routeAuth/protectedAdmin';
 import ViewAttendence from './components/viewAttendance/index';
 import ViewMarks from './components/ViewMarks/index';
 import RegisterCourse from './components/registerCourse/index';
@@ -15,9 +14,9 @@ import AssignTeacher from './components/assignTeacher/index';
 import Attendance from './components/attendence/index';
 import Marks from './components/marks/index';
 import BookExamAdmin from './components/bookExamAdmin/index';
-import ProtectedStudent from './components/routeAuth/protectedStudent';
-import ProtectedTeacher from './components/routeAuth/protectedTeacher';
 import UnregisterUser from './components/unregisterUser/index';
+import Protected from './components/routeAuth/protected';
+import PermissionDenied from './components/permissionDenied/index';
 
 const App = () => {
   return (
@@ -26,20 +25,31 @@ const App = () => {
       <Header />
       <Routes>
         <Route path="/" element={<HOME/>} />
-        <Route path="/student" element={<ProtectedStudent Component={Student} />}/>
-        <Route path="/teacher" element={<ProtectedTeacher Component={Teacher} />}/>
-        <Route path="/admin" element={<ProtectedAdmin Component={Admin} />}/>
-        <Route path="/viewAttendance" element={<ProtectedStudent Component={ViewAttendence} />}/>
-        <Route path="/viewMarks" element={<ProtectedStudent Component={ViewMarks} />}/>
-        <Route path="/registerCourse" element={<ProtectedStudent Component={RegisterCourse} />}/>
-        <Route path="/addUser" element={<ProtectedAdmin Component={AddUser} />}/>
-        <Route path="/deleteUser" element={<ProtectedAdmin Component={DeleteUser} />}/>
-        <Route path="/addCourse" element={<ProtectedAdmin Component={AddCourse} />}/>
-        <Route path="/assignTeacher" element={<ProtectedAdmin Component={AssignTeacher} />}/>
-        <Route path="/bookExamAdmin" element={<ProtectedAdmin Component={BookExamAdmin} />} />
-        <Route path="/unregister" element={<ProtectedAdmin Component={UnregisterUser} />} />
-        <Route path="/attendance" element={<ProtectedTeacher Component={Attendance} />} />
-        <Route path="/marks" element={<ProtectedTeacher Component={Marks} />} />
+        <Route path="/" element={<Protected userRole="admin"/>}>
+          <Route path="/admin" element={<Admin />}/>
+          <Route path="/addUser" element={<AddUser />}/>
+          <Route path="/deleteUser" element={<DeleteUser />}/>
+          <Route path="/addCourse" element={<AddCourse />}/>
+          <Route path="/assignTeacher" element={<AssignTeacher />}/>
+          <Route path="/bookExamAdmin" element={<BookExamAdmin />} />
+          <Route path="/unregister" element={<UnregisterUser/>} />
+        </Route>
+
+        <Route path="/" element={<Protected userRole="teacher"/>}>
+          <Route path="/teacher" element={<Teacher />}/>
+          <Route path="/attendance" element={<Attendance />} />
+          <Route path="/marks" element={<Marks />} />
+        </Route>
+
+        <Route path="/" element={<Protected userRole="student"/>}>
+          <Route path="/student" element={<Student />}/>
+          <Route path="/viewAttendance" element={<ViewAttendence />}/>
+          <Route path="/viewMarks" element={<ViewMarks />}/>
+          <Route path="/registerCourse" element={<RegisterCourse/>}/>
+        </Route>
+        
+        <Route path='/denied' element={<PermissionDenied />}/>
+
       </Routes>
     </div>
   );
