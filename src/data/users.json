@@ -1,0 +1,52 @@
+[
+  {
+    "id": 0,
+    "name": "Admin",
+    "role": "admin",
+    "email": "admin@admin.com",
+    "password": "admin123"
+  },
+  {
+    "id": 1,
+    "name": "Ahmad",
+    "role": "teacher",
+    "email": "ahmad@teacher.com",
+    "password": "ahmad123",
+    "courses": [
+      "MERN",
+      "Programming Fundamentals"
+    ]
+  },
+  {
+    "id": 2,
+    "name": "Farhan",
+    "role": "teacher",
+    "email": "farhan@teacher.com",
+    "password": "farhan123",
+    "courses": [
+      "Project Management"
+    ]
+  },
+  {
+    "id": 3,
+    "name": "Wajid",
+    "role": "student",
+    "email": "wajid@student.com",
+    "password": "wajid123",
+    "courses": [
+      "MERN",
+      "Programming Fundamentals"
+    ]
+  },
+  {
+    "id": 4,
+    "name": "Hammad",
+    "role": "student",
+    "email": "hammad@student.com",
+    "password": "hammad123",
+    "courses": [
+      "Project Management",
+      "Programming Fundamentals"
+    ]
+  }
+]

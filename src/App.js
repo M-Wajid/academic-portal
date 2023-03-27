@@ -49,7 +49,6 @@ const App = () => {
         </Route>
         
         <Route path='/denied' element={<PermissionDenied />}/>
-
       </Routes>
     </div>
   );

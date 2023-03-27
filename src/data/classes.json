@@ -1,0 +1,153 @@
+[
+  {
+    "id": 7,
+    "class-name": "MERN",
+    "teacher": "Ahmad",
+    "students": [
+      "Wajid"
+    ],
+    "attendance": [
+      {
+        "student-name": "Wajid",
+        "01-03-2023": "P",
+        "02-03-2023": "A",
+        "03-03-2023": "P",
+        "04-03-2023": "P"
+      }
+    ],
+    "marks": [
+      {
+        "student-name": "Wajid",
+        "task-type": "Assignment#1",
+        "obtained-marks": "80",
+        "total-marks": "100"
+      },
+      {
+        "student-name": "Wajid",
+        "task-type": "Quiz#1",
+        "obtained-marks": "90",
+        "total-marks": "100"
+      }
+    ],
+    "leaves": [
+      {
+        "id": 5,
+        "student-name": "Wajid",
+        "leave-from": "27-03-2023",
+        "leave-to": "29-03-2023",
+        "teacher-approval": "pending",
+        "admin-approval": "pending"
+      }
+    ],
+    "exam-dates": [
+      {
+        "date1": "25-04-2023",
+        "date2": "26-04-2023"
+      },
+      {
+        "date1": "25-04-2023",
+        "date2": "26-04-2023"
+      }
+    ],
+    "booked-exams": [
+      {
+        "student-name": "Wajid",
+        "date": "25-04-2023"
+      }
+    ]
+  },
+  {
+    "id": 8,
+    "class-name": "Programming Fundamentals",
+    "teacher": "Ahmad",
+    "students": [
+      "Wajid",
+      "Hammad"
+    ],
+    "attendance": [
+      {
+        "student-name": "Wajid",
+        "01-03-2023": "P",
+        "02-03-2023": "P",
+        "03-03-2023": "A",
+        "04-03-2023": "P"
+      },
+      {
+        "student-name": "Hammad",
+        "01-03-2023": "P",
+        "02-03-2023": "P",
+        "03-03-2023": "A",
+        "04-03-2023": "P"
+      }
+    ],
+    "marks": [
+      {
+        "student-name": "Wajid",
+        "task-type": "Assignment#1",
+        "obtained-marks": "85",
+        "total-marks": "100"
+      },
+      {
+        "student-name": "Wajid",
+        "task-type": "Quiz#1",
+        "obtained-marks": "95",
+        "total-marks": "100"
+      },
+      {
+        "student-name": "Hammad",
+        "task-type": "Assignment#1",
+        "obtained-marks": "86",
+        "total-marks": "100"
+      },
+      {
+        "student-name": "Hammad",
+        "task-type": "Quiz#1",
+        "obtained-marks": "96",
+        "total-marks": "100"
+      }
+    ],
+    "leaves": [
+      {
+        "id": 6,
+        "student-name": "Wajid",
+        "leave-from": "27-03-2023",
+        "leave-to": "29-03-2023",
+        "teacher-approval": "pending",
+        "admin-approval": "pending"
+      }
+    ],
+    "exam-dates": [
+      {
+        "date1": "25-04-2023",
+        "date2": "26-04-2023"
+      },
+      {
+        "date1": "25-04-2023",
+        "date2": "26-04-2023"
+      }
+    ],
+    "booked-exams": []
+  },
+  {
+    "id": 9,
+    "class-name": "Project Management",
+    "attendance": [],
+    "marks": [
+      {
+        "student-name": "Hammad",
+        "task-type": "Assignment#1",
+        "obtained-marks": "81",
+        "total-marks": "100"
+      },
+      {
+        "student-name": "Hammad",
+        "task-type": "Quiz#1",
+        "obtained-marks": "91",
+        "total-marks": "100"
+      }
+    ],
+    "leaves": [],
+    "exam-dates": [],
+    "booked-exams": []
+  }
+]

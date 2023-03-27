@@ -1,14 +1,10 @@
 import "../../styles/header.css";
 import { useNavigate } from "react-router-dom";
+import Logout from './../logout/index';
 
 const Header = () => {
   const user = JSON.parse(localStorage.getItem("data"));
   const navigate = useNavigate();
-
-  const onClickHandler = () => {
-    localStorage.clear();
-    navigate("/");
-  };
 
   return (
     <div className="headerMain">
@@ -41,9 +37,7 @@ const Header = () => {
             >
               Course
             </button>
-            <button className="headerButton" onClick={onClickHandler}>
-              Log out
-            </button>
+            <Logout />
           </>
         ) : user.role === "teacher" ? (
           <>
@@ -62,9 +56,7 @@ const Header = () => {
             <button className="headerButton" onClick={() => navigate("/marks")}>
               Marks
             </button>
-            <button className="headerButton" onClick={onClickHandler}>
-              Log out
-            </button>
+            <Logout />
           </>
         ) : user.role === "admin" && (
           <>
@@ -107,9 +99,7 @@ const Header = () => {
             >
               Book Exam
             </button>
-            <button className="headerButton" onClick={onClickHandler}>
-              Log out
-            </button>
+            <Logout />
           </>
         )}
       </div>
