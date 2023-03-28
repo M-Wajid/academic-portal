@@ -1,5 +1,5 @@
 import Table from "react-bootstrap/Table";
-import { useDispatch, useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 import { bookedExamDeleted } from "../../redux/actions";
 import { useState } from 'react';
 import DeleteConfirmation from './../deleteConfirmation/DeleteConfirmation';
@@ -7,7 +7,6 @@ import DeleteConfirmation from './../deleteConfirmation/DeleteConfirmation';
 const BookedExams = () => {
   const bookExamState = useSelector((state) => state.bookExamReducer);
   const user = JSON.parse(localStorage.getItem("data"));
-  const dispatch = useDispatch();
   const [show, setShow] = useState(false);
   const [id, setId] = useState();
 

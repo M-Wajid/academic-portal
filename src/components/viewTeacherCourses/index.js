@@ -7,21 +7,15 @@ const ViewCourses = () => {
 
   return (
     <Table bordered hover>
-      <thead>
+      <tbody>
         <tr>
           <th>Courses</th>
+          {Object.keys(courseState).map((key) =>
+            courseState[key].map((item) =>
+              item.Name === user.name ? <td>{key}</td> : null
+            )
+          )}
         </tr>
-      </thead>
-      <tbody>
-        {Object.keys(courseState).map((key) =>
-          courseState[key].map((item) =>
-            item.Name === user.name ? (
-              <tr>
-                <td>{key}</td>
-              </tr>
-            ) : null
-          )
-        )}
       </tbody>
     </Table>
   );

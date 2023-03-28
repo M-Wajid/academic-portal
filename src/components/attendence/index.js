@@ -2,12 +2,13 @@ import { useSelector, useDispatch } from "react-redux";
 import "../../styles/style.css";
 import { useState } from "react";
 import { attendanceAdded, attendanceEdited } from "./../../redux/actions/index";
+import Table from 'react-bootstrap/Table';
 
 const Attendance = () => {
   const user = JSON.parse(localStorage.getItem("data"));
   const courseState = useSelector((state) => state.courseReducer);
   const attendanceState = useSelector((state) => state.attendanceReducer);
-  const [course, setCourse] = useState();
+  const [course, setCourse] = useState("default");
   const [keyValue, setKeyValue] = useState();
   const [status, setStatus] = useState([]);
   const [flag, setFlag] = useState(false);
@@ -45,14 +46,14 @@ const Attendance = () => {
   const EditData = (event) => {
     setData({
       ...data,
-      [event.target.name]: event.target.value 
-    })
-  }
+      [event.target.name]: event.target.value,
+    });
+  };
 
   const onClickHandler2 = () => {
     setFlag2(false);
-    dispatch(attendanceEdited(course, i, data))
-  }
+    dispatch(attendanceEdited(course, i, data));
+  };
 
   return (
     <div className="Main">
@@ -60,7 +61,7 @@ const Attendance = () => {
       <div className="Data3">
         <div style={{ marginBottom: "10px" }}>
           <select onChange={onChangeHandler}>
-            <option value="default">default</option>
+            <option value="default">Please Select a Course</option>
             {Object.keys(courseState).map((key) =>
               courseState[key].map(
                 (item) =>
@@ -69,66 +70,67 @@ const Attendance = () => {
             )}
           </select>
         </div>
-        {course !== undefined && course !== null && course !== "default" && (
-          <table border="1" width="100%">
-            <tbody>
-              <tr>
-                <th>...</th>
-                {attendanceState[course].length !== 0 &&
-                Object.keys(attendanceState).map(
+        {course !== "default" && (
+          <>
+            <button className="Button" onClick={() => setFlag(true)}>
+              ADD
+            </button>
+            <Table bordered hover>
+              <thead>
+                <tr>
+                  {attendanceState[course].length !== 0 &&
+                    Object.keys(attendanceState).map(
+                      (key) =>
+                        key === course &&
+                        Object.keys(attendanceState[key][0]).map((key) => (
+                          <th>{key}</th>
+                        ))
+                    )}
+                  {flag &&
+                    <th>
+                      <input
+                        type="date"
+                        onChange={addKeyValue}
+                        placeholder="dd-mm-yyyy"
+                      />
+                    </th>}
+                  <th>Actions</th>
+                </tr>
+                </thead>
+                <tbody>
+                {Object.keys(attendanceState).map(
                   (key) =>
                     key === course &&
-                    Object.keys(attendanceState[key][0]).map((key) => (
-                      <th>{key}</th>
+                    attendanceState[key].map((item, index) => (
+                      <tr>
+                        {Object.keys(item).map((key2) => (
+                          <td>{item[key2]}</td>
+                        ))}
+                        {flag && (
+                          <th>
+                            <select
+                              onChange={(event) => addStatus(index, event)}
+                            >
+                              <option>default</option>
+                              <option Value="P">P</option>
+                              <option Value="A">A</option>
+                            </select>
+                          </th>
+                        )}
+                        <td>
+                          <button
+                            className="Button"
+                            onClick={() => edit(item, index)}
+                          >
+                            EDIT
+                          </button>
+                        </td>
+                      </tr>
                     ))
                 )}
-                {flag ? (
-                  <th>
-                    <input
-                      type="text"
-                      onChange={addKeyValue}
-                      placeholder="dd-mm-yyyy"
-                    />
-                  </th>
-                ) : (
-                  <button
-                    className="Button"
-                    onClick={() => setFlag(true)}
-                  >
-                    ADD
-                  </button>
-                )}
-              </tr>
-              {Object.keys(attendanceState).map(
-                (key) =>
-                  key === course &&
-                  attendanceState[key].map((item, index) => (
-                    <tr>
-                      <td>
-                        <button
-                          className="Button"
-                          onClick={() => edit(item, index)}
-                        >
-                          EDIT
-                        </button>
-                      </td>
-                      {Object.keys(item).map((key2) => (
-                        <td>{item[key2]}</td>
-                      ))}
-                      {flag && (
-                        <th>
-                          <select onChange={(event) => addStatus(index, event)}>
-                            <option>default</option>
-                            <option Value="P">P</option>
-                            <option Value="A">A</option>
-                          </select>
-                        </th>
-                      )}
-                    </tr>
-                  ))
-              )}
-            </tbody>
-          </table>
+              </tbody>
+            </Table>
+          </>
         )}
         {flag && (
           <button className="Button" onClick={onClickHandler}>
@@ -137,22 +139,31 @@ const Attendance = () => {
         )}
         {flag2 && (
           <>
-          <table border="1" width="50%">
-            {Object.keys(data).map((key) =>
-              key === "Name" ? (
-                <tr>
-                  <th>{key}</th>
-                  <td>{data[key]}</td>
-                </tr>
-              ) : (
-                <tr>
-                  <th>{key}</th>
-                  <td><input name={key} type="text" placeholder={data[key]} onChange={EditData}/></td>
-                </tr>
-              )
-            )}
-          </table>
-          <button className="Button" onClick={onClickHandler2}>Save</button>
+            <table border="1" width="50%">
+              {Object.keys(data).map((key) =>
+                key === "Name" ? (
+                  <tr>
+                    <th>{key}</th>
+                    <td>{data[key]}</td>
+                  </tr>
+                ) : (
+                  <tr>
+                    <th>{key}</th>
+                    <td>
+                      <input
+                        name={key}
+                        type="text"
+                        placeholder={data[key]}
+                        onChange={EditData}
+                      />
+                    </td>
+                  </tr>
+                )
+              )}
+            </table>
+            <button className="Button" onClick={onClickHandler2}>
+              Save
+            </button>
           </>
         )}
       </div>

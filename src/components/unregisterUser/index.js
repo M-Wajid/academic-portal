@@ -32,13 +32,13 @@ const UnregisterUser = () => {
       <div className="Data2">
 
         <select onChange={onChangeHandler}>
-          <option value="default">default</option>
+          <option value="default">Please Select a Course</option>
           {Object.keys(courseState).map(item => <option value={item}>{item}</option>)}
         </select>
 
         {course !== "default" && 
         <select onChange={onChangeHandler2}>
-          <option value="default">default</option>
+          <option value="default">Please Select a User</option>
           {courseState[course].map(item => <option value={item.Name}>{item.Name}</option>)}
         </select>}
         

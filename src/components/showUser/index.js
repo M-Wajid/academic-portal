@@ -1,5 +1,6 @@
 import { useSelector } from "react-redux";
 import "../../styles/style.css";
+import Table from 'react-bootstrap/Table';
 
 const ShowUser = () => {
   const userState = useSelector((state) => state.userReducer);
@@ -8,12 +9,15 @@ const ShowUser = () => {
     <div className="Main">
       <h1 className="Heading">All Users</h1>
       <div className="Data">
-        <table border="1" width="50%">
-          <tbody>
+        <Table bordered hover>
+          <thead>
             <tr>
               <th>Users</th>
               <th>Role</th>
             </tr>
+          </thead>
+            
+            <tbody>
             {userState.users.map((item) => (
               <tr>
                 <td>{item.name}</td>
@@ -21,7 +25,7 @@ const ShowUser = () => {
               </tr>
             ))}
           </tbody>
-        </table>
+        </Table>
       </div>
     </div>
   );

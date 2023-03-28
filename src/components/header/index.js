@@ -62,6 +62,9 @@ const Header = () => {
             <button className="headerButton" onClick={() => navigate("/marks")}>
               Marks
             </button>
+            <button className="headerButton" onClick={() => navigate("/teacherLeave")}>
+              Leave
+            </button>
             <Logout />
           </>
         ) : user.role === "admin" && (
@@ -73,37 +76,19 @@ const Header = () => {
               className="headerButton"
               onClick={() => navigate("/addUser")}
             >
-              Add User
-            </button>
-            <button
-              className="headerButton"
-              onClick={() => navigate("/deleteUser")}
-            >
-              Delete User
+              User
             </button>
             <button
               className="headerButton"
               onClick={() => navigate("/addCourse")}
             >
-              Add Course
+              Course
             </button>
             <button
               className="headerButton"
-              onClick={() => navigate("/assignTeacher")}
+              onClick={() => navigate("/adminLeave")}
             >
-              Assign Teacher
-            </button>
-            <button
-              className="headerButton"
-              onClick={() => navigate("/unregister")}
-            >
-              Unregister User
-            </button>
-            <button
-              className="headerButton"
-              onClick={() => navigate("/bookExamAdmin")}
-            >
-              Book Exam
+              Leave
             </button>
             <Logout />
           </>

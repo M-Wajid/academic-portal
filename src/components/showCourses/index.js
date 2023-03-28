@@ -1,23 +1,31 @@
 import "../../styles/style.css";
-import { useSelector } from 'react-redux';
+import { useSelector } from "react-redux";
+import Table from "react-bootstrap/Table";
 
 const ShowCourses = () => {
-  const courseState = useSelector((state) => state.courseReducer)
+  const courseState = useSelector((state) => state.courseReducer);
   return (
     <div className="Main">
       <h1 className="Heading">All Courses</h1>
       <div className="Data">
-        <table border="1" width="50%">
-          <tbody>
+        <Table>
+          <thead>
             <tr>
               <th>Courses</th>
             </tr>
-            {Object.keys(courseState).map((key) => <tr><td>{key}</td></tr>)}
+          </thead>
+
+          <tbody>
+            {Object.keys(courseState).map((key) => (
+              <tr>
+                <td>{key}</td>
+              </tr>
+            ))}
           </tbody>
-        </table>
+        </Table>
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default ShowCourses
+export default ShowCourses;

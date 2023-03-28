@@ -1,8 +1,8 @@
 import React from "react";
 import Info from './../../components/info/index';
-import ViewCourses from './../../components/ViewCourses/index';
-import LeaveApprovalTeacher from './../../components/leaveApprovalTeacher/index';
 import "../../styles/style.css";
+import ViewCourses from "../../components/viewTeacherCourses";
+import BookExamTeacher from "../../components/bookExamTeacher";
 
 const Teacher = () => {
   return (
@@ -11,10 +11,10 @@ const Teacher = () => {
       <div className='Main'>
         <h1 className='Heading'>Assigned Courses</h1>
         <div className='Data'>
-          <ViewCourses />
+            <ViewCourses />
         </div>
       </div>
-      <LeaveApprovalTeacher />
+      <BookExamTeacher />
     </div>
   );
 };

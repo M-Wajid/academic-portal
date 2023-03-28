@@ -1,75 +1,47 @@
-import { useState } from "react";
-import { useDispatch } from "react-redux";
-import { userAdded } from "../../redux/actions/index";
-import { useSelector } from "react-redux";
+
+import { useDispatch, useSelector } from "react-redux";
 import "../../styles/style.css";
+import Table from 'react-bootstrap/Table';
+import AddNewUser from "./addNewUser";
+import {
+  attendanceDeleted,
+  userDeleted,
+  userUnregistered,
+} from "../../redux/actions";
 
 const AddUser = () => {
-  const [singleUser, setSingleUser] = useState({});
-  const dispatch = useDispatch();
   const users = useSelector((state) => state.userReducer);
+  const dispatch = useDispatch();
 
-  const onChangeHandler = (event) => {
-    setSingleUser({
-      ...singleUser,
-      [event.target.name]: event.target.value,
-    });
+  const onClickHandler = (name) => {
+    dispatch(userDeleted(name));
+    dispatch(userUnregistered(name));
+    dispatch(attendanceDeleted(name));
   };
 
   return (
     <div className="Main">
       <h1 className="Heading">Add User</h1>
       <div className="Data3">
-        <table border="1" width="50%">
-          <tbody>
+        <AddNewUser />
+        <Table bordered hover>
+          <thead>
             <tr>
               <th>Users</th>
               <th>Role</th>
+              <th>Actions</th>
             </tr>
+          </thead>
+            <tbody>
             {users.users.map((item) => (
               <tr>
                 <td>{item.name}</td>
                 <td>{item.role}</td>
+                {item.role === 'admin' ? <td>No Actions</td> : <td><button className="Button" onClick={() => onClickHandler(item.name)}>Delete</button></td>}
               </tr>
             ))}
           </tbody>
-        </table>
-        <div>
-          <input
-            name="name"
-            type="text"
-            placeholder="Name"
-            autoComplete="off"
-            onChange={onChangeHandler}
-          />
-          <input
-            name="email"
-            type="text"
-            placeholder="Email"
-            autoComplete="off"
-            onChange={onChangeHandler}
-          />
-          <input
-            name="role"
-            type="text"
-            placeholder="Role"
-            autoComplete="off"
-            onChange={onChangeHandler}
-          />
-          <input
-            name="password"
-            type="text"
-            placeholder="Password"
-            autoComplete="off"
-            onChange={onChangeHandler}
-          />
-          <button
-            className="Button"
-            onClick={() => dispatch(userAdded(singleUser))}
-          >
-            ADD
-          </button>
-        </div>
+        </Table>       
       </div>
     </div>
   );
