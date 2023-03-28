@@ -17,6 +17,7 @@ import BookExamAdmin from './components/bookExamAdmin/index';
 import UnregisterUser from './components/unregisterUser/index';
 import Protected from './components/routeAuth/protected';
 import PermissionDenied from './components/permissionDenied/index';
+import AddLeave from './components/addLeave';
 
 const App = () => {
   return (
@@ -46,6 +47,7 @@ const App = () => {
           <Route path="/viewAttendance" element={<ViewAttendence />}/>
           <Route path="/viewMarks" element={<ViewMarks />}/>
           <Route path="/registerCourse" element={<RegisterCourse/>}/>
+          <Route path="/studentLeave" element={<AddLeave />}/>
         </Route>
         
         <Route path='/denied' element={<PermissionDenied />}/>

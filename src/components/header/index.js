@@ -37,6 +37,12 @@ const Header = () => {
             >
               Course
             </button>
+            <button
+              className="headerButton"
+              onClick={() => navigate("/studentLeave")}
+            >
+              Leave
+            </button>
             <Logout />
           </>
         ) : user.role === "teacher" ? (

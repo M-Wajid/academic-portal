@@ -63,6 +63,14 @@ export const courseRegistered = (course) => {
   }
 }
 
+export const courseUnregistered = (course,user) => {
+  return{
+    type: "UNREGISTER_COURSE",
+    course,
+    user
+  }
+}
+
 export const teacherAssigned = (data) => {
   return {
     type: "ASSIGN_TEACHER",
@@ -145,11 +153,19 @@ export const examDateEdited = (data,index) => {
   }
 }
 
-export const examBooked = (course,date) => {
+export const examBooked = (name,course,date) => {
   return{
     type: "BOOK_EXAM",
+    name,
     course,
     date
+  }
+}
+
+export const bookedExamDeleted = (id) => {
+  return{
+    type: "DELETE_BOOKED_EXAM",
+    id
   }
 }
 

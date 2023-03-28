@@ -3,13 +3,13 @@ import { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { courseRegistered } from "../../redux/actions";
 import "../../styles/style.css";
-import ViewCourses from './../ViewCourses/index';
 import { studentAdded } from './../../redux/actions/index';
+import ViewCourses from './viewCourses';
 
 const RegisterCourse = () => {
   const courseState = useSelector((state) => state.courseReducer);
   const user = JSON.parse(localStorage.getItem("data"));
-  const [course, setCourse] = useState();
+  const [course, setCourse] = useState("Show All");
   const dispatch = useDispatch();
 
   const onChangeHandler = (event) => {
@@ -17,20 +17,19 @@ const RegisterCourse = () => {
   };
 
   const onClickHandler = () => {
-    if (course !== "default" && course !== null && course !== undefined) {
+    if (course !== "Show All") {
       dispatch(courseRegistered(course));
       dispatch(studentAdded(course,user));
     }
-    setCourse(null);
   };
 
   return (
     <div className="Main">
       <h1 className="Heading">Add new Course</h1>
       <div className="Data3">
-        <ViewCourses />
-        <select onChange={onChangeHandler}>
-          <option value="default">default</option>
+        <div className="Data">
+         <select onChange={onChangeHandler}>
+          <option value="Show All">Please select a course</option>
           {Object.keys(courseState).map((key) => {
             if (courseState[key].length === 0) {
               return <option value={key}>{key}</option>;
@@ -45,7 +44,9 @@ const RegisterCourse = () => {
             }
           })}
         </select>
-        <button onClick={onClickHandler} className="Button">Register</button>
+        <button onClick={onClickHandler} className="Button">Register</button> 
+        </div>    
+        <ViewCourses/>  
       </div>
     </div>
   );
