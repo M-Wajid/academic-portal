@@ -2,12 +2,25 @@ import React from "react";
 import { useSelector, useDispatch } from "react-redux";
 import Table from "react-bootstrap/Table";
 import { leaveDeleted } from "../../redux/actions";
+import { useState } from "react";
+import DeleteConfirmation from './../deleteConfirmation/DeleteConfirmation';
 
 const ShowAllLeaves = () => {
   const leaveState = useSelector((state) => state.leaveReducer);
   const user = JSON.parse(localStorage.getItem("data"));
-  const dispatch = useDispatch()
+  const dispatch = useDispatch();
+  const [show, setShow] = useState(false);
+  const [course, setCourse] = useState();
+  const [deleteID, setDeleteID] = useState();
+
+  const handleDelete = (key,id) => {
+    setCourse(key);
+    setDeleteID(id);
+    setShow(true);
+  }
   return (
+    <>
+    <DeleteConfirmation show={show} setShow={setShow} deleteFunc={leaveDeleted(course,deleteID)}/>
     <Table bordered hover>
       <thead>
         <th>Course</th>
@@ -31,7 +44,7 @@ const ShowAllLeaves = () => {
                   )}
                   <td>
                     <button className="Button">Edit</button>
-                    <button className="Button" onClick={() => dispatch(leaveDeleted(key,item.id))}>Delete</button>
+                    <button className="Button" onClick={() => handleDelete(key,item.id)}>Delete</button>
                   </td>
                 </tr>
               )
@@ -39,6 +52,7 @@ const ShowAllLeaves = () => {
         )}
       </tbody>
     </Table>
+    </>
   );
 };
 
