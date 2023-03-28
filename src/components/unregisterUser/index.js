@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import "../../styles/style.css";
 import { useDispatch } from 'react-redux';
 import { useSelector } from 'react-redux';
-import { attendanceDeletedSingle, userUnassigned } from './../../redux/actions/index';
+import { attendanceDeletedSingle, courseMarksDeleted, userUnassigned } from './../../redux/actions/index';
 
 const UnregisterUser = () => {
   const [course, setCourse] = useState("default");
@@ -19,12 +19,10 @@ const UnregisterUser = () => {
   }
 
   const onClickHandler = (event) => {
-    console.log(course);
-    console.log(user);
-    dispatch(userUnassigned(course,user))
+    dispatch(userUnassigned(course,user));
     dispatch(attendanceDeletedSingle(course,user));
+    dispatch(courseMarksDeleted(course,user));
   }
-
 
   return (
     <div className="Main">

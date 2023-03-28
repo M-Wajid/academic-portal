@@ -1,15 +1,13 @@
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
-import { useDispatch } from "react-redux";
 
 const DeleteConfirmation = (props) => {
-  const dispatch = useDispatch();
   const {show, setShow, deleteFunc} = props;
 
   const handleClose = () => setShow(false);
 
   const handleDelete = () => {
-    dispatch(deleteFunc);
+    deleteFunc();
     setShow(false);
   }
 

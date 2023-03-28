@@ -1,11 +1,11 @@
 const initialState = {
   examDates: [
-    { courseName: "Calculus", date1: "25-04-2023", date2: "26-04-2023" },
-    { courseName: "Algebra", date1: "25-04-2023", date2: "26-04-2023" },
-    { courseName: "Python", date1: "25-04-2023", date2: "26-04-2023" },
+    { courseName: "Calculus", date1: "2023-05-25", date2: "2023-05-26" },
+    { courseName: "Algebra", date1: "2023-05-24", date2: "2023-05-25" },
+    { courseName: "Python", date1: "2023-05-27", date2: "2023-05-28" },
   ],
   bookedExam: [
-      { id: 1, studentName: "Wajid", courseName: "Calculus", date: "25-04-2023" }
+      { id: 1, studentName: "Wajid", courseName: "Calculus", date: "2023-05-26" }
   ],
 };
 

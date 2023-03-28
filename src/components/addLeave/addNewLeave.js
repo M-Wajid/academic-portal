@@ -18,8 +18,12 @@ const AddNewLeave = () => {
     });
   };
 
-  const onClickHandler = () => {
-    dispatch(leaveAdded(newLeave, course, courseState[course]));
+  const onClickHandler = (event) => {
+    if(newLeave !== {} && course !== "default"){
+      dispatch(leaveAdded(newLeave, course, courseState[course]));
+    } else {
+      alert("Error")
+    }
     setNewLeave({});
     setFlag(false);
   };
@@ -36,7 +40,6 @@ const AddNewLeave = () => {
           <tr>
             <td>
               <select
-                required="required"
                 onChange={(event) => setCourse(event.target.value)}
               >
                 <option value="default">Please select a Course</option>
@@ -54,7 +57,6 @@ const AddNewLeave = () => {
             <td>
               <input
                 name="LeaveFrom"
-                required="required"
                 type="date"
                 placeholder="mm-dd-yyyy"
                 onChange={onChangeHandler}
@@ -63,7 +65,6 @@ const AddNewLeave = () => {
             <td>
               <input
                 name="LeaveTo"
-                required="required"
                 type="date"
                 placeholder="mm-dd-yyyy"
                 onChange={onChangeHandler}

@@ -1,5 +1,5 @@
 import Table from "react-bootstrap/Table";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { bookedExamDeleted } from "../../redux/actions";
 import { useState } from 'react';
 import DeleteConfirmation from './../deleteConfirmation/DeleteConfirmation';
@@ -9,16 +9,21 @@ const BookedExams = () => {
   const user = JSON.parse(localStorage.getItem("data"));
   const [show, setShow] = useState(false);
   const [id, setId] = useState();
+  const dispatch = useDispatch();
 
   const handleDelete = (id) => {
     setId(id)
     setShow(true);
   }
 
+  const deleteFunc = () => {
+    dispatch(bookedExamDeleted(id));
+  }
+
 
   return (
     <>
-      <DeleteConfirmation show={show} setShow={setShow} deleteFunc={bookedExamDeleted(id)}/>
+      <DeleteConfirmation show={show} setShow={setShow} deleteFunc={deleteFunc}/>
       <h1>Booked Exams</h1>
       {bookExamState.bookedExam.length !== 0 ? (
         <Table bordered hover>

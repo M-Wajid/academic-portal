@@ -198,3 +198,18 @@ export const attendanceDeletedSingle = (course,user) => {
     user
   }
 }
+
+export const userMarksDeleted = (name) => {
+  return{
+    type: "DELETE_USER_MARKS",
+    name
+  }
+}
+
+export const courseMarksDeleted = (course,user) => {
+  return{
+    type: "DELETE_COURSE_MARKS",
+    course,
+    user
+  }
+}

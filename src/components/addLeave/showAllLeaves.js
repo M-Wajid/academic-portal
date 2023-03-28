@@ -1,5 +1,5 @@
 import React from "react";
-import { useSelector, useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import Table from "react-bootstrap/Table";
 import { leaveDeleted } from "../../redux/actions";
 import { useState } from "react";
@@ -8,19 +8,24 @@ import DeleteConfirmation from './../deleteConfirmation/DeleteConfirmation';
 const ShowAllLeaves = () => {
   const leaveState = useSelector((state) => state.leaveReducer);
   const user = JSON.parse(localStorage.getItem("data"));
-  const dispatch = useDispatch();
   const [show, setShow] = useState(false);
   const [course, setCourse] = useState();
   const [deleteID, setDeleteID] = useState();
+  const dispatch = useDispatch();
 
   const handleDelete = (key,id) => {
     setCourse(key);
     setDeleteID(id);
     setShow(true);
   }
+
+  const deleteFunc = () => {
+    dispatch(leaveDeleted(course,deleteID));
+  }
+
   return (
     <>
-    <DeleteConfirmation show={show} setShow={setShow} deleteFunc={leaveDeleted(course,deleteID)}/>
+    <DeleteConfirmation show={show} setShow={setShow} deleteFunc={deleteFunc}/>
     <Table bordered hover>
       <thead>
         <th>Course</th>
@@ -43,7 +48,7 @@ const ShowAllLeaves = () => {
                     (el) => el !== "id" && <td>{item[el]}</td>
                   )}
                   <td>
-                    <button className="Button">Edit</button>
+                    <button className="Button" >Edit</button>
                     <button className="Button" onClick={() => handleDelete(key,item.id)}>Delete</button>
                   </td>
                 </tr>

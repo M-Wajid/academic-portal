@@ -3,27 +3,39 @@ import { useDispatch, useSelector } from "react-redux";
 import "../../styles/style.css";
 import Table from 'react-bootstrap/Table';
 import AddNewUser from "./addNewUser";
+import DeleteConfirmation from './../deleteConfirmation/DeleteConfirmation';
+import { useState } from 'react';
 import {
   attendanceDeleted,
   userDeleted,
+  userMarksDeleted,
   userUnregistered,
 } from "../../redux/actions";
 
 const AddUser = () => {
   const users = useSelector((state) => state.userReducer);
   const dispatch = useDispatch();
+  const [show, setShow] = useState(false);
+  const [name, setName] = useState();
 
   const onClickHandler = (name) => {
+    setName(name);
+    setShow(true);
+  };
+
+  const deleteFunc = () => {
     dispatch(userDeleted(name));
     dispatch(userUnregistered(name));
     dispatch(attendanceDeleted(name));
-  };
+    dispatch(userMarksDeleted(name));
+  }
 
   return (
     <div className="Main">
       <h1 className="Heading">Add User</h1>
       <div className="Data3">
         <AddNewUser />
+        <DeleteConfirmation show={show} setShow={setShow} deleteFunc={deleteFunc}/>
         <Table bordered hover>
           <thead>
             <tr>

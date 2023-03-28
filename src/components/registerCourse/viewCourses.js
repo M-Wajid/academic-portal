@@ -1,6 +1,6 @@
 import { useDispatch, useSelector } from "react-redux";
 import Table from "react-bootstrap/Table";
-import { courseUnregistered } from "./../../redux/actions/index";
+import { attendanceDeletedSingle, courseMarksDeleted, courseUnregistered } from "./../../redux/actions/index";
 import { useState } from "react";
 import DeleteConfirmation from './../deleteConfirmation/DeleteConfirmation';
 
@@ -10,6 +10,7 @@ const ViewCourses = () => {
   const [show, setShow] = useState(false);
   const [course, setCourse] = useState();
   const [deleteItem, setDeleteItem] = useState();
+  const dispatch = useDispatch();
 
   const handleDelete = (key,item) => {
     setCourse(key);
@@ -17,9 +18,15 @@ const ViewCourses = () => {
     setShow(true);
   }
 
+  const deleteFunc = () => {
+    dispatch(courseUnregistered(course,deleteItem));
+    dispatch(attendanceDeletedSingle(course,user.name));
+    dispatch(courseMarksDeleted(course,user.name));
+  }
+
   return (
     <>
-      <DeleteConfirmation show={show} setShow={setShow} deleteFunc={courseUnregistered(course,deleteItem)}/>
+      <DeleteConfirmation show={show} setShow={setShow} deleteFunc={deleteFunc}/>
       <Table bordered hover>
         <thead>
           <tr>
