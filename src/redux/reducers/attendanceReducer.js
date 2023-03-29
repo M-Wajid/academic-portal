@@ -1,11 +1,12 @@
 const initialState = {
+  Calculus: [
+    {Name: "Wajid" , "2023-03-01": "A", "2023-03-02": "A", "2023-03-03": "P", "2023-03-04": "P"}
+  ],
   Algebra: [
     {Name: "Wajid" , "2023-03-01": "P", "2023-03-02": "A", "2023-03-03": "P", "2023-03-04": "P"},
     {Name: "Hammad" , "2023-03-01": "P", "2023-03-02": "P", "2023-03-03": "P", "2023-03-04": "P"}
-  ],
-  Calculus: [
-    {Name: "Wajid" , "2023-03-01": "A", "2023-03-02": "A", "2023-03-03": "P", "2023-03-04": "P"}
   ]
+  
 }
 
 const attendanceReducer = (state = initialState, action) => {
