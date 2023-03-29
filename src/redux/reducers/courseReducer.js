@@ -53,7 +53,7 @@ const courseReducer = (state = initialState, action) => {
       }
     case "UNASSIGN_USER":
       const course = action.course;
-      state[course] = state[course].map(item => item.Name !== action.user);
+      state[course] = state[course].filter(item => item.Name !== action.user);
       return{
         ...state,
       }
