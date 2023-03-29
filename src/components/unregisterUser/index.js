@@ -19,9 +19,9 @@ const UnregisterUser = () => {
   }
 
   const onClickHandler = (event) => {
-    dispatch(userUnassigned(course,user));
     dispatch(attendanceDeletedSingle(course,user));
     dispatch(courseMarksDeleted(course,user));
+    dispatch(userUnassigned(course,user));
   }
 
   return (

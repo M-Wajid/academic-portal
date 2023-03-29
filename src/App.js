@@ -16,13 +16,18 @@ import PermissionDenied from './components/permissionDenied/index';
 import AddLeave from './components/addLeave';
 import LeaveApprovalTeacher from './../src/components/leaveApprovalTeacher';
 import LeaveApprovalAdmin from './components/leaveApprovalAdmin/index';
+import ProtectedLogin from './components/routeAuth/protectedLogin';
+import NoMatchRoute from './components/noMatchRoute/index';
 
 const App = () => {
   return (
     <div>
       <Header />
       <Routes>
+       <Route path="/" element={<ProtectedLogin />} >
         <Route path="/" element={<HOME/>} />
+       </Route>
+        
         <Route path="/" element={<Protected userRole="admin"/>}>
           <Route path="/admin" element={<Admin />}/>
           <Route path="/addUser" element={<AddUser />}/>
@@ -46,6 +51,7 @@ const App = () => {
         </Route>
         
         <Route path='/denied' element={<PermissionDenied />}/>
+        <Route path='*' element={<NoMatchRoute />}/>
       </Routes>
     </div>
   );

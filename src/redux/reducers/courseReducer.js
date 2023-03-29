@@ -47,17 +47,24 @@ const courseReducer = (state = initialState, action) => {
         [action.course]: state[action.course].filter(item => item.Name !== action.user.Name)
       };
     case "UNREGISTER_USER":
-      console.log(state);
       Object.keys(state).map(key => state[key] = state[key].filter(el => action.name !== el.Name))
       return {
         ...state,
       }
     case "UNASSIGN_USER":
-      state[action.course] = state[action.course].filter(item => item.Name !== action.user);
-      console.log(state);
+      const course = action.course;
+      console.log(course)
+      state[course] = state[course].map(item => item.Name !== action.user);
       return{
         ...state,
       }
+    case "EDIT_COURSE":
+      state[action.editCourse] = state[action.course];
+      delete state[action.course];
+      return{
+        ...state,
+      }
+
     default:
       return state;
   }

@@ -21,6 +21,14 @@ const userReducer = (state = initialState, action) => {
         ...state,
         users: state.users.filter((item)=> item.name !== action.name)
       }
+    case "EDIT_USER":
+      let array = [];
+      state.users.map(item => item.email === action.item.email ? array.push(action.item) : array.push(item));
+      console.log(array);
+      return{
+        ...state,
+        users: array,
+      }
     default: return state;
   }
 }

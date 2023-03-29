@@ -2,49 +2,48 @@ import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import Modal from 'react-bootstrap/Modal';
 import { useDispatch } from 'react-redux';
-import { examDateEdited } from './../../redux/actions/index';
+import { userEdited } from '../../redux/actions';
 
-const EditExamDate = (props) => {
-  const {show, setShow, editItem, setEditItem, editItemIndex} = props;
+const EditUser = (props) => {
+  const {show, setShow, item, setItem} = props;
   const dispatch = useDispatch();
 
-  const onChangeHandler = (event) => {
-    setEditItem({
-      ...editItem,
-      [event.target.name]: event.target.value,
-    });
-  };
-
-  const handleEdit = (event) => {
-    dispatch(examDateEdited(editItem, editItemIndex));
+  const handleEdit = () => {
+    console.log(item)
+    dispatch(userEdited(item));
     setShow(false);
-  };
-
+  }
+  const onChangeHandler = (event) => {
+    setItem({
+      ...item,
+     [event.target.name]:event.target.value
+    })
+  }
   const handleClose = () => setShow(false);
 
   return (
     <>
       <Modal show={show} onHide={handleClose}>
         <Modal.Header closeButton>
-          <Modal.Title>Edit Exam Date</Modal.Title>
+          <Modal.Title>Edit Course</Modal.Title>
         </Modal.Header>
         <Modal.Body>
           <Form>
             <Form.Group className="mb-3" >
-              <Form.Label>Date 1</Form.Label>
+              <Form.Label>Name</Form.Label>
               <Form.Control
-                name="date1"
-                type="date"
-                defaultValue={editItem.date1}
+                name="name"
+                type="text"
+                defaultValue={item.name}
                 onChange={onChangeHandler}
               />
             </Form.Group>
             <Form.Group className="mb-3" >
-              <Form.Label>Date 2</Form.Label>
+              <Form.Label>Password</Form.Label>
               <Form.Control
-                name="date2"
-                type="date"
-                defaultValue={editItem.date2}
+                name="password"
+                type="text"
+                defaultValue={item.password}
                 onChange={onChangeHandler}
               />
             </Form.Group>
@@ -62,5 +61,4 @@ const EditExamDate = (props) => {
     </>
   );
 }
-
-export default EditExamDate
+export default EditUser;

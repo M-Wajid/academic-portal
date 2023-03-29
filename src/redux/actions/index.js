@@ -213,3 +213,25 @@ export const courseMarksDeleted = (course,user) => {
     user
   }
 }
+
+export const bookedExamEdited = (data) => {
+  return{
+    type: "EDIT_BOOKED_EXAM",
+    data
+  }
+}
+
+export const courseEdited = (course,editCourse) => {
+  return{
+    type: "EDIT_COURSE",
+    course,
+    editCourse
+  }
+}
+
+export const userEdited = (item) => {
+  return{
+    type:"EDIT_USER",
+    item
+  }
+}

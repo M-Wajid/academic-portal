@@ -40,7 +40,7 @@ const attendanceReducer = (state = initialState, action) => {
         ...state,
       }
     case "DELETE_ATTENDANCE_SINGLE":
-      state[action.course] = state[action.course].filter(item => item.Name !== action.user);
+      state[action.course] = state[action.course].filter(item => item.Name !== action.user)
       return{
         ...state,
       }

@@ -16,6 +16,7 @@ const BookedExams = () => {
     setShow(true);
   }
 
+
   const deleteFunc = () => {
     dispatch(bookedExamDeleted(id));
   }
@@ -31,7 +32,7 @@ const BookedExams = () => {
             <tr>
               <th>Course Name</th>
               <th>Date</th>
-              <th>Actions</th>
+              <th>Action</th>
             </tr>
           </thead>
           <tbody>
@@ -42,7 +43,6 @@ const BookedExams = () => {
                     <td>{item.courseName}</td>
                     <td>{item.date}</td>
                     <td>
-                      <button className="Button">Edit</button>
                       <button
                         className="Button"
                         onClick={() => handleDelete(item.id)}

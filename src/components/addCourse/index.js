@@ -1,27 +1,58 @@
-import React from 'react'
-import { useSelector, useDispatch } from 'react-redux';
-import { useState } from 'react';
-import { courseAdded } from './../../redux/actions/index';
+import React from "react";
+import { useSelector, useDispatch } from "react-redux";
+import { useState } from "react";
+import { courseAdded } from "./../../redux/actions/index";
 import "../../styles/style.css";
-import Table from 'react-bootstrap/Table';
+import Table from "react-bootstrap/Table";
+import EditCourse from "./editCourse";
 
 const AddCourse = () => {
   const courseState = useSelector((state) => state.courseReducer);
   const [course, setCourse] = useState();
+  const [oldCourse, setOldCourse] = useState();
+  const [editCourse, setEditCourse] = useState("");
+  const [show, setShow] = useState(false);
   const dispatch = useDispatch();
 
   const onChangeHandler = (event) => {
-    setCourse(event.target.value)
-  }
+    setCourse(event.target.value);
+  };
+
+  const handleEdit = (key) => {
+    setEditCourse(key);
+    setOldCourse(key);
+    setShow(true);
+  };
+
+  const onClickHandler = () => {
+    if (course !== "" && course !== undefined) {
+      dispatch(courseAdded(course));
+    } else {
+      alert("Please Enter a Course Name");
+    }
+  };
 
   return (
-    <div className='Main'>
-      <h1 className='Heading'>Add Course</h1>
-      <div className='Data3'>
-        <div className='Data'>
-          <input type='text' placeholder='Course Name' onChange={onChangeHandler} />
-          <button className='Button' onClick={() => dispatch(courseAdded(course))}>Add</button>
+    <div className="Main">
+      <h1 className="Heading">Add Course</h1>
+      <div className="Data3">
+        <div className="Data">
+          <input
+            type="text"
+            placeholder="Course Name"
+            onChange={onChangeHandler}
+          />
+          <button className="Button" onClick={onClickHandler}>
+            Add
+          </button>
         </div>
+        <EditCourse
+          show={show}
+          setShow={setShow}
+          editCourse={editCourse}
+          setEditCourse={setEditCourse}
+          oldCourse={oldCourse}
+        />
         <Table bordered hover>
           <thead>
             <tr>
@@ -30,20 +61,25 @@ const AddCourse = () => {
             </tr>
           </thead>
           <tbody>
-            {Object.keys(courseState).map((key) =>
+            {Object.keys(courseState).map((key) => (
               <tr>
                 <td>{key}</td>
-                <td>
-                  <button className='Button'>Edit</button>
-                  <button className='Button'>Unactive</button>
-                </td>
+                {courseState[key].length === 0 ? (
+                  <td>
+                    <button className="Button" onClick={() => handleEdit(key)}>
+                      Edit
+                    </button>
+                  </td>
+                ) : (
+                  <td>No actions granted</td>
+                )}
               </tr>
-              )}
+            ))}
           </tbody>
         </Table>
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default AddCourse
+export default AddCourse;

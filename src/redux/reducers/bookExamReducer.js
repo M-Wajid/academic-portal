@@ -44,6 +44,11 @@ const bookExamReducer = (state = initialState, action) => {
       return {
         ...state,
       };
+    case "EDIT_BOOKED_EXAM":
+      state.bookedExam.map((item,index) => item.id === action.data.id && (state.bookedExam[index] = {...item, "date":action.data.date}))
+      return{
+        ...state,
+      }
     default:
       return state;
   }

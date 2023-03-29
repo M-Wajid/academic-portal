@@ -10,11 +10,13 @@ const BookExamTeacher = () => {
   const courseState = useSelector((state) => state.courseReducer);
   const bookExamState = useSelector((state) => state.bookExamReducer);
   const [editItemIndex, setEditItemIndex] = useState(null);
-  const [editItem, setEditItem] = useState(null);
+  const [editItem, setEditItem] = useState({date1:"",date2:""});
+  const [show, setShow] = useState(false);
 
   const edit = (item, index) => {
     setEditItemIndex(index);
     setEditItem(item);
+    setShow(true);
   };
 
   return (
@@ -23,6 +25,7 @@ const BookExamTeacher = () => {
         <h1 className="Heading">Exam Dates</h1>
         <div className="Data3">
           <AddExamDate />
+          <EditExamDate show={show} setShow={setShow} editItem={editItem} setEditItem={setEditItem} editItemIndex={editItemIndex}/>
           <Table bordered hover>
             <thead>
               <tr>
@@ -59,14 +62,6 @@ const BookExamTeacher = () => {
               )}
             </tbody>
           </Table>
-          {editItemIndex !== null && editItemIndex !== undefined && (
-            <EditExamDate
-              editItem={editItem}
-              setEditItem={setEditItem}
-              editItemIndex={editItemIndex}
-              setEditItemIndex={setEditItemIndex}
-            />
-          )}
         </div>
       </div>
     </>
