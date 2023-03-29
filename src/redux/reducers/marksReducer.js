@@ -49,7 +49,7 @@ const marksReducer = (state = initialState, action) => {
         ...state
       }
     case "DELETE_COURSE_MARKS":
-      Object.keys(state[action.course]).map(key => state[action.course][key] = state[action.course][key].filter(el => el.Student_Name !== action.user))
+      !!state[action.course] && Object.keys(state[action.course]).map(key => state[action.course][key] = state[action.course][key].filter(el => el.Student_Name !== action.user))
       return{
         ...state,
       }

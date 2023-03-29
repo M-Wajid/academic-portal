@@ -19,9 +19,12 @@ const UnregisterUser = () => {
   }
 
   const onClickHandler = (event) => {
+    if(course !=="default"){
+    dispatch(userUnassigned(course,user));
     dispatch(attendanceDeletedSingle(course,user));
     dispatch(courseMarksDeleted(course,user));
-    dispatch(userUnassigned(course,user));
+  }
+    
   }
 
   return (
