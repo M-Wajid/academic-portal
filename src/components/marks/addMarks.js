@@ -8,6 +8,7 @@ import { useDispatch, useSelector } from "react-redux";
 const AddMarks = (props) => {
   const { course, taskType } = props;
   const marksState = useSelector(state => state.marksReducer);
+  const courseState = useSelector(state => state.courseReducer);
   const [show, setShow] = useState(false);
   const [data, setData] = useState({});
   const dispatch = useDispatch();
@@ -45,9 +46,9 @@ const AddMarks = (props) => {
           <Form>
             <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
               <Form.Label>Student Name</Form.Label>
-              <select class="form-control" onChange={setNewData}>
+              <select name="Student_Name" class="form-control" onChange={setNewData}>
                 <option>Please Select Student</option>
-                {marksState[course][taskType].map(item => <option value={item.Student_Name}>{item.Student_Name}</option>)}
+                {courseState[course].map(item => item.role!=="teacher" && (!marksState[course][taskType].find(el => el.Student_Name === item.Name) && <option value={item.Name}>{item.Name}</option>))}
               </select>
             </Form.Group>
             <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">

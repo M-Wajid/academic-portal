@@ -40,12 +40,12 @@ const AddNewLeave = () => {
 
       <Modal show={show} onHide={handleClose}>
         <Modal.Header closeButton>
-          <Modal.Title>Modal heading</Modal.Title>
+          <Modal.Title>Add New Leave</Modal.Title>
         </Modal.Header>
         <Modal.Body>
           <Form>
             <Form.Group className="mb-3">
-              <Form.Label>Email address</Form.Label>
+              <Form.Label>Course</Form.Label>
               <select
                 class="form-control"
                 onChange={(event) => setCourse(event.target.value)}
@@ -63,7 +63,7 @@ const AddNewLeave = () => {
               </select>
             </Form.Group>
             <Form.Group className="mb-3">
-              <Form.Label>Email address</Form.Label>
+              <Form.Label>Leave From</Form.Label>
               <Form.Control
                 name="LeaveFrom"
                 type="date"
@@ -72,7 +72,7 @@ const AddNewLeave = () => {
               />
             </Form.Group>
             <Form.Group className="mb-3">
-              <Form.Label>Email address</Form.Label>
+              <Form.Label>Leave To</Form.Label>
               <Form.Control
                 name="LeaveTo"
                 type="date"
