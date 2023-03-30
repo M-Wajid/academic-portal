@@ -21,9 +21,11 @@ const ShowAllMarks = () => {
                 <th>Total Marks</th>
               </tr>
             </thead>
-            {Object.keys(marksState[key]).map((key2) => (
+            {!!marksState[key] && Object.keys(marksState[key]).length !== 0 &&
+            Object.keys(marksState[key]).map((key2) => (
               <tbody>
-                {marksState[key][key2].map((item) => (
+                {marksState[key][key2].length !== 0 &&
+                marksState[key][key2].map((item) => (
                   <tr>
                     <td>{key2}</td>
                     <td>{item.Student_Name}</td>

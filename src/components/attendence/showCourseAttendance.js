@@ -53,8 +53,10 @@ const ShowCourseAttendance = (props) => {
         <Table bordered hover>
           <thead>
             <tr>
-              {attendanceState[course].length !== 0 &&
-                Object.keys(attendanceState).map(
+              {!!attendanceState[course] &&
+              attendanceState[course].length !== 0 &&
+              <>
+              {Object.keys(attendanceState).map(
                   (key) =>
                     key === course &&
                     Object.keys(attendanceState[key][0]).map((key) => (
@@ -70,13 +72,17 @@ const ShowCourseAttendance = (props) => {
                   />
                 </th>
               )}
+              </>
+                
+              }
+              
               <th>Actions</th>
             </tr>
           </thead>
           <tbody>
             {Object.keys(attendanceState).map(
               (key) =>
-                key === course &&
+                key === course && attendanceState[key].length !== 0 &&
                 attendanceState[key].map((item, index) => (
                   <tr>
                     {Object.keys(item).map((key2) => (

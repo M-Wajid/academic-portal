@@ -145,6 +145,13 @@ export const examDateAdded = (data) => {
   }
 }
 
+export const examDateDeleted = (course) => {
+  return{
+    type: "DELETE_EXAM_DATE",
+    course
+  }
+}
+
 export const examDateEdited = (data,index) => {
   return{
     type: "EDIT_EXAM_DATE",

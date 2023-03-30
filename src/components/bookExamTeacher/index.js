@@ -1,9 +1,10 @@
 import "../../styles/style.css";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { useState } from "react";
 import AddExamDate from "./addExamDate";
 import Table from "react-bootstrap/Table";
 import EditExamDate from "./editExamDate";
+import { examDateDeleted } from './../../redux/actions/index';
 
 const BookExamTeacher = () => {
   const user = JSON.parse(localStorage.getItem("data"));
@@ -12,6 +13,7 @@ const BookExamTeacher = () => {
   const [editItemIndex, setEditItemIndex] = useState(null);
   const [editItem, setEditItem] = useState({date1:"",date2:""});
   const [show, setShow] = useState(false);
+  const dispatch = useDispatch();
 
   const edit = (item, index) => {
     setEditItemIndex(index);
@@ -54,6 +56,13 @@ const BookExamTeacher = () => {
                               >
                                 Edit
                               </button>
+                              {!bookExamState["bookedExam"].find(el => el.courseName === item.courseName) && 
+                              <button
+                                className="Button"
+                                onClick={() => dispatch(examDateDeleted(item.courseName))}
+                              >
+                                Delete
+                              </button>}
                             </td>
                           </tr>
                         )

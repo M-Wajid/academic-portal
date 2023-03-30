@@ -13,7 +13,8 @@ const ShowAllAttendance = () => {
           !!courseState[key].find((el) => el.Name === user.name) && (
             <>
               <h1>{key}</h1>
-              {attendanceState[key].length !== 0 && (
+              {!!attendanceState[key] &&
+              attendanceState[key].length !== 0 && (
                 <Table bordered hover>
                   <thead>
                     <tr>

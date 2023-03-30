@@ -21,6 +21,11 @@ const bookExamReducer = (state = initialState, action) => {
       return {
         ...state,
       };
+    case "DELETE_EXAM_DATE":
+      return {
+        ...state,
+        examDates: state.examDates.filter(item => item.courseName !== action.course)
+      };
     case "DELETE_BOOKED_EXAM":
       state["bookedExam"] = state.bookedExam.filter(item => item.id !== action.id)
       return {
