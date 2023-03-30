@@ -17,6 +17,10 @@ const AssignTeacher = () => {
     });
   };
 
+  const onClickHandler = () => {
+    Object.keys(data).length === 2 ? dispatch(teacherAssigned(data)) : alert("Please fill out all the fields");
+  }
+
   return (
     <div className="Main">
       <h1 className="Heading">Assign Teacher to the Course</h1>
@@ -65,7 +69,7 @@ const AssignTeacher = () => {
               <td>
                 <button
                   className="Button"
-                  onClick={() => dispatch(teacherAssigned(data))}
+                  onClick={onClickHandler}
                 >
                   Assign
                 </button>

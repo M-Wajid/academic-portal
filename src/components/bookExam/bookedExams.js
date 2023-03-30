@@ -15,17 +15,12 @@ const BookedExams = () => {
     setId(id)
     setShow(true);
   }
-
-
   const deleteFunc = () => {
     dispatch(bookedExamDeleted(id));
   }
-
-
   return (
     <>
       <DeleteConfirmation show={show} setShow={setShow} deleteFunc={deleteFunc}/>
-      <h1>Booked Exams</h1>
       {bookExamState.bookedExam.length !== 0 ? (
         <Table bordered hover>
           <thead>

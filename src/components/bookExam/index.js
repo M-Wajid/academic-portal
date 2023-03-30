@@ -7,8 +7,8 @@ const BookExam = () => {
     <div className="Main">
       <h1 className="Heading">Exam</h1>
       <div className="Data3">
-      <BookedExams />
       <AddExam />
+      <BookedExams />
       </div>
     </div>
   );

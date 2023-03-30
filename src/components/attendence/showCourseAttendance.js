@@ -1,12 +1,11 @@
 import { useSelector, useDispatch } from "react-redux";
 import "../../styles/style.css";
 import { useState } from "react";
-import { attendanceAdded, attendanceEdited } from "./../../redux/actions/index";
-import Table from 'react-bootstrap/Table';
-import EditAttendance from "./editAttendance";
+import { attendanceAdded } from "./../../redux/actions/index";
+import Table from "react-bootstrap/Table";
 
 const ShowCourseAttendance = (props) => {
-  const {course, edit,flag,setFlag} = props;
+  const { course, edit, flag, setFlag } = props;
   const [keyValue, setKeyValue] = useState();
   const [status, setStatus] = useState([]);
   const attendanceState = useSelector((state) => state.attendanceReducer);
@@ -23,17 +22,34 @@ const ShowCourseAttendance = (props) => {
   };
 
   const onClickHandler = () => {
-    setFlag(false);
-    dispatch(attendanceAdded(course, keyValue, status));
-    setStatus([]);
+    if (keyValue !== undefined) {
+      if(status.length === attendanceState[course].length){
+        dispatch(attendanceAdded(course, keyValue, status));
+        setStatus([]);
+        setFlag(false);
+      }else{
+        alert("Please select the status for all the students");
+      }
+    } else {
+      alert("Please select a date");
+    }
   };
 
   return (
     <>
       <>
-        <button className="Button" onClick={() => setFlag(true)}>
-          ADD
-        </button>
+        {flag ? (
+          <>
+            <button className="Button" onClick={() => setFlag(false)}>
+              close
+            </button>
+          </>
+        ) : (
+          <button className="Button" onClick={() => setFlag(true)}>
+            ADD
+          </button>
+        )}
+
         <Table bordered hover>
           <thead>
             <tr>
@@ -45,18 +61,19 @@ const ShowCourseAttendance = (props) => {
                       <th>{key}</th>
                     ))
                 )}
-              {flag &&
+              {flag && (
                 <th>
                   <input
                     type="date"
                     onChange={addKeyValue}
                     placeholder="dd-mm-yyyy"
                   />
-                </th>}
+                </th>
+              )}
               <th>Actions</th>
             </tr>
-            </thead>
-            <tbody>
+          </thead>
+          <tbody>
             {Object.keys(attendanceState).map(
               (key) =>
                 key === course &&
@@ -67,9 +84,7 @@ const ShowCourseAttendance = (props) => {
                     ))}
                     {flag && (
                       <th>
-                        <select
-                          onChange={(event) => addStatus(index, event)}
-                        >
+                        <select onChange={(event) => addStatus(index, event)}>
                           <option>Please Select Status</option>
                           <option Value="P">P</option>
                           <option Value="A">A</option>
@@ -89,14 +104,14 @@ const ShowCourseAttendance = (props) => {
             )}
           </tbody>
         </Table>
+        {flag && (
+          <button className="Button" onClick={onClickHandler}>
+            save
+          </button>
+        )}
       </>
-      {flag && (
-      <button className="Button" onClick={onClickHandler}>
-        save
-      </button>
-    )}
     </>
-  )
-}
+  );
+};
 
-export default ShowCourseAttendance
+export default ShowCourseAttendance;

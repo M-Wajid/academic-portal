@@ -25,10 +25,14 @@ const AddCourse = () => {
   };
 
   const onClickHandler = () => {
-    if (course !== "" && course !== undefined) {
-      dispatch(courseAdded(course));
+    if (!courseState[course]) {
+      if ([...course].length > "2") {
+        dispatch(courseAdded(course));
+      } else {
+        alert("Please enter a course name with atleast 3 characters");
+      }
     } else {
-      alert("Please Enter a Course Name");
+      alert("Course already exists");
     }
   };
 

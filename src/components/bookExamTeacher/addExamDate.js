@@ -1,15 +1,19 @@
 import { useState } from "react";
 import { examDateAdded } from "../../redux/actions/index";
 import { useDispatch, useSelector } from "react-redux";
-import Table from "react-bootstrap/Table";
+import Button from "react-bootstrap/Button";
+import Form from "react-bootstrap/Form";
+import Modal from "react-bootstrap/Modal";
 
 const AddExamDate = () => {
   const user = JSON.parse(localStorage.getItem("data"));
   const courseState = useSelector((state) => state.courseReducer);
   const bookExamState = useSelector((state) => state.bookExamReducer);
   const [data, setData] = useState({});
-  const [flag, setFlag] = useState(false);
+  const [show, setShow] = useState(false);
   const dispatch = useDispatch();
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
 
   const onChangeHandler = (event) => {
     setData({
@@ -19,69 +23,75 @@ const AddExamDate = () => {
   };
 
   const onClickHandler = () => {
-    !!data.courseName &&
-      !!data.date1 &&
-      !!data.date2 &&
+    if (!!data.courseName && !!data.date1 && !!data.date2) {
       dispatch(examDateAdded(data));
-    setFlag(false);
+    } else {
+      alert("Please fill out all the fields");
+    }
   };
-  return flag ? (
+  return (
     <>
-      <Table bordered hover>
-        <thead>
-          <tr>
-            <th>Course Name</th>
-            <th>Date 1</th>
-            <th>Date 2</th>
-            <th>Actions</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td>
-              <select name="courseName" onChange={onChangeHandler}>
+      <button className="Button" onClick={handleShow}>
+        Add Exam Date
+      </button>
+
+      <Modal show={show} onHide={handleClose}>
+        <Modal.Header closeButton>
+          <Modal.Title>Add New Data</Modal.Title>
+        </Modal.Header>
+        <Modal.Body>
+          <Form>
+            <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
+              <Form.Label>Course Name</Form.Label>
+              <select
+                class="form-control"
+                name="courseName"
+                onChange={onChangeHandler}
+              >
                 <option>Please Select a Course</option>
                 {Object.keys(courseState).map((key) =>
                   courseState[key].map(
                     (item1) =>
                       item1.Name === user.name &&
                       !bookExamState.examDates.find(
-                        (item) => item.courseName === key) && (
-                            <option value={key}>{key}</option>
-                          )
+                        (item) => item.courseName === key
+                      ) && <option value={key}>{key}</option>
                   )
                 )}
               </select>
-            </td>
-            <td>
+            </Form.Group>
+            <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
+              <Form.Label>Date # 1</Form.Label>
               <input
+                class="form-control"
                 name="date1"
                 type="date"
                 placeholder="dd-mm-yyyy"
                 onChange={onChangeHandler}
               />
-            </td>
-            <td>
+            </Form.Group>
+            <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
+              <Form.Label>Date # 2</Form.Label>
               <input
+                class="form-control"
                 name="date2"
                 type="date"
                 placeholder="dd-mm-yyyy"
                 onChange={onChangeHandler}
               />
-            </td>
-            <td>
-              <button className="Button" onClick={onClickHandler}>
-                Save
-              </button>
-            </td>
-          </tr>
-        </tbody>
-      </Table>
+            </Form.Group>
+          </Form>
+        </Modal.Body>
+        <Modal.Footer>
+          <Button variant="secondary" onClick={handleClose}>
+            Close
+          </Button>
+          <Button variant="primary" onClick={onClickHandler}>
+            Save Changes
+          </Button>
+        </Modal.Footer>
+      </Modal>
     </>
-  ) : (
-    <button className="Button" onClick={() => setFlag(true)}>
-      Add Exam Date
-    </button>
   );
 };
 

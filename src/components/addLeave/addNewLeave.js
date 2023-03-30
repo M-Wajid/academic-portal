@@ -1,15 +1,19 @@
 import { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import Table from "react-bootstrap/Table";
 import { leaveAdded } from "../../redux/actions/index";
+import Button from 'react-bootstrap/Button';
+import Form from 'react-bootstrap/Form';
+import Modal from 'react-bootstrap/Modal';
 
 const AddNewLeave = () => {
   const courseState = useSelector((state) => state.courseReducer);
   const user = JSON.parse(localStorage.getItem("data"));
   const [course, setCourse] = useState("default");
   const [newLeave, setNewLeave] = useState({});
+  const [show, setShow] = useState(false);
   const dispatch = useDispatch();
-  const [flag, setFlag] = useState(false);
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
 
   const onChangeHandler = (event) => {
     setNewLeave({
@@ -19,27 +23,31 @@ const AddNewLeave = () => {
   };
 
   const onClickHandler = (event) => {
-    if(newLeave !== {} && course !== "default"){
+    if (course !== "default" && Object.keys(newLeave).length === 2){
       dispatch(leaveAdded(newLeave, course, courseState[course]));
+      setShow(false);
+      setNewLeave({});
     } else {
-      alert("Error")
+      alert("Please fill out all fields");
     }
-    setNewLeave({});
-    setFlag(false);
   };
 
-  return flag ? (
+  return (
     <>
-      <Table bordered hover>
-        <thead>
-          <th>Course</th>
-          <th>Leave From</th>
-          <th>Leave To</th>
-        </thead>
-        <tbody>
-          <tr>
-            <td>
+      <button className="Button" onClick={handleShow}>
+        Add New Leave
+      </button>
+
+      <Modal show={show} onHide={handleClose}>
+        <Modal.Header closeButton>
+          <Modal.Title>Modal heading</Modal.Title>
+        </Modal.Header>
+        <Modal.Body>
+          <Form>
+            <Form.Group className="mb-3">
+              <Form.Label>Email address</Form.Label>
               <select
+                class="form-control"
                 onChange={(event) => setCourse(event.target.value)}
               >
                 <option value="default">Please select a Course</option>
@@ -53,35 +61,42 @@ const AddNewLeave = () => {
                   )
                 )}
               </select>
-            </td>
-            <td>
-              <input
+            </Form.Group>
+            <Form.Group className="mb-3">
+              <Form.Label>Email address</Form.Label>
+              <Form.Control
                 name="LeaveFrom"
                 type="date"
-                placeholder="mm-dd-yyyy"
                 onChange={onChangeHandler}
+                required
               />
-            </td>
-            <td>
-              <input
+            </Form.Group>
+            <Form.Group className="mb-3">
+              <Form.Label>Email address</Form.Label>
+              <Form.Control
                 name="LeaveTo"
                 type="date"
-                placeholder="mm-dd-yyyy"
                 onChange={onChangeHandler}
+                required
               />
-            </td>
-          </tr>
-        </tbody>
-      </Table>
-      <button onClick={onClickHandler} className="Button">
-        Save
-      </button>
+            </Form.Group>
+          </Form>
+        </Modal.Body>
+        <Modal.Footer>
+          <Button variant="secondary" onClick={handleClose}>
+            Close
+          </Button>
+          <Button variant="primary" onClick={onClickHandler}>
+            Save Changes
+          </Button>
+        </Modal.Footer>
+      </Modal>
     </>
-  ) : (
-    <button className="Button" onClick={() => setFlag(true)}>
-      Add New Leave
-    </button>
   );
 };
 
 export default AddNewLeave;
+
+  
+
+  

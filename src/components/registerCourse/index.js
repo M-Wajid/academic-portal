@@ -21,6 +21,9 @@ const RegisterCourse = () => {
       dispatch(courseRegistered(course));
       dispatch(studentAdded(course,user));
     }
+    else {
+      alert("Please select a course before registration")
+    }
   };
 
   return (
