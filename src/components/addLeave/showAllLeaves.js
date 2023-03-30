@@ -69,21 +69,20 @@ const ShowAllLeaves = () => {
                       (el) => el !== "id" && <td>{item[el]}</td>
                     )}
                     <td>
-                    {item.TeacherApproval === " - " ? (
+                    {item.TeacherApproval === " - " && (
                         <button
                           className="Button"
                           onClick={() => handleEdit(key, item)}
                         >
                           Edit
                         </button>
-                    ) : ( 
-                      <button
+                    )}
+                    <button
                       className="Button"
                       onClick={() => handleDelete(key, item.id)}
                     >
                       Delete
                     </button>
-                    )}
                     </td>
                   </tr>
                 )

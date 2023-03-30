@@ -8,7 +8,7 @@ import EditCourse from "./editCourse";
 
 const AddCourse = () => {
   const courseState = useSelector((state) => state.courseReducer);
-  const [course, setCourse] = useState();
+  const [course, setCourse] = useState("");
   const [oldCourse, setOldCourse] = useState();
   const [editCourse, setEditCourse] = useState("");
   const [show, setShow] = useState(false);

@@ -24,7 +24,7 @@ const EditAttendance = (props) => {
     <>
       <Modal show={show} onHide={handleClose}>
         <Modal.Header closeButton>
-          <Modal.Title>Edit Leave</Modal.Title>
+          <Modal.Title>Edit Attendance</Modal.Title>
         </Modal.Header>
         <Modal.Body>
           <Form>

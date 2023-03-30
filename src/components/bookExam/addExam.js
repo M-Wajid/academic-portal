@@ -40,7 +40,7 @@ const AddExam = () => {
         <Modal.Body>
           <Form>
             <Form.Group className="mb-3" >
-              <Form.Label>Email address</Form.Label>
+              <Form.Label>Course</Form.Label>
               <select class="form-control" onChange={(event) => setCourse(event.target.value)}>
                 <option value="default" >Please select a Course</option>
                 {Object.keys(courseState).map((key) =>
@@ -56,7 +56,7 @@ const AddExam = () => {
               </select>
             </Form.Group>
             <Form.Group className="mb-3" >
-              <Form.Label>Email address</Form.Label>
+              <Form.Label>Date</Form.Label>
               <select class="form-control" onChange={(event) => setDate(event.target.value)}>
                 <option value="default">Please select exam date</option>
                 {bookExamState.examDates.map(

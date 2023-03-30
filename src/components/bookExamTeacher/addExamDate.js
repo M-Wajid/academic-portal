@@ -32,12 +32,12 @@ const AddExamDate = () => {
   return (
     <>
       <button className="Button" onClick={handleShow}>
-        Add Exam Date
+        Add Exam
       </button>
 
       <Modal show={show} onHide={handleClose}>
         <Modal.Header closeButton>
-          <Modal.Title>Add New Data</Modal.Title>
+          <Modal.Title>Add Exam</Modal.Title>
         </Modal.Header>
         <Modal.Body>
           <Form>

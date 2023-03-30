@@ -38,12 +38,12 @@ const AddNewUser = () => {
   return (
     <>
       <button className="Button" onClick={handleShow}>
-        Add New User
+        Add User
       </button>
 
       <Modal show={show} onHide={handleClose}>
         <Modal.Header closeButton>
-          <Modal.Title>Modal heading</Modal.Title>
+          <Modal.Title>Add User</Modal.Title>
         </Modal.Header>
         <Modal.Body>
           <Form>
