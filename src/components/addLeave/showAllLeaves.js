@@ -1,5 +1,5 @@
 import { useDispatch, useSelector } from "react-redux";
-import Table from "react-bootstrap/Table";
+import "../../styles/table-style.css"
 import { leaveDeleted } from "../../redux/actions";
 import { useState } from "react";
 import DeleteConfirmation from "./../deleteConfirmation/DeleteConfirmation";
@@ -46,16 +46,18 @@ const ShowAllLeaves = () => {
         setShow={setShow}
         deleteFunc={deleteFunc}
       />
-      <Table bordered hover>
+      <table className="styled-table">
         <thead>
-          <th>Course</th>
-          <th>Student Name</th>
-          <th>Teacher Name</th>
-          <th>Leave From</th>
-          <th>Leave To</th>
-          <th>Teacher Approval</th>
-          <th>Admin Approval</th>
-          <th>Actions</th>
+          <tr>
+            <th>Course</th>
+            <th>Student Name</th>
+            <th>Teacher Name</th>
+            <th>Leave From</th>
+            <th>Leave To</th>
+            <th>Teacher Approval</th>
+            <th>Admin Approval</th>
+            <th>Actions</th>
+          </tr>
         </thead>
         <tbody>
           {Object.keys(leaveState).map((key) =>
@@ -88,7 +90,7 @@ const ShowAllLeaves = () => {
             )
           )}
         </tbody>
-      </Table>
+      </table>
     </>
   );
 };

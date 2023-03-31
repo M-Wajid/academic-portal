@@ -1,12 +1,12 @@
 import { useSelector } from "react-redux";
-import Table from "react-bootstrap/Table";
+import "../../styles/table-style.css"
 
 const ViewCourseAttendance = (props) => {
   const attendanceState = useSelector((state) => state.attendanceReducer);
   const user = JSON.parse(localStorage.getItem("data"));
   const { course } = props;
   return (
-    <Table bordered hover>
+    <table className="styled-table">
       <thead>
         <tr>
           <th>Date</th>
@@ -31,7 +31,7 @@ const ViewCourseAttendance = (props) => {
             : null
         )}
       </tbody>
-    </Table>
+    </table>
   );
 };
 

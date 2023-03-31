@@ -2,7 +2,7 @@ import "../../styles/style.css";
 import { useSelector, useDispatch } from "react-redux";
 import { useState } from "react";
 import { teacherAssigned } from "./../../redux/actions/index";
-import Table from "react-bootstrap/Table";
+import "../../styles/table-style.css"
 
 const AssignTeacher = () => {
   const userState = useSelector((state) => state.userReducer);
@@ -25,7 +25,7 @@ const AssignTeacher = () => {
     <div className="Main">
       <h1 className="Heading">Assign Teacher to the Course</h1>
       <div className="Data2">
-        <Table bordered hover>
+        <table className="styled-table">
           <thead>
             <tr>
               <th>Teacher Name</th>
@@ -76,7 +76,7 @@ const AssignTeacher = () => {
               </td>
             </tr>
           </tbody>
-        </Table>
+        </table>
       </div>
     </div>
   );

@@ -2,7 +2,7 @@ import { useSelector, useDispatch } from "react-redux";
 import "../../styles/style.css";
 import { useState } from "react";
 import { attendanceAdded } from "./../../redux/actions/index";
-import Table from "react-bootstrap/Table";
+import "../../styles/table-style.css"
 
 const ShowCourseAttendance = (props) => {
   const { course, edit, flag, setFlag } = props;
@@ -50,7 +50,7 @@ const ShowCourseAttendance = (props) => {
           </button>
         )}
 
-        <Table bordered hover>
+        <table className="styled-table">
           <thead>
             <tr>
               {!!attendanceState[course] &&
@@ -109,7 +109,7 @@ const ShowCourseAttendance = (props) => {
                 ))
             )}
           </tbody>
-        </Table>
+        </table>
         {flag && (
           <button className="Button" onClick={onClickHandler}>
             save

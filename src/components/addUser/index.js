@@ -1,7 +1,6 @@
 
 import { useDispatch, useSelector } from "react-redux";
 import "../../styles/style.css";
-import Table from 'react-bootstrap/Table';
 import AddNewUser from "./addNewUser";
 import DeleteConfirmation from './../deleteConfirmation/DeleteConfirmation';
 import { useState } from 'react';
@@ -12,6 +11,7 @@ import {
   userMarksDeleted,
   userUnregistered,
 } from "../../redux/actions";
+import "../../styles/table-style.css"
 
 const AddUser = () => {
   const users = useSelector((state) => state.userReducer);
@@ -45,7 +45,7 @@ const AddUser = () => {
         <AddNewUser />
         <EditUser show={show1} setShow={setShow1} item={editItem} setItem={setEditItem}/>
         <DeleteConfirmation show={show} setShow={setShow} deleteFunc={deleteFunc}/>
-        <Table bordered hover>
+        <table className="styled-table">
           <thead>
             <tr>
               <th>Users</th>
@@ -66,7 +66,7 @@ const AddUser = () => {
               </tr>
             ))}
           </tbody>
-        </Table>       
+        </table>       
       </div>
     </div>
   );

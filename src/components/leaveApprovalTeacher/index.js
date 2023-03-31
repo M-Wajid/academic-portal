@@ -1,7 +1,7 @@
 import { useSelector, useDispatch } from "react-redux";
 import { teacherApproved } from "./../../redux/actions/index";
 import "../../styles/style.css";
-import Table from "react-bootstrap/Table";
+import "../../styles/table-style.css"
 
 const LeaveApprovalTeacher = () => {
   const leaveState = useSelector((state) => state.leaveReducer);
@@ -12,15 +12,17 @@ const LeaveApprovalTeacher = () => {
     <div className="Main">
       <h1 className="Heading">Leave</h1>
       <div className="Data3">
-        <Table bordered hover>
+        <table className="styled-table">
           <thead>
-            <th>Course</th>
-            <th>Student Name</th>
-            <th>Leave From</th>
-            <th>Leave To</th>
-            <th>Teacher Approval</th>
-            <th>Admin Approval</th>
-            <th>Actions</th>
+            <tr>
+              <th>Course</th>
+              <th>Student Name</th>
+              <th>Leave From</th>
+              <th>Leave To</th>
+              <th>Teacher Approval</th>
+              <th>Admin Approval</th>
+              <th>Actions</th>
+            </tr>
           </thead>
           <tbody>
             {Object.keys(leaveState).map((key) =>
@@ -59,7 +61,7 @@ const LeaveApprovalTeacher = () => {
               )
             )}
           </tbody>
-        </Table>
+        </table>
       </div>
     </div>
   );

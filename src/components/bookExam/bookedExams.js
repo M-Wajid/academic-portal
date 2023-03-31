@@ -1,4 +1,4 @@
-import Table from "react-bootstrap/Table";
+import "../../styles/table-style.css"
 import { useDispatch, useSelector } from "react-redux";
 import { bookedExamDeleted } from "../../redux/actions";
 import { useState } from 'react';
@@ -22,7 +22,7 @@ const BookedExams = () => {
     <>
       <DeleteConfirmation show={show} setShow={setShow} deleteFunc={deleteFunc}/>
       {bookExamState.bookedExam.length !== 0 ? (
-        <Table bordered hover>
+        <table className="styled-table">
           <thead>
             <tr>
               <th>Course Name</th>
@@ -49,7 +49,7 @@ const BookedExams = () => {
                 )
             )}
           </tbody>
-        </Table>
+        </table>
       ): <p>NO Exams Booked</p>}
     </>
   );

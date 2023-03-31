@@ -1,4 +1,4 @@
-import Table from "react-bootstrap/Table";
+import "../../styles/table-style.css"
 import { useSelector } from "react-redux";
 
 const ViewCourseMarks = (props) => {
@@ -6,7 +6,7 @@ const ViewCourseMarks = (props) => {
   const marksState = useSelector((state) => state.marksReducer);
   const { course } = props;
   return (
-    <Table bordered hover>
+    <table className="styled-table">
       <thead>
         <tr>
           <th>Task Type</th>
@@ -31,7 +31,7 @@ const ViewCourseMarks = (props) => {
             : null
         )}
       </tbody>
-    </Table>
+    </table>
   );
 };
 

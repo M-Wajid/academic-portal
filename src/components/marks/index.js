@@ -5,7 +5,7 @@ import {
   marksEdited,
   taskAdded,
 } from "./../../redux/actions/index";
-import Table from "react-bootstrap/Table";
+import "../../styles/table-style.css"
 import ShowAllMarks from "./showAllMarks";
 import AddMarks from "./addMarks";
 
@@ -47,7 +47,7 @@ const Marks = () => {
     <div className="Main">
       <h1 className="Heading">Marks</h1>
       <div className="Data3">
-        <Table bordered hover>
+        <table className="styled-table">
           <thead>
             <tr>
               <th>Select Course</th>
@@ -84,7 +84,7 @@ const Marks = () => {
               </td>
             </tr>
           </tbody>
-        </Table>
+        </table>
         {course === "default" ? (
           <ShowAllMarks />
         ) : (
@@ -111,7 +111,7 @@ const Marks = () => {
                       key2 === taskType && (
                         <>
                           <h1>{key2}</h1>
-                          <Table bordered hover>
+                          <table className="styled-table">
                             <thead>
                               <tr>
                                 <th>Name</th>
@@ -159,7 +159,7 @@ const Marks = () => {
                                 </tr>
                               ))}
                             </tbody>
-                          </Table>
+                          </table>
                         </>
                       )
                   )

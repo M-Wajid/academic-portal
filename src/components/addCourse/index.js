@@ -2,8 +2,8 @@ import { useSelector, useDispatch } from "react-redux";
 import { useState } from "react";
 import { courseAdded } from "./../../redux/actions/index";
 import "../../styles/style.css";
-import Table from "react-bootstrap/Table";
 import EditCourse from "./editCourse";
+import "../../styles/table-style.css"
 
 const AddCourse = () => {
   const courseState = useSelector((state) => state.courseReducer);
@@ -56,7 +56,7 @@ const AddCourse = () => {
           setEditCourse={setEditCourse}
           oldCourse={oldCourse}
         />
-        <Table bordered hover>
+        <table className="styled-table">
           <thead>
             <tr>
               <th>Courses</th>
@@ -79,7 +79,7 @@ const AddCourse = () => {
               </tr>
             ))}
           </tbody>
-        </Table>
+        </table>
       </div>
     </div>
   );

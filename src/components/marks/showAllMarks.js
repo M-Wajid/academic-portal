@@ -1,4 +1,4 @@
-import Table from "react-bootstrap/Table";
+import "../../styles/table-style.css"
 import { useSelector } from "react-redux";
 
 const ShowAllMarks = () => {
@@ -11,7 +11,7 @@ const ShowAllMarks = () => {
       !!courseState[key].find((el) => el.Name === user.name) && (
         <>
           <h1>{key}</h1>
-          <Table bordered hover>
+          <table className="styled-table">
             <thead>
               <tr>
                 <th>Task Type</th>
@@ -34,7 +34,7 @@ const ShowAllMarks = () => {
                 ))}
               </tbody>
             ))}
-          </Table>
+          </table>
         </>
       )
   );

@@ -1,5 +1,5 @@
 import { useSelector } from "react-redux";
-import Table from "react-bootstrap/Table";
+import "../../styles/table-style.css"
 
 const ShowAllAttendance = () => {
   const attendanceState = useSelector((state) => state.attendanceReducer);
@@ -15,7 +15,7 @@ const ShowAllAttendance = () => {
               <h1>{key}</h1>
               {!!attendanceState[key] &&
               attendanceState[key].length !== 0 && (
-                <Table bordered hover>
+                <table className="styled-table">
                   <thead>
                     <tr>
                       {Object.keys(attendanceState[key][0]).map((item) => (
@@ -32,7 +32,7 @@ const ShowAllAttendance = () => {
                       </tr>
                     ))}
                   </tbody>
-                </Table>
+                </table>
               )}
             </>
           )

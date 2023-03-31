@@ -1,7 +1,7 @@
 import { useSelector, useDispatch } from "react-redux";
 import { adminApproved } from "../../redux/actions";
 import "../../styles/style.css";
-import Table from "react-bootstrap/Table";
+import "../../styles/table-style.css"
 
 const LeaveApprovalAdmin = () => {
   const leaveState = useSelector((state) => state.leaveReducer);
@@ -10,7 +10,7 @@ const LeaveApprovalAdmin = () => {
     <div className="Main">
       <h1 className="Heading">Leave</h1>
       <div className="Data3">
-        <Table bordered hover>
+        <table className="styled-table">
           <thead>
             <tr>
               <th>Course</th>
@@ -59,7 +59,7 @@ const LeaveApprovalAdmin = () => {
               )
             )}
           </tbody>
-        </Table>
+        </table>
       </div>
     </div>
   );

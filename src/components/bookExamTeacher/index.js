@@ -2,7 +2,7 @@ import "../../styles/style.css";
 import { useDispatch, useSelector } from "react-redux";
 import { useState } from "react";
 import AddExamDate from "./addExamDate";
-import Table from "react-bootstrap/Table";
+import "../../styles/table-style.css"
 import EditExamDate from "./editExamDate";
 import { examDateDeleted } from './../../redux/actions/index';
 
@@ -28,7 +28,7 @@ const BookExamTeacher = () => {
         <div className="Data3">
           <AddExamDate />
           <EditExamDate show={show} setShow={setShow} editItem={editItem} setEditItem={setEditItem} editItemIndex={editItemIndex}/>
-          <Table bordered hover>
+          <table className="styled-table">
             <thead>
               <tr>
                 <th>Course Name</th>
@@ -70,7 +70,7 @@ const BookExamTeacher = () => {
                 )
               )}
             </tbody>
-          </Table>
+          </table>
         </div>
       </div>
     </>

@@ -1,5 +1,5 @@
 import { useDispatch, useSelector } from "react-redux";
-import Table from "react-bootstrap/Table";
+import "../../styles/table-style.css"
 import { attendanceDeletedSingle, courseMarksDeleted, courseUnregistered } from "./../../redux/actions/index";
 import { useState } from "react";
 import DeleteConfirmation from './../deleteConfirmation/DeleteConfirmation';
@@ -27,7 +27,7 @@ const ViewCourses = () => {
   return (
     <>
       <DeleteConfirmation show={show} setShow={setShow} deleteFunc={deleteFunc}/>
-      <Table bordered hover>
+      <table className="styled-table">
         <thead>
           <tr>
             <th>Courses</th>
@@ -53,7 +53,7 @@ const ViewCourses = () => {
             )
           )}
         </tbody>
-      </Table>
+      </table>
     </>
   );
 };

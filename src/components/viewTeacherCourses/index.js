@@ -1,23 +1,26 @@
 import { useSelector } from "react-redux";
-import Table from "react-bootstrap/Table";
+import "../../styles/table-style.css"
 
 const ViewCourses = () => {
   const user = JSON.parse(localStorage.getItem("data"));
   const courseState = useSelector((state) => state.courseReducer);
 
   return (
-    <Table bordered hover>
-      <tbody>
+    <table className="styled-table">
+      <thead>
         <tr>
           <th>Courses</th>
+        </tr>
+      
+      </thead>
+      <tbody>
           {Object.keys(courseState).map((key) =>
             courseState[key].map((item) =>
-              item.Name === user.name ? <td>{key}</td> : null
+              item.Name === user.name ? <tr><td>{key}</td></tr> : null
             )
           )}
-        </tr>
       </tbody>
-    </Table>
+    </table>
   );
 };
 
