@@ -39,25 +39,46 @@ const marksReducer = (state = initialState, action) => {
       temp = Object.keys(state).includes(action.course);
       !temp && (state[action.course] = {});
       state[action.course][action.taskType] = [];
-      return{
+      return {
         ...state,
-      }
+      };
     case "EDIT_MARKS":
-      state[action.course][action.taskType].map((el) => el.Student_Name === action.item.Student_Name && (el.Obtained_Marks = action.data.Obtained_Marks))
+      state[action.course][action.taskType].map(
+        (el) =>
+          el.Student_Name === action.item.Student_Name && (
+            <>
+              {(el.Obtained_Marks = action.data.Obtained_Marks)}
+              {(el.Total_Marks = action.data.Total_Marks)}
+            </>
+          )
+      );
       console.log(state);
-      return{
-        ...state
-      }
-    case "DELETE_COURSE_MARKS":
-      !!state[action.course] && Object.keys(state[action.course]).map(key => state[action.course][key] = state[action.course][key].filter(el => el.Student_Name !== action.user))
-      return{
+      return {
         ...state,
-      }
+      };
+    case "DELETE_COURSE_MARKS":
+      !!state[action.course] &&
+        Object.keys(state[action.course]).map(
+          (key) =>
+            (state[action.course][key] = state[action.course][key].filter(
+              (el) => el.Student_Name !== action.user
+            ))
+        );
+      return {
+        ...state,
+      };
     case "DELETE_USER_MARKS":
-      Object.keys(state).map(key => Object.keys(state[key]).map(item => state[key][item]=state[key][item].filter(el => el.Student_Name !== action.name)))  
-      return{
-        ...state
-      }
+      Object.keys(state).map((key) =>
+        Object.keys(state[key]).map(
+          (item) =>
+            (state[key][item] = state[key][item].filter(
+              (el) => el.Student_Name !== action.name
+            ))
+        )
+      );
+      return {
+        ...state,
+      };
     default:
       return state;
   }

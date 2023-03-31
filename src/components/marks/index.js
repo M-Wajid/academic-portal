@@ -2,13 +2,13 @@ import { useSelector, useDispatch } from "react-redux";
 import "../../styles/style.css";
 import { useState } from "react";
 import {
-  marksEdited,
   taskAdded,
 } from "./../../redux/actions/index";
 import "../../styles/table-style.css"
 import ShowAllMarks from "./showAllMarks";
 import AddMarks from "./addMarks";
 import { MdCreate } from "react-icons/md";
+import EditMarks from "./editMarks";
 
 const Marks = () => {
   const user = JSON.parse(localStorage.getItem("data"));
@@ -16,8 +16,8 @@ const Marks = () => {
   const marksState = useSelector((state) => state.marksReducer);
   const [course, setCourse] = useState("default");
   const [taskType, setTaskType] = useState("default");
-  const [flag2, setFlag2] = useState(false);
-  const [data, setData] = useState();
+  const [orignalData, setOrignalData] = useState();
+  const [show, setShow] = useState(false);
   const [temp, setTemp] = useState();
   const dispatch = useDispatch();
 
@@ -39,9 +39,8 @@ const Marks = () => {
   };
 
   const edit = (item) => {
-    setFlag2(false);
-    dispatch(marksEdited(course, taskType, item, data));
-    setData({});
+    setOrignalData(item);
+    setShow(true);
   };
 
   return (
@@ -104,6 +103,7 @@ const Marks = () => {
           ) : (
             <>
               <AddMarks course={course} taskType={taskType} />
+              <EditMarks show={show} setShow={setShow} course={course} taskType={taskType} orignalData={orignalData}/>
               {Object.keys(marksState).map(
                 (key) =>
                   key === course &&
@@ -128,35 +128,14 @@ const Marks = () => {
                                   <td>{item.Student_Name}</td>
                                   <td>{item.Obtained_Marks}</td>
                                   <td>{item.Total_Marks}</td>
-                                  {flag2 ? (
-                                    <>
-                                      <input
-                                        name="Obtained_Marks"
-                                        type="text"
-                                        onChange={(event) =>
-                                          setData({
-                                            [event.target.name]:
-                                              event.target.value,
-                                          })
-                                        }
-                                      />
-                                      <button
-                                        onClick={() => edit(item)}
-                                        className="Button"
-                                      >
-                                        save
-                                      </button>
-                                    </>
-                                  ) : (
-                                    <td>
-                                      <button
-                                        className="Button"
-                                        onClick={() => setFlag2(true)}
-                                      >
-                                        <MdCreate />
-                                      </button>
+                                  <td>
+                                    <button
+                                      className="Button"
+                                      onClick={() => edit(item)}
+                                    >
+                                      <MdCreate />
+                                    </button>
                                     </td>
-                                  )}
                                 </tr>
                               ))}
                             </tbody>
