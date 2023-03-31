@@ -7,7 +7,7 @@ import "../../styles/table-style.css"
 const AssignTeacher = () => {
   const userState = useSelector((state) => state.userReducer);
   const courseState = useSelector((state) => state.courseReducer);
-  const [data, setData] = useState({});
+  const [data, setData] = useState({"TeacherName": "default", "CourseName": "default"});
   const dispatch = useDispatch();
 
   const onChangeHandler = (event) => {
@@ -18,7 +18,13 @@ const AssignTeacher = () => {
   };
 
   const onClickHandler = () => {
-    Object.keys(data).length === 2 ? dispatch(teacherAssigned(data)) : alert("Please fill out all the fields");
+    if (Object.keys(data).length === 2 && data.TeacherName !== "default" && data.CourseName !== "default"){
+      dispatch(teacherAssigned(data));
+      alert(data.TeacherName + " is assigned to " + data.CourseName);
+      setData({"TeacherName": "default", "CourseName": "default"});
+    }else {
+      alert("Please fill out all the fields");
+    } 
   }
 
   return (
@@ -36,7 +42,7 @@ const AssignTeacher = () => {
           <tbody>
             <tr>
               <td>
-                <select name="TeacherName" onChange={onChangeHandler}>
+                <select value={data.TeacherName} name="TeacherName" onChange={onChangeHandler}>
                   <option value="default">Please Select a Teacher</option>
                   {userState.users.map(
                     (item) =>
