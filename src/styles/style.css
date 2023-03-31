@@ -35,13 +35,23 @@
 }
 
 .Button{
-  padding: 7px;
+  padding: 10px;
   cursor: pointer;
   background-color: rgb(55, 92, 162);
   color: white;
   border-radius: 15px;
   border: 2px solid white;
-  margin-left: 15px;
+  margin-left: 5px;
+  font-weight: bold;
+}
+
+.Button:hover{
+  background-color: white;
+  color: rgb(55, 92, 162);
+  border: 2px solid rgb(55, 92, 162);
+  transition: 0.5s ease-in-out;
+  transform: scale(1.05);
+
 }
 
 .Inputs{

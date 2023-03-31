@@ -11,7 +11,9 @@ import {
   userMarksDeleted,
   userUnregistered,
 } from "../../redux/actions";
-import "../../styles/table-style.css"
+import "../../styles/table-style.css";
+import { MdDelete } from "react-icons/md";
+import { MdCreate } from "react-icons/md";
 
 const AddUser = () => {
   const users = useSelector((state) => state.userReducer);
@@ -59,8 +61,8 @@ const AddUser = () => {
                 <td>{item.name}</td>
                 <td>{item.role}</td>
                 <td>
-                <button className="Button" onClick={() => handleEdit(item)}>Edit</button>
-                {item.role !== 'admin' && <button className="Button" onClick={() => onClickHandler(item.name)}>Delete</button>}
+                <button className="Button" onClick={() => handleEdit(item)}><MdCreate /></button>
+                {item.role !== 'admin' && <button className="Button" onClick={() => onClickHandler(item.name)}><MdDelete /></button>}
                 </td>
                 
               </tr>

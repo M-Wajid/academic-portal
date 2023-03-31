@@ -1,7 +1,9 @@
 import { useSelector, useDispatch } from "react-redux";
 import { teacherApproved } from "./../../redux/actions/index";
 import "../../styles/style.css";
-import "../../styles/table-style.css"
+import "../../styles/table-style.css";
+import { MdOutlineThumbUpOffAlt } from "react-icons/md";
+import { MdOutlineThumbDownOffAlt } from "react-icons/md";
 
 const LeaveApprovalTeacher = () => {
   const leaveState = useSelector((state) => state.leaveReducer);
@@ -43,7 +45,7 @@ const LeaveApprovalTeacher = () => {
                             dispatch(teacherApproved("Approved", key, item.id))
                           }
                         >
-                          Approve
+                          <MdOutlineThumbUpOffAlt />
                         </button>
                         <button
                           className="Button"
@@ -53,7 +55,7 @@ const LeaveApprovalTeacher = () => {
                             )
                           }
                         >
-                          Disapprove
+                          <MdOutlineThumbDownOffAlt />
                         </button>
                       </td>
                     </tr>

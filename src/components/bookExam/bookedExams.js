@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { bookedExamDeleted } from "../../redux/actions";
 import { useState } from 'react';
 import DeleteConfirmation from './../deleteConfirmation/DeleteConfirmation';
+import { MdDelete } from "react-icons/md";
 
 const BookedExams = () => {
   const bookExamState = useSelector((state) => state.bookExamReducer);
@@ -42,7 +43,7 @@ const BookedExams = () => {
                         className="Button"
                         onClick={() => handleDelete(item.id)}
                       >
-                        Delete
+                        <MdDelete />
                       </button>
                     </td>
                   </tr>

@@ -4,6 +4,8 @@ import { leaveDeleted } from "../../redux/actions";
 import { useState } from "react";
 import DeleteConfirmation from "./../deleteConfirmation/DeleteConfirmation";
 import EditLeave from "./editLeave";
+import { MdDelete } from "react-icons/md";
+import { MdCreate } from "react-icons/md";
 
 const ShowAllLeaves = () => {
   const leaveState = useSelector((state) => state.leaveReducer);
@@ -75,14 +77,14 @@ const ShowAllLeaves = () => {
                           className="Button"
                           onClick={() => handleEdit(key, item)}
                         >
-                          Edit
+                          <MdCreate />
                         </button>
                     )}
                     <button
                       className="Button"
                       onClick={() => handleDelete(key, item.id)}
                     >
-                      Delete
+                      <MdDelete />
                     </button>
                     </td>
                   </tr>

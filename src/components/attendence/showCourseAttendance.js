@@ -2,7 +2,8 @@ import { useSelector, useDispatch } from "react-redux";
 import "../../styles/style.css";
 import { useState } from "react";
 import { attendanceAdded } from "./../../redux/actions/index";
-import "../../styles/table-style.css"
+import "../../styles/table-style.css";
+import { MdCreate } from "react-icons/md";
 
 const ShowCourseAttendance = (props) => {
   const { course, edit, flag, setFlag } = props;
@@ -102,7 +103,7 @@ const ShowCourseAttendance = (props) => {
                         className="Button"
                         onClick={() => edit(item, index)}
                       >
-                        EDIT
+                        <MdCreate />
                       </button>
                     </td>
                   </tr>

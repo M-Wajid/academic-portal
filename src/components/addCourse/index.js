@@ -4,6 +4,7 @@ import { courseAdded } from "./../../redux/actions/index";
 import "../../styles/style.css";
 import EditCourse from "./editCourse";
 import "../../styles/table-style.css"
+import { MdCreate } from "react-icons/md";
 
 const AddCourse = () => {
   const courseState = useSelector((state) => state.courseReducer);
@@ -70,7 +71,7 @@ const AddCourse = () => {
                 {courseState[key].length === 0 ? (
                   <td>
                     <button className="Button" onClick={() => handleEdit(key)}>
-                      Edit
+                      <MdCreate />
                     </button>
                   </td>
                 ) : (

@@ -8,6 +8,7 @@ import {
 import "../../styles/table-style.css"
 import ShowAllMarks from "./showAllMarks";
 import AddMarks from "./addMarks";
+import { MdCreate } from "react-icons/md";
 
 const Marks = () => {
   const user = JSON.parse(localStorage.getItem("data"));
@@ -152,7 +153,7 @@ const Marks = () => {
                                         className="Button"
                                         onClick={() => setFlag2(true)}
                                       >
-                                        Edit
+                                        <MdCreate />
                                       </button>
                                     </td>
                                   )}

@@ -5,6 +5,8 @@ import AddExamDate from "./addExamDate";
 import "../../styles/table-style.css"
 import EditExamDate from "./editExamDate";
 import { examDateDeleted } from './../../redux/actions/index';
+import { MdDelete } from "react-icons/md";
+import { MdCreate } from "react-icons/md";
 
 const BookExamTeacher = () => {
   const user = JSON.parse(localStorage.getItem("data"));
@@ -54,14 +56,14 @@ const BookExamTeacher = () => {
                                 className="Button"
                                 onClick={() => edit(item, index)}
                               >
-                                Edit
+                                <MdCreate />
                               </button>
                               {!bookExamState["bookedExam"].find(el => el.courseName === item.courseName) && 
                               <button
                                 className="Button"
                                 onClick={() => dispatch(examDateDeleted(item.courseName))}
                               >
-                                Delete
+                                <MdDelete />
                               </button>}
                             </td>
                           </tr>

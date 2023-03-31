@@ -3,6 +3,7 @@ import "../../styles/table-style.css"
 import { attendanceDeletedSingle, courseMarksDeleted, courseUnregistered } from "./../../redux/actions/index";
 import { useState } from "react";
 import DeleteConfirmation from './../deleteConfirmation/DeleteConfirmation';
+import { MdDelete } from "react-icons/md";
 
 const ViewCourses = () => {
   const user = JSON.parse(localStorage.getItem("data"));
@@ -45,7 +46,7 @@ const ViewCourses = () => {
                       className="Button"
                       onClick={() => handleDelete(key,item)}
                     >
-                      Delete
+                      <MdDelete />
                     </button>
                   </td>
                 </tr>
