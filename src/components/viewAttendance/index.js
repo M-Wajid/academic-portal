@@ -17,7 +17,8 @@ const ViewAttendence = () => {
     <div className="Main">
       <h1 className="Heading">Attendance</h1>
       <div className="Data3">
-        <select name="course" onChange={onChangeHandler}>
+        <div className="Data"> 
+        <select class="form-control" value={course} name="course" onChange={onChangeHandler}>
           <option value="Show All">Please select a course</option>
           {Object.keys(courseState).map((key) =>
             courseState[key].map(
@@ -26,6 +27,8 @@ const ViewAttendence = () => {
             )
           )}
         </select>
+        <button className="Button" onClick={() => setCourse("Show All")}>Clear</button>
+        </div>
         <br></br>
         <br></br>
         {course === "Show All" ? (

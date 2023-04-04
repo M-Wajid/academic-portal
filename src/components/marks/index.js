@@ -1,10 +1,8 @@
 import { useSelector, useDispatch } from "react-redux";
 import "../../styles/style.css";
 import { useState } from "react";
-import {
-  taskAdded,
-} from "./../../redux/actions/index";
-import "../../styles/table-style.css"
+import { taskAdded } from "./../../redux/actions/index";
+import "../../styles/table-style.css";
 import ShowAllMarks from "./showAllMarks";
 import AddMarks from "./addMarks";
 import { MdCreate } from "react-icons/md";
@@ -43,48 +41,39 @@ const Marks = () => {
     setShow(true);
   };
 
+  const clear = () => {
+    setCourse("default");
+    setTaskType("default");
+  }
+
   return (
     <div className="Main">
       <h1 className="Heading">Marks</h1>
       <div className="Data3">
-        <table className="styled-table">
-          <thead>
-            <tr>
-              <th>Select Course</th>
-              <th>Select Task Type</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>
-                <select onChange={onChangeHandler}>
-                  <option value="default">Please Select a Course</option>
-                  {Object.keys(courseState).map((key) =>
-                    courseState[key].map(
-                      (item) =>
-                        item.Name === user.name && (
-                          <option value={key}>{key}</option>
-                        )
-                    )
-                  )}
-                </select>
-              </td>
-              <td>
-                <select onChange={onChangeHandler2}>
-                  <option value="default">Please Select Task Type</option>
-                  {Object.keys(marksState).map(
-                    (key) =>
-                      key === course &&
-                      Object.keys(marksState[key]).map((item) => (
-                        <option value={item}>{item}</option>
-                      ))
-                  )}
-                  <option value="new">new</option>
-                </select>
-              </td>
-            </tr>
-          </tbody>
-        </table>
+        <div className="Data">
+        <select value={course} class="form-control" onChange={onChangeHandler} style={{marginRight: "10px"}}>
+          <option value="default">Please Select a Course</option>
+          {Object.keys(courseState).map((key) =>
+            courseState[key].map(
+              (item) =>
+                item.Name === user.name && <option value={key}>{key}</option>
+            )
+          )}
+        </select>
+        <select value={taskType} class="form-control" onChange={onChangeHandler2} style={{marginRight: "10px"}}>
+          <option value="default">Please Select Task Type</option>
+          {Object.keys(marksState).map(
+            (key) =>
+              key === course &&
+              Object.keys(marksState[key]).map((item) => (
+                <option value={item}>{item}</option>
+              ))
+          )}
+          <option value="new">new</option>
+        </select>
+        <button className="Button" onClick={clear}>Clear</button>
+        </div>
+        
         {course === "default" ? (
           <ShowAllMarks />
         ) : (
@@ -103,7 +92,13 @@ const Marks = () => {
           ) : (
             <>
               <AddMarks course={course} taskType={taskType} />
-              <EditMarks show={show} setShow={setShow} course={course} taskType={taskType} orignalData={orignalData}/>
+              <EditMarks
+                show={show}
+                setShow={setShow}
+                course={course}
+                taskType={taskType}
+                orignalData={orignalData}
+              />
               {Object.keys(marksState).map(
                 (key) =>
                   key === course &&
@@ -135,7 +130,7 @@ const Marks = () => {
                                     >
                                       <MdCreate />
                                     </button>
-                                    </td>
+                                  </td>
                                 </tr>
                               ))}
                             </tbody>

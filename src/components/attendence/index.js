@@ -29,8 +29,8 @@ const Attendance = () => {
     <div className="Main">
       <h1 className="Heading">Attendance</h1>
       <div className="Data3">
-        <div style={{ marginBottom: "10px" }}>
-          <select onChange={onChangeHandler}>
+        <div className="Data">
+          <select value={course} class="form-control" onChange={onChangeHandler}>
             <option value="default">Please Select a Course</option>
             {Object.keys(courseState).map((key) =>
               courseState[key].map(
@@ -39,6 +39,7 @@ const Attendance = () => {
               )
             )}
           </select>
+          <button className="Button" onClick={() => setCourse("default")}>Clear</button>
         </div>
         <br></br>
         <br></br>

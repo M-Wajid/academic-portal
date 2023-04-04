@@ -79,7 +79,6 @@ const AddNewUser = () => {
                 onChange={onChangeHandler}
               >
                 <option>Please Select Role</option>
-                <option value="admin">Admin</option>
                 <option value="teacher">Teacher</option>
                 <option value="student">Student</option>
               </select>

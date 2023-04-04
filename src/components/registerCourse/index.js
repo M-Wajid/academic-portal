@@ -31,7 +31,7 @@ const RegisterCourse = () => {
       <h1 className="Heading">Add new Course</h1>
       <div className="Data3">
         <div className="Data">
-         <select onChange={onChangeHandler}>
+         <select class="form-control" onChange={onChangeHandler}>
           <option value="Show All">Please select a course</option>
           {Object.keys(courseState).map((key) => {
             if (courseState[key].length === 0) {

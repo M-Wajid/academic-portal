@@ -42,7 +42,7 @@ const AssignTeacher = () => {
           <tbody>
             <tr>
               <td>
-                <select value={data.TeacherName} name="TeacherName" onChange={onChangeHandler}>
+                <select class="form-control" value={data.TeacherName} name="TeacherName" onChange={onChangeHandler}>
                   <option value="default">Please Select a Teacher</option>
                   {userState.users.map(
                     (item) =>
@@ -53,7 +53,7 @@ const AssignTeacher = () => {
                 </select>
               </td>
               <td>
-                <select name="CourseName" onChange={onChangeHandler}>
+                <select class="form-control" name="CourseName" onChange={onChangeHandler}>
                   <option value="default">Please Select a Course</option>
                   {Object.keys(courseState).map((key) => {
                     if (courseState[key].length === 0) {

@@ -1,5 +1,5 @@
 import { useDispatch, useSelector } from "react-redux";
-import "../../styles/table-style.css"
+import "../../styles/table-style.css";
 import { leaveDeleted } from "../../redux/actions";
 import { useState } from "react";
 import DeleteConfirmation from "./../deleteConfirmation/DeleteConfirmation";
@@ -71,22 +71,24 @@ const ShowAllLeaves = () => {
                     {Object.keys(item).map(
                       (el) => el !== "id" && <td>{item[el]}</td>
                     )}
-                    <td>
-                    {item.TeacherApproval === " - " && (
+                    {item.TeacherApproval === " - " ? (
+                      <td>
                         <button
                           className="Button"
                           onClick={() => handleEdit(key, item)}
                         >
                           <MdCreate />
                         </button>
+                        <button
+                          className="Button"
+                          onClick={() => handleDelete(key, item.id)}
+                        >
+                          <MdDelete />
+                        </button>
+                      </td>
+                    ) : (
+                      <td>No Actions Granted</td>
                     )}
-                    <button
-                      className="Button"
-                      onClick={() => handleDelete(key, item.id)}
-                    >
-                      <MdDelete />
-                    </button>
-                    </td>
                   </tr>
                 )
             )

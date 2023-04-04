@@ -33,19 +33,22 @@ const UnregisterUser = () => {
   return (
     <div className="Main">
       <h1 className="Heading">Unregister User from Course</h1>
-      <div className="Data2">
-        <select value={course} onChange={onChangeHandler}>
+      <div className="Data">
+        <div className='Data'>
+          <select class="form-control" value={course} onChange={onChangeHandler} style={{marginRight: "10px"}}>
           <option value="default">Please Select a Course</option>
           {Object.keys(courseState).map(item => courseState[item].length !==0 && <option value={item}>{item}</option>)}
         </select>
 
         {course !== "default" && 
-        <select onChange={onChangeHandler2}>
+        <select class="form-control" onChange={onChangeHandler2} style={{marginRight: "10px"}}>
           <option value="default">Please Select a User</option>
           {courseState[course].map(item => <option value={item.Name}>{item.Name}</option>)}
         </select>}
         
         <button onClick={onClickHandler} className="Button">Unregister</button>
+        </div>
+        
       </div>
     </div>
   )

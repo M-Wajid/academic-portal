@@ -45,6 +45,7 @@ const AddCourse = () => {
             type="text"
             placeholder="Course Name"
             onChange={onChangeHandler}
+            class="form-control"
           />
           <button className="Button" onClick={onClickHandler}>
             Add
