@@ -6,7 +6,10 @@ import "../../styles/home.css";
 const HOME = () => {
   const userState = useSelector((state) => state.userReducer);
   const navigate = useNavigate();
-  let [currentUser, setCurrentUser] = useState({});
+  const [foundUser,setFoundUser] = useState(undefined);
+  const [currentUser, setCurrentUser] = useState({});
+  const [emailFlag, setEmailFlag] = useState(false);
+  const [passwordFlag, setPasswordFlag] = useState(false);
 
   const onChangeHandler = (event) => {
     setCurrentUser({
@@ -16,7 +19,7 @@ const HOME = () => {
   };
 
   const check = (user) => {
-    localStorage.setItem("data",JSON.stringify(user));
+    localStorage.setItem("data", JSON.stringify(user));
     switch (user.role) {
       case "admin":
         navigate("/admin");
@@ -32,40 +35,56 @@ const HOME = () => {
     }
   };
 
-  const onClickHandler = () => {
-    const user = userState.users.find(
-      (users) => users.email === currentUser.email
-    );
-    user === undefined
-      ? alert("User not found")
-      : user.password === currentUser.password
-      ? check(user)
-      : alert("Password is incorrect");
+  const onSubmitHandler = (event) => {
+    event.preventDefault();
+    !!foundUser && 
+    (foundUser.password === currentUser.password
+      ? check(foundUser)
+      : setPasswordFlag(true));
+  };
+
+  const onBlurHandler = () => {
+    const user = userState.users.find((users) => users.email === currentUser.email)
+    if (!user) {
+      setEmailFlag(true);
+    } else {
+      setEmailFlag(false);
+      setFoundUser(user);
+    }
   };
 
   return (
-    <>
-    <div className="main">
-      <h1>LOGIN</h1>
+    <form onSubmit={onSubmitHandler}>
+      <div className="main">
+        <h1>LOGIN</h1>
         <input
-        className="inputFields"
-        name="email"
-        type="text"
-        placeholder="EMAIL"
-        autoComplete="off"
-        onChange={onChangeHandler}
-      />
-      <input
-        className="inputFields"
-        name="password"
-        type="password"
-        placeholder="PASSWORD"
-        onChange={onChangeHandler}
-      />
-      <button className="loginButton" onClick={onClickHandler}>LOGIN</button>   
-    </div>
-    </>
-    
+          className="inputFields"
+          name="email"
+          type="email"
+          placeholder="EMAIL"
+          autoComplete="off"
+          onChange={onChangeHandler}
+          required
+          onBlur={onBlurHandler}
+          emailFlag={emailFlag.toString()}
+        />
+        {emailFlag && <span>user with this email doesn't exist</span>}
+
+        <input
+          className="inputFields"
+          name="password"
+          type="password"
+          placeholder="PASSWORD"
+          onChange={onChangeHandler}
+          required
+        />
+        {passwordFlag && <span>password is incorrect</span>}
+
+        <button className="loginButton" type="submit">
+          LOGIN
+        </button>
+      </div>
+    </form>
   );
 };
 

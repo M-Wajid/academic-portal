@@ -8,7 +8,7 @@
 
 .loginButton{
   width: 52%;
-  margin-bottom: 20px;
+  margin-top: 20px;
   padding: 10px 10px 10px 10px;
   background-color: rgb(0, 18, 52);
   color: White;
@@ -21,8 +21,16 @@
 
 .inputFields{
   width: 50%;
-  margin-bottom: 20px;
+  margin-top: 20px;
   padding: 10px 10px 10px 10px;
   border-radius: 0.3rem;
   border: 1px solid #dfe6e9;
 }
+
+span{
+  font-size: 12px;
+  padding: 3px;
+  color: red;
+}
+
+
