@@ -3,19 +3,20 @@ import Form from "react-bootstrap/Form";
 import Modal from "react-bootstrap/Modal";
 import { useDispatch } from "react-redux";
 import { attendanceEdited } from "../../redux/actions";
+import { useState } from "react";
 
 const EditAttendance = (props) => {
   const { show, setShow, data, setData, index, course } = props;
+  const [date, setDate] = useState(undefined);
   const dispatch = useDispatch();
 
   const onChangeHandler = (event) => {
     setData({
       ...data,
-      [event.target.name]: event.target.value,
+      [date]: event.target.value,
     });
   };
   const handleEdit = () => {
-    console.log(data);
     dispatch(attendanceEdited(course, index, data));
     setShow(false);
   };
@@ -28,20 +29,17 @@ const EditAttendance = (props) => {
         </Modal.Header>
         <Modal.Body>
           <Form>
-            {Object.keys(data).map(
-              (key) =>
-                key !== "Name" && (
-                  <Form.Group className="mb-3">
-                    <Form.Label>{key}</Form.Label>
-                    <Form.Control
-                      name={key}
-                      type="text"
-                      placeholder={data[key]}
-                      onChange={onChangeHandler}
-                    />
-                  </Form.Group>
-                )
-            )}
+            <Form.Group className="mb-3">
+              <Form.Label>Date</Form.Label>
+              <input class="form-control" type="date" min={Object.keys(data)[Object.keys(data).length-4]} max={Object.keys(data)[Object.keys(data).length-1]} onChange={(event) => setDate(event.target.value)}/>
+            </Form.Group>
+            <Form.Group className="mb-3">
+              <Form.Label>Status</Form.Label>
+              <select class="form-control" name={date} value={data[date]} onChange={onChangeHandler}>
+                <option value="P">P</option>
+                <option value="A">A</option>
+              </select>
+            </Form.Group>
           </Form>
         </Modal.Body>
         <Modal.Footer>

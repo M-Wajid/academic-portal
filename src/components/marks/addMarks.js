@@ -12,6 +12,7 @@ const AddMarks = (props) => {
   const [show, setShow] = useState(false);
   const [data, setData] = useState({});
   const dispatch = useDispatch();
+  const [error, setError] = useState(false);
 
   const setNewData = (event) => {
     setData({
@@ -22,12 +23,22 @@ const AddMarks = (props) => {
 
   const onClickHandler = () => {
     if(Object.keys(data).length === 3){
-      dispatch(marksAdded(course, taskType, data));
-      setShow(false);
+      if(!error){
+        dispatch(marksAdded(course, taskType, data));
+        setShow(false);
+      }
     } else{
       alert("Please fill out all the fields");
     }
   };
+
+  const onBlurHandler = () => {
+    if(parseInt(data.Obtained_Marks) > parseInt(data.Total_Marks)){
+      setError(true);
+    }else{
+      setError(false);
+    }
+  }
 
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
@@ -56,7 +67,9 @@ const AddMarks = (props) => {
               <input
                 class="form-control"
                 name="Obtained_Marks"
-                type="text"
+                type="number"
+                min="0"
+                max="100"
                 onChange={setNewData}
                 placeholder="Obtained_Marks"
               />
@@ -66,10 +79,14 @@ const AddMarks = (props) => {
               <input
                 class="form-control"
                 name="Total_Marks"
-                type="text"
+                type="number"
+                min="0"
+                max="100"
                 onChange={setNewData}
                 placeholder="Total_Marks"
+                onBlur={onBlurHandler}
               />
+              {error && <span>Obtained Marks should be less than or equal to Total Marks</span>}
             </Form.Group>
           </Form>
         </Modal.Body>

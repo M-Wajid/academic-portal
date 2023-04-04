@@ -9,12 +9,23 @@ const EditMarks = (props) => {
   const { course, taskType, show, setShow, orignalData } = props;
   const [data, setData] = useState();
   const dispatch = useDispatch();
+  const [error, setError] = useState(false);
   
   const onClickHandler = () => {
-    dispatch(marksEdited(course, taskType, orignalData, data));
-    setData({});
-    setShow(false);
+    if(!error){
+      dispatch(marksEdited(course, taskType, orignalData, data));
+      setData({});
+      setShow(false);
+    }
   };
+
+  const onBlurHandler = () => {
+    if(parseInt(data.Obtained_Marks) > parseInt(data.Total_Marks)){
+      setError(true);
+    }else{
+      setError(false);
+    }
+  }
 
   const handleClose = () => setShow(false);
 
@@ -31,7 +42,9 @@ const EditMarks = (props) => {
               <input
                 class="form-control"
                 name="Obtained_Marks"
-                type="text"
+                type="number"
+                min="0"
+                max="100"
                 onChange={(event) =>
                   setData({
                     ...data,
@@ -47,7 +60,10 @@ const EditMarks = (props) => {
               <input
                 class="form-control"
                 name="Total_Marks"
-                type="text"
+                type="number"
+                min="0"
+                max="100"
+                onBlur={onBlurHandler}
                 onChange={(event) =>
                   setData({
                     ...data,
@@ -57,6 +73,7 @@ const EditMarks = (props) => {
                 }
                 placeholder="Total_Marks"
               />
+              {error && <span>Obtained Marks should be less than or equal to Total Marks</span>}
             </Form.Group>
           </Form>
         </Modal.Body>
