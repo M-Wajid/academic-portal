@@ -3,9 +3,11 @@ import Form from 'react-bootstrap/Form';
 import Modal from 'react-bootstrap/Modal';
 import { useDispatch } from 'react-redux';
 import { leaveEdited } from './../../redux/actions/index';
+import { useState } from 'react';
 
 const EditLeave = (props) => {
   const {show, setShow, id, course, newLeave, setNewLeave} = props;
+  const [error, setError] = useState(false);
   const dispatch = useDispatch();
   const onChangeHandler = (event) => {
     setNewLeave({
@@ -14,8 +16,16 @@ const EditLeave = (props) => {
     })
   }
   const handleEdit = () => {
-    dispatch(leaveEdited(course,id,newLeave));
-    setShow(false);
+    const fromDate = new Date(newLeave.LeaveFrom);
+    const toDate = new Date(newLeave.LeaveTo);
+    if(fromDate < toDate){
+      dispatch(leaveEdited(course,id,newLeave));
+      setShow(false);
+      setError(false);
+    } else{
+      setError(true);
+    }
+    
   }
   const handleClose = () => setShow(false);
 
@@ -32,6 +42,7 @@ const EditLeave = (props) => {
               <Form.Control
                 name="LeaveFrom"
                 type="date"
+                min={new Date().toISOString().split("T")[0]}
                 defaultValue={newLeave.LeaveFrom}
                 onChange={onChangeHandler}
               />
@@ -41,9 +52,11 @@ const EditLeave = (props) => {
               <Form.Control
                 name="LeaveTo"
                 type="date"
+                min={new Date().toISOString().split("T")[0]}
                 defaultValue={newLeave.LeaveTo}
                 onChange={onChangeHandler}
               />
+              {error && <span>Leave To date should be greater than Leave from date</span>}
             </Form.Group>
           </Form>
         </Modal.Body>

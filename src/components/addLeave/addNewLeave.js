@@ -1,9 +1,9 @@
 import { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { leaveAdded } from "../../redux/actions/index";
-import Button from 'react-bootstrap/Button';
-import Form from 'react-bootstrap/Form';
-import Modal from 'react-bootstrap/Modal';
+import Button from "react-bootstrap/Button";
+import Form from "react-bootstrap/Form";
+import Modal from "react-bootstrap/Modal";
 
 const AddNewLeave = () => {
   const courseState = useSelector((state) => state.courseReducer);
@@ -11,6 +11,7 @@ const AddNewLeave = () => {
   const [course, setCourse] = useState("default");
   const [newLeave, setNewLeave] = useState({});
   const [show, setShow] = useState(false);
+  const [error, setError] = useState(false);
   const dispatch = useDispatch();
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
@@ -23,10 +24,17 @@ const AddNewLeave = () => {
   };
 
   const onClickHandler = (event) => {
-    if (course !== "default" && Object.keys(newLeave).length === 2){
-      dispatch(leaveAdded(newLeave, course, courseState[course]));
-      setShow(false);
-      setNewLeave({});
+    const fromDate = new Date(newLeave.LeaveFrom);
+    const toDate = new Date(newLeave.LeaveTo);
+    if (course !== "default" && Object.keys(newLeave).length === 2) {
+      if (fromDate < toDate) {
+        dispatch(leaveAdded(newLeave, course, courseState[course]));
+        setShow(false);
+        setNewLeave({});
+        setError(false);
+      } else {
+        setError(true);
+      }
     } else {
       alert("Please fill out all fields");
     }
@@ -67,6 +75,7 @@ const AddNewLeave = () => {
               <Form.Control
                 name="LeaveFrom"
                 type="date"
+                min={new Date().toISOString().split("T")[0]}
                 onChange={onChangeHandler}
                 required
               />
@@ -76,9 +85,15 @@ const AddNewLeave = () => {
               <Form.Control
                 name="LeaveTo"
                 type="date"
+                min={new Date().toISOString().split("T")[0]}
                 onChange={onChangeHandler}
                 required
               />
+              {error && (
+                <span>
+                  Leave To date should be greater than Leave from date
+                </span>
+              )}
             </Form.Group>
           </Form>
         </Modal.Body>
@@ -96,7 +111,3 @@ const AddNewLeave = () => {
 };
 
 export default AddNewLeave;
-
-  
-
-  
