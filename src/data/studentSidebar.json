@@ -1,0 +1,27 @@
+[
+  {
+    "label": "Home",
+    "key": "/student",
+    "icon": "AiOutlineHome"
+  },
+  {
+    "label": "Attendance",
+    "key": "/viewAttendance",
+    "icon": "AiOutlineProfile"
+  },
+  {
+    "label": "Marks",
+    "key": "/viewMarks",
+    "icon": "AiOutlineFileMarkdown"
+  },
+  {
+    "label": "Course",
+    "key": "/registerCourse",
+    "icon": "AiOutlineBook"
+  },
+  {
+    "label": "Leave",
+    "key": "/studentLeave",
+    "icon": "AiOutlineIssuesClose"
+  }
+]

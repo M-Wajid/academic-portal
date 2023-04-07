@@ -1,0 +1,22 @@
+[
+  {
+    "label": "Home",
+    "key": "/teacher",
+    "icon": "AiOutlineHome"
+  },
+  {
+    "label": "Attendance",
+    "key": "/attendance",
+    "icon": "AiOutlineProfile"
+  },
+  {
+    "label": "Marks",
+    "key": "/marks",
+    "icon": "AiOutlineFileMarkdown"
+  },
+  {
+    "label": "Leave",
+    "key": "/teacherLeave",
+    "icon": "AiOutlineIssuesClose"
+  }
+]

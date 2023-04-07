@@ -1,0 +1,22 @@
+[
+  {
+    "label": "Home",
+    "key": "/admin",
+    "icon": "AiOutlineHome"
+  },
+  {
+    "label": "User",
+    "key": "/addUser",
+    "icon": "AiOutlineUser"
+  },
+  {
+    "label": "Course",
+    "key": "/addCourse",
+    "icon": "AiOutlineBook"
+  },
+  {
+    "label": "Leave",
+    "key": "/adminLeave",
+    "icon": "AiOutlineIssuesClose"
+  }
+]
