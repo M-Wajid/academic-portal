@@ -18,7 +18,7 @@ const SiderMenu = (props) => {
         return{
           label: item.label,
           key: item.key,
-          icon: React.createElement(AntdIcons[item.icon])
+          icon: <div style={{fontSize: "24px"}}>{React.createElement(AntdIcons[item.icon])}</div>
         }
       })}
     />
