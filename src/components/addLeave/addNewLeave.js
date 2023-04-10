@@ -90,7 +90,7 @@ const AddNewLeave = () => {
                 required
               />
               {error && (
-                <span>
+                <span className="span">
                   Leave To date should be greater than Leave from date
                 </span>
               )}

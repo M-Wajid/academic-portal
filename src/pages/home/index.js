@@ -78,7 +78,7 @@ const HOME = () => {
           onChange={onChangeHandler}
           required
         />
-        {passwordFlag && <span>password is incorrect</span>}
+        {passwordFlag && <span className="span">password is incorrect</span>}
 
         <button className="loginButton" type="submit">
           LOGIN

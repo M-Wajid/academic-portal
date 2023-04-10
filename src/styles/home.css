@@ -27,10 +27,8 @@
   border: 1px solid #dfe6e9;
 }
 
-span{
+.span{
   font-size: 12px;
   padding: 3px;
   color: red;
 }
-
-

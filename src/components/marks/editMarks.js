@@ -73,7 +73,7 @@ const EditMarks = (props) => {
                 }
                 placeholder="Total_Marks"
               />
-              {error && <span>Obtained Marks should be less than or equal to Total Marks</span>}
+              {error && <span className="span">Obtained Marks should be less than or equal to Total Marks</span>}
             </Form.Group>
           </Form>
         </Modal.Body>

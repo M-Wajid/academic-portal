@@ -56,7 +56,7 @@ const EditLeave = (props) => {
                 defaultValue={newLeave.LeaveTo}
                 onChange={onChangeHandler}
               />
-              {error && <span>Leave To date should be greater than Leave from date</span>}
+              {error && <span className='span'>Leave To date should be greater than Leave from date</span>}
             </Form.Group>
           </Form>
         </Modal.Body>
