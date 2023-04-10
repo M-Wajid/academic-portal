@@ -1,6 +1,6 @@
 import { Layout, Menu } from "antd";
 import React, { useState } from "react";
-import { Outlet } from "react-router-dom";
+import { Outlet, useNavigate } from "react-router-dom";
 import { contentStyle, headerStyle, siderStyle } from "../../App-Style";
 import { AiOutlineMenu } from "react-icons/ai";
 import { AiOutlineLogout } from "react-icons/ai";
@@ -14,6 +14,7 @@ const { Header, Content, Sider } = Layout;
 const AppLayout = () => {
   const user = JSON.parse(localStorage.getItem("data"));
   const [collapse, setCollapse] = useState(true);
+  const navigate = useNavigate();
   return (
     <Layout>
       <Header style={headerStyle}>
@@ -21,6 +22,12 @@ const AppLayout = () => {
           <AiOutlineMenu onClick={() => setCollapse(!collapse)} />
           <div>Academic Portal</div>
           <Menu
+              onClick={({key}) => {
+                if (key === "logout"){
+                  localStorage.clear();
+                  navigate("/");
+                }
+              }}
               mode="horizontal"
               style={headerStyle}
               items={[
