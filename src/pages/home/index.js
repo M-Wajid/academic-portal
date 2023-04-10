@@ -67,7 +67,7 @@ const HOME = () => {
           onBlur={onBlurHandler}
           emailFlag={emailFlag.toString()}
         />
-        {emailFlag && <span>user with this email doesn't exist</span>}
+        {emailFlag && <span className="span">user with this email doesn't exist</span>}
 
         <input
           className="inputFields"
