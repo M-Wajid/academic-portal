@@ -22,44 +22,42 @@ import AppLayout from "./components/appLayout";
 
 const App = () => {
   return (
-    <div>
-      <Routes>
-        <Route path="/" element={<ProtectedLogin />}>
-          <Route path="/" element={<HOME />} />
-        </Route>
+    <Routes>
+      <Route path="/" element={<ProtectedLogin />}>
+        <Route path="/" element={<HOME />} />
+      </Route>
 
-        <Route path="/" element={<Protected userRole="admin" />}>
-          <Route path="/" element={<AppLayout />}>
-            <Route path="/admin" element={<Admin />} />
-            <Route path="/addUser" element={<AddUser />} />
-            <Route path="/addCourse" element={<AddCourse />} />
-            <Route path="/adminLeave" element={<LeaveApprovalAdmin />} />
-          </Route>
+      <Route path="/" element={<Protected userRole="admin" />}>
+        <Route path="/" element={<AppLayout />}>
+          <Route path="/admin" element={<Admin />} />
+          <Route path="/addUser" element={<AddUser />} />
+          <Route path="/addCourse" element={<AddCourse />} />
+          <Route path="/adminLeave" element={<LeaveApprovalAdmin />} />
         </Route>
+      </Route>
 
-        <Route path="/" element={<Protected userRole="teacher" />}>
-          <Route path="/" element={<AppLayout />}>
-            <Route path="/teacher" element={<Teacher />} />
-            <Route path="/attendance" element={<Attendance />} />
-            <Route path="/marks" element={<Marks />} />
-            <Route path="/teacherLeave" element={<LeaveApprovalTeacher />} />
-          </Route>
+      <Route path="/" element={<Protected userRole="teacher" />}>
+        <Route path="/" element={<AppLayout />}>
+          <Route path="/teacher" element={<Teacher />} />
+          <Route path="/attendance" element={<Attendance />} />
+          <Route path="/marks" element={<Marks />} />
+          <Route path="/teacherLeave" element={<LeaveApprovalTeacher />} />
         </Route>
+      </Route>
 
-        <Route path="/" element={<Protected userRole="student" />}>
-          <Route path="/" element={<AppLayout />}>
-            <Route path="/student" element={<Student />} />
-            <Route path="/viewAttendance" element={<ViewAttendence />} />
-            <Route path="/viewMarks" element={<ViewMarks />} />
-            <Route path="/registerCourse" element={<RegisterCourse />} />
-            <Route path="/studentLeave" element={<AddLeave />} />
-          </Route>
+      <Route path="/" element={<Protected userRole="student" />}>
+        <Route path="/" element={<AppLayout />}>
+          <Route path="/student" element={<Student />} />
+          <Route path="/viewAttendance" element={<ViewAttendence />} />
+          <Route path="/viewMarks" element={<ViewMarks />} />
+          <Route path="/registerCourse" element={<RegisterCourse />} />
+          <Route path="/studentLeave" element={<AddLeave />} />
         </Route>
+      </Route>
 
-        <Route path="/denied" element={<PermissionDenied />} />
-        <Route path="*" element={<NoMatchRoute />} />
-      </Routes>
-    </div>
+      <Route path="/denied" element={<PermissionDenied />} />
+      <Route path="*" element={<NoMatchRoute />} />
+    </Routes>
   );
 };
 export default App;

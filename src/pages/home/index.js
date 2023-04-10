@@ -53,9 +53,10 @@ const HOME = () => {
   };
 
   return (
-    <form onSubmit={onSubmitHandler}>
-      <div className="main">
-        <h1>LOGIN</h1>
+    <div className="main">
+      <form onSubmit={onSubmitHandler}>
+        <div className="loginForm">
+        <h1 style={{color:"#BFA181"}}>LOGIN</h1>
         <input
           className="inputFields"
           name="email"
@@ -82,8 +83,9 @@ const HOME = () => {
         <button className="loginButton" type="submit">
           LOGIN
         </button>
-      </div>
+        </div>
     </form>
+    </div>
   );
 };
 
