@@ -1,6 +1,5 @@
 import { useSelector } from "react-redux";
 import { useState } from "react";
-import "../../styles/style.css";
 import ViewAllAttendance from "./viewAllAttendance";
 import ViewCourseAttendance from "./viewCourseAttendance";
 

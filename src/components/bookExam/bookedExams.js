@@ -1,4 +1,3 @@
-import "../../styles/table-style.css"
 import { useDispatch, useSelector } from "react-redux";
 import { bookedExamDeleted } from "../../redux/actions";
 import { useState } from 'react';

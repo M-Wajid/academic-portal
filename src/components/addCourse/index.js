@@ -1,9 +1,7 @@
 import { useSelector, useDispatch } from "react-redux";
 import { useState } from "react";
 import { courseAdded } from "./../../redux/actions/index";
-import "../../styles/style.css";
 import EditCourse from "./editCourse";
-import "../../styles/table-style.css"
 import { MdCreate } from "react-icons/md";
 
 const AddCourse = () => {

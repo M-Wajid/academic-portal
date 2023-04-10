@@ -1,5 +1,4 @@
 import { useSelector } from "react-redux";
-import "../../styles/style.css";
 import { useState } from "react";
 import EditAttendance from "./editAttendance";
 import ShowCourseAttendance from "./showCourseAttendance";

@@ -1,4 +1,3 @@
-import "../../styles/style.css";
 
 const Info = () => {
   const user = JSON.parse(localStorage.getItem("data"));

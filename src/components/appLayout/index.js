@@ -5,7 +5,6 @@ import { contentStyle, headerStyle, siderStyle } from "../../App-Style";
 import { AiOutlineMenu } from "react-icons/ai";
 import { AiOutlineLogout } from "react-icons/ai";
 import { AiOutlineUser } from "react-icons/ai";
-import "../../styles/style.css";
 import SiderMenu from "./siderMenu";
 import adminSidebarItems from "../../data/adminSidebar.json";
 import teacherSidebarItems from "../../data/teacherSidebar.json";

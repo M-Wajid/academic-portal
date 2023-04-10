@@ -1,8 +1,6 @@
 import { useSelector, useDispatch } from "react-redux";
-import "../../styles/style.css";
 import { useState } from "react";
 import { taskAdded } from "./../../redux/actions/index";
-import "../../styles/table-style.css";
 import ShowAllMarks from "./showAllMarks";
 import AddMarks from "./addMarks";
 import { MdCreate } from "react-icons/md";

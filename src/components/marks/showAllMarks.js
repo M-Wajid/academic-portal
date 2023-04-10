@@ -1,4 +1,3 @@
-import "../../styles/table-style.css"
 import { useSelector } from "react-redux";
 
 const ShowAllMarks = () => {

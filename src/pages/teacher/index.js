@@ -1,5 +1,4 @@
 import Info from './../../components/info/index';
-import "../../styles/style.css";
 import ViewCourses from "../../components/viewTeacherCourses";
 import BookExamTeacher from "../../components/bookExamTeacher";
 

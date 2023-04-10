@@ -1,5 +1,4 @@
 import { useDispatch, useSelector } from "react-redux";
-import "../../styles/table-style.css"
 import { attendanceDeletedSingle, courseMarksDeleted, courseUnregistered } from "./../../redux/actions/index";
 import { useState } from "react";
 import DeleteConfirmation from './../deleteConfirmation/DeleteConfirmation';

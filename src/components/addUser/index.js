@@ -1,6 +1,5 @@
 
 import { useDispatch, useSelector } from "react-redux";
-import "../../styles/style.css";
 import AddNewUser from "./addNewUser";
 import DeleteConfirmation from './../deleteConfirmation/DeleteConfirmation';
 import { useState } from 'react';
@@ -11,7 +10,6 @@ import {
   userMarksDeleted,
   userUnregistered,
 } from "../../redux/actions";
-import "../../styles/table-style.css";
 import { MdDelete } from "react-icons/md";
 import { MdCreate } from "react-icons/md";
 

@@ -1,6 +1,4 @@
-import "../../styles/style.css";
 import { useSelector } from "react-redux";
-import "../../styles/table-style.css"
 
 const ShowCourses = () => {
   const courseState = useSelector((state) => state.courseReducer);

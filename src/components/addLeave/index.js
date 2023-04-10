@@ -1,4 +1,3 @@
-import "../../styles/style.css";
 import ShowAllLeaves from "./showAllLeaves";
 import AddNewLeave from "./addNewLeave";
 

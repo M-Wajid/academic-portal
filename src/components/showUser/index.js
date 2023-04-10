@@ -1,6 +1,4 @@
 import { useSelector } from "react-redux";
-import "../../styles/style.css";
-import "../../styles/table-style.css"
 
 const ShowUser = () => {
   const userState = useSelector((state) => state.userReducer);

@@ -1,7 +1,6 @@
 import { useState } from "react";
 import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import "../../styles/home.css";
 
 const HOME = () => {
   const userState = useSelector((state) => state.userReducer);

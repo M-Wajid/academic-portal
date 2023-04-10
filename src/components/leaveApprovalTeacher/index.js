@@ -1,7 +1,5 @@
 import { useSelector, useDispatch } from "react-redux";
 import { teacherApproved } from "./../../redux/actions/index";
-import "../../styles/style.css";
-import "../../styles/table-style.css";
 import { MdOutlineThumbUpOffAlt } from "react-icons/md";
 import { MdOutlineThumbDownOffAlt } from "react-icons/md";
 

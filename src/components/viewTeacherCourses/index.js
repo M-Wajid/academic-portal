@@ -1,5 +1,4 @@
 import { useSelector } from "react-redux";
-import "../../styles/table-style.css"
 
 const ViewCourses = () => {
   const user = JSON.parse(localStorage.getItem("data"));

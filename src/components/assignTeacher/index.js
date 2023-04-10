@@ -1,8 +1,6 @@
-import "../../styles/style.css";
 import { useSelector, useDispatch } from "react-redux";
 import { useState } from "react";
 import { teacherAssigned } from "./../../redux/actions/index";
-import "../../styles/table-style.css"
 
 const AssignTeacher = () => {
   const userState = useSelector((state) => state.userReducer);

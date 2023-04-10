@@ -1,8 +1,6 @@
-import "../../styles/style.css";
 import { useDispatch, useSelector } from "react-redux";
 import { useState } from "react";
 import AddExamDate from "./addExamDate";
-import "../../styles/table-style.css"
 import EditExamDate from "./editExamDate";
 import { examDateDeleted } from './../../redux/actions/index';
 import { MdDelete } from "react-icons/md";

@@ -1,4 +1,3 @@
-import "../../styles/style.css";
 import AddExam from "./addExam";
 import BookedExams from './bookedExams';
 

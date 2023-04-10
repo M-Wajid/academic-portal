@@ -1,8 +1,6 @@
-
 import { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { courseRegistered } from "../../redux/actions";
-import "../../styles/style.css";
 import { studentAdded } from './../../redux/actions/index';
 import ViewCourses from './viewCourses';
 

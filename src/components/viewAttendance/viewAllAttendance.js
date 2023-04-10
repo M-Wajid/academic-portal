@@ -1,5 +1,4 @@
 import { useSelector } from "react-redux";
-import "../../styles/table-style.css"
 
 const ViewAllAttendance = () => {
   const attendanceState = useSelector((state) => state.attendanceReducer);
